@@ -3,15 +3,22 @@ package com.app.learnquizjp.activity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.app.learnquizjp.R
+import com.app.learnquizjp.fragment.QuizFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
+import kotlinx.android.synthetic.main.content_home.view.*
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+   val quizFragment: QuizFragment= QuizFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +72,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 // Handle the camera action
             }
             com.app.learnquizjp.R.id.nav_gallery -> {
-
+                showFragmentQuiz()
             }
             com.app.learnquizjp.R.id.nav_slideshow -> {
 
@@ -83,5 +90,16 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+    fun showFragmentQuiz(){
+        var fragmentManager: FragmentManager=supportFragmentManager
+        var fragmentTransaction: FragmentTransaction=fragmentManager.beginTransaction()
+        if (quizFragment.isAdded){
+            fragmentTransaction.show(quizFragment)
+        }
+        else{
+            fragmentTransaction.add(R.id.container,quizFragment)
+        }
+        fragmentTransaction.commit()
     }
 }
