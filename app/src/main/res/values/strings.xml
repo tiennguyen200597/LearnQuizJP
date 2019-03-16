@@ -36,4 +36,6 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="tv_lever_N5">N5</string>
+    <string name="tv_practice">Luyện tập</string>
+    <string name="tv_test">Thi thử</string>
 </resources>
