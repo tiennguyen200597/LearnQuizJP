@@ -30,6 +30,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sign in"
+                    android:textSize="28dp"
+                    android:textStyle="bold"
+            />
 
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -63,15 +70,64 @@
                         android:singleLine="true"/>
 
             </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:id="@+id/repassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_repassword"
+                        android:imeActionId="6"
+                        android:imeActionLabel="@string/action_sign_in_short"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:singleLine="true"/>
+
+            </android.support.design.widget.TextInputLayout>
 
             <Button
-                    android:id="@+id/email_sign_in_button"
+
+                    android:id="@+id/btn_sign_in_now"
                     style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
+                    android:layout_width="259dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/action_sign_in"
-                    android:textStyle="bold"/>
+                    android:layout_marginLeft="55dp"
+                    android:text="@string/action_Sign_in_now"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/shape"
+            />
+            <LinearLayout
+                    android:layout_width="280dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="45dp"
+            >
+                <TextView
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text3"
+                        android:textSize="16dp"
+                />
+                <TextView
+                        android:id="@+id/txt_Sign_in"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text4"
+                        android:textSize="16dp"
+                />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
