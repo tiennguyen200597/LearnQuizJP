@@ -38,4 +38,10 @@
     <string name="tv_lever_N5">N5</string>
     <string name="tv_practice">Luyện tập</string>
     <string name="tv_test">Thi thử</string>
+    <string name="tv_failnoti">Chúc bạn may mắn lần sau!</string>
+    <string name="tv_true">Câu đúng</string>
+    <string name="tv_fail">Câu sai</string>
+    <string name="tv_do_not">Câu chưa làm</string>
+    <string name="tv_ready">Bạn đã sẵn sàng làm đề?</string>
+    <string name="tv_start_quiz">Làm đề thi</string>
 </resources>

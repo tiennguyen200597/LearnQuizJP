@@ -16,16 +16,8 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/toolbarheight"
-                android:background="?attr/colorPrimary"
+                android:background="?attr/colorAccent"
                 app:popupTheme="@style/AppTheme.PopupOverlay"/>
     </android.support.design.widget.AppBarLayout>
-    <LinearLayout
-
-            android:background="@color/bgcolorSivler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-    </LinearLayout>
-
     <include layout="@layout/content_result"/>
 </LinearLayout>
