@@ -7,13 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.learnquizjp.R
+import com.app.learnquizjp.activity.TestActivity
+import kotlinx.android.synthetic.main.test_fragment.*
+
 class TestFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = TestFragment()
-    }
-
-    private lateinit var viewModel: TestViewModel
+    val ARG_PAGE = "page"
+    var mPageNumber: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,8 +23,24 @@ class TestFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(TestViewModel::class.java)
-        // TODO: Use the ViewModel
+        tv_bmquiz.text="Câu "+(mPageNumber+1)
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        var activitiTest: TestActivity= TestActivity()
+        var arrtest: ArrayList<Int>
+        arrtest=activitiTest.getData()
+        mPageNumber = arguments!!.getInt(ARG_PAGE)
+    }
+
+      public fun create(pageNumber: Int): TestFragment {
+        val fragment:TestFragment = TestFragment()
+        val args = Bundle()
+        args.putInt(ARG_PAGE, pageNumber)
+        fragment.setArguments(args)
+        return fragment
     }
 
 }
