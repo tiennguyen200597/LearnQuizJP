@@ -1,8 +1,9 @@
 package com.app.learnquizjp.activity
 
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
+import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
@@ -11,11 +12,13 @@ import android.support.v4.view.ViewPager
 import android.view.View
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.ui.test.TestFragment
-import com.app.learnquizjp.adapter.SlidingImageAdapter
-import com.app.learnquizjp.model.Image
 import kotlinx.android.synthetic.main.test_activity.*
-import java.util.*
 import kotlin.collections.ArrayList
+
+
+
+
+
 
 
 
@@ -23,40 +26,55 @@ class TestActivity : AppCompatActivity() {
     val NUM_PAGES = 20
     var mPager: ViewPager? = null
     var mPagerAdapter: PagerAdapter? = null
-    var arrtest:ArrayList<Int> = ArrayList()
+    var arrtest: ArrayList<Int> = ArrayList()
+    var mNumber: Int = 0
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.test_activity)
-
+        var bundle:Bundle= Bundle()
         // tạo mảng chứa dữ liệu test
         for (item: Int in 1..20) {
             arrtest.add(item)
         }
-
         mPager = findViewById(R.id.pager) as ViewPager
         mPagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
         mPager!!.setAdapter(mPagerAdapter)
         mPager!!.setPageTransformer(true, DepthPageTransformer())
+        mPager!!.setPageTransformer(true, DepthPageTransformer())
 
+        mPager!!.addOnPageChangeListener(viewPagerPageChangeListener)
 
 
 
 
 
     }
+            // sự kiện khi thay đổi viewpager
+    val viewPagerPageChangeListener = object : ViewPager.OnPageChangeListener {
+            // nhận giá trị của view hiện tại
+        override fun onPageSelected(position: Int) {
+                tv_status_quiz.text=(position+1).toString()+"/"+NUM_PAGES
+        }
 
+        override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {
+        }
+
+        override fun onPageScrollStateChanged(arg0: Int) {
+
+        }
+    }
     fun getData(): ArrayList<Int> {
         return arrtest
     }
 
-     inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-         var testFragment: TestFragment= TestFragment()
-         // vị trí hiện tại của view page
+    inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+        var testFragment: TestFragment = TestFragment()
+        // vị trí hiện tại của view page
         override fun getItem(position: Int): Fragment {
-        return testFragment.create(position)
+            return testFragment.create(position)
         }
-
         override fun getCount(): Int {
             return NUM_PAGES
         }
@@ -100,9 +118,10 @@ class TestActivity : AppCompatActivity() {
 
     }
 
+   }
 
 
 
-    }
+
 
 

@@ -10,6 +10,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent">
         <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -23,22 +24,20 @@
 
                 <TextView
                         android:id="@+id/tv_bmquiz"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textSize="22sp"
-                        android:textColor="#ff0011"
-                        android:textStyle="bold"
-                        android:text="Câu 1" />
-
-                <TextView
-                        android:id="@+id/tvQuestion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="italic"
-                        android:text="Câu hỏi thứ nhất " />
+                        android:text="Câu 1"/>
+                <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:textStyle="italic"
+                        android:text="@string/tv_quizdemo"/>
             </LinearLayout>
 
             <ImageView
@@ -48,54 +47,141 @@
                     android:layout_margin="0dp"
                     android:padding="0dp"
                     android:layout_gravity="center"
-                    android:visibility="visible" />
+                    android:visibility="visible"/>
 
-            <RadioGroup
+            <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/radGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp">
-
-                <RadioButton
-                        android:id="@+id/radA"
+                <LinearLayout
+                        android:id="@+id/ll_answerA"
+                        style="@style/MarginQuiz"
+                        android:weightSum="10"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:textSize="16sp"
-                        android:textColor="#1502c7"
-                        android:textStyle="bold"
-                        android:text="Trả lời 1" />
-
-                <RadioButton
-                        android:id="@+id/radB"
+                       >
+                    <TextView
+                            android:background="@color/siver"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="A"/>
+                    <TextView
+                            android:background="@color/blacklight"
+                            android:layout_weight="9"
+                            android:gravity="center"
+                            android:id="@+id/tv_answerA"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="Trả lời 1"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/ll_answerB"
+                        style="@style/MarginQuiz"
+                        android:weightSum="10"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:textSize="16sp"
-                        android:textColor="#1502c7"
-                        android:textStyle="bold"
-                        android:text="Trả lời 2" />
+                        >
+                    <TextView
+                            android:background="@color/siver"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:checked="false"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="B"/>
+                    <TextView
+                            android:background="@color/blacklight"
+                            android:layout_weight="9"
+                            android:gravity="center"
+                            android:id="@+id/tv_answerB"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="Trả lời 1"/>
 
-                <RadioButton
-                        android:id="@+id/radC"
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/ll_answerC"
+                        style="@style/MarginQuiz"
+                        android:weightSum="10"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:textSize="16sp"
-                        android:textColor="#1502c7"
-                        android:textStyle="bold"
-                        android:text="Trả lời 3" />
+                        >
+                    <TextView
+                            android:background="@color/siver"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:checked="false"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="C"/>
+                    <TextView
+                            android:background="@color/blacklight"
+                            android:layout_weight="9"
+                            android:gravity="center"
+                            android:id="@+id/tv_answerC"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="Trả lời 1"/>
 
-                <RadioButton
-                        android:id="@+id/radD"
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/ll_answerD"
+                        style="@style/MarginQuiz"
+                        android:weightSum="10"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:textSize="16sp"
-                        android:textColor="#1502c7"
-                        android:textStyle="bold"
-                        android:text="Trả lời 4" />
-            </RadioGroup>
+                        >
+                    <TextView
+                            android:background="@color/siver"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:checked="false"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="D"/>
+                    <TextView
+                            android:background="@color/blacklight"
+                            android:layout_weight="9"
+                            android:gravity="center"
+                            android:id="@+id/tv_answerD"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="Trả lời 1"/>
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
