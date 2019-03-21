@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"/>
 
         <RadioGroup
-
+                android:clickable="true"
                 android:layout_weight="9"
                 android:weightSum="12"
                 android:gravity="center"
