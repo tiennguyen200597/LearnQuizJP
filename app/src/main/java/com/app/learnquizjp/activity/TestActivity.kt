@@ -3,38 +3,42 @@ package com.app.learnquizjp.activity
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
+import android.support.v7.app.AlertDialog
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.ui.test.TestFragment
 import kotlinx.android.synthetic.main.test_activity.*
+import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
-
-
-
-
-
-
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import com.app.learnquizjp.adapter.ChkAnswerAdapter
 
 
 class TestActivity : AppCompatActivity() {
     val NUM_PAGES = 20
+    // timer of test (minute)
+    val TOTAL_TIMER: Long = 45
     var mPager: ViewPager? = null
     var mPagerAdapter: PagerAdapter? = null
     var arrtest: ArrayList<Int> = ArrayList()
-    var mNumber: Int = 0
-
+    lateinit var timer: CounterClass
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.test_activity)
-        var bundle:Bundle= Bundle()
-        // tạo mảng chứa dữ liệu test
+        // creat timet count downl
+        timer = CounterClass(TOTAL_TIMER * 60 * 1000, 1000)
+        // creat arr test
         for (item: Int in 1..20) {
             arrtest.add(item)
         }
@@ -43,19 +47,22 @@ class TestActivity : AppCompatActivity() {
         mPager!!.setAdapter(mPagerAdapter)
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.setPageTransformer(true, DepthPageTransformer())
-
         mPager!!.addOnPageChangeListener(viewPagerPageChangeListener)
-
-
-
-
-
+        // start test btn
+        btn_start.setOnClickListener {
+            dialogStart()
+        }
+        // check status test
+        tv_status_test.setOnClickListener {
+            showStatusTestDialog()
+        }
     }
-            // sự kiện khi thay đổi viewpager
+
+    // change viewpager
     val viewPagerPageChangeListener = object : ViewPager.OnPageChangeListener {
-            // nhận giá trị của view hiện tại
+        // nhận giá trị của view hiện tại
         override fun onPageSelected(position: Int) {
-                tv_status_quiz.text=(position+1).toString()+"/"+NUM_PAGES
+            tv_status_quiz.text = (position + 1).toString() + "/" + NUM_PAGES
         }
 
         override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {
@@ -65,6 +72,7 @@ class TestActivity : AppCompatActivity() {
 
         }
     }
+
     fun getData(): ArrayList<Int> {
         return arrtest
     }
@@ -75,6 +83,7 @@ class TestActivity : AppCompatActivity() {
         override fun getItem(position: Int): Fragment {
             return testFragment.create(position)
         }
+
         override fun getCount(): Int {
             return NUM_PAGES
         }
@@ -118,7 +127,87 @@ class TestActivity : AppCompatActivity() {
 
     }
 
-   }
+    // set clook countDown
+    inner class CounterClass
+    /**
+     * @param millisInFuture    The number of millis in the future from the call
+     * to [.start] until the countdown is done and [.onFinish]
+     * is called.
+     * @param countDownInterval The interval along the way to receive
+     * [.onTick] callbacks.
+     */
+    //millisInFuture: 60*1000
+    //countDownInterval:  1000
+        (millisInFuture: Long, countDownInterval: Long) : CountDownTimer(millisInFuture, countDownInterval) {
+
+        override fun onTick(millisUntilFinished: Long) {
+            val countTime = String.format(
+                "%02d:%02d",
+                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
+                    TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
+                )
+            )
+            tv_clook.setText(countTime) //SetText cho textview hiện thị thời gian.
+        }
+
+        override fun onFinish() {
+            tv_clook.setText("00:00")  //SetText cho textview hiện thị thời gian.
+            /*result()*/
+        }
+    }
+
+    // stat test dialog
+    fun dialogStart() {
+        val builder = AlertDialog.Builder(this@TestActivity)
+        builder.setTitle("Làm bài thi")
+        builder.setMessage("Bạn đã sẵn sàng làm đề?")
+        builder.setPositiveButton("Đồng ý") { dialog, which ->
+            tv_clook.visibility = View.VISIBLE
+            tv_status_test.visibility = View.VISIBLE
+            tv_submit.visibility = View.VISIBLE
+
+            timer.start()
+        }
+        builder.setNegativeButton("Hủy") { dialog, which -> }
+
+        builder.show()
+    }
+
+    private fun showStatusTestDialog() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        val viewGroup = findViewById<ViewGroup>(android.R.id.content)
+        //then we will inflate the custom alert dialog xml that we created
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_status_test, viewGroup, false)
+        //Creatr adater
+        val answerAdapter: ChkAnswerAdapter = ChkAnswerAdapter(arrtest, this)
+        // create recyview
+
+        var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
+        var recyclerView: RecyclerView = dialogView.findViewById<RecyclerView>(R.id.rev_result_test)
+        recyclerView.apply {
+            // use this setting to improve performance if you know that changes
+            // in content do not change the layout size of the RecyclerView
+            setHasFixedSize(true)
+
+            // use a linear layout manager
+            layoutManager = viewManager
+            // specify an viewAdapter (see also next example)
+            adapter = answerAdapter
+        }
+
+        //Now we need an AlertDialog.Builder object
+        val builder = AlertDialog.Builder(this)
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView)
+
+        //finally creating the alert dialog and displaying it
+        val alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+}
 
 
 

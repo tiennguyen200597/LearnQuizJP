@@ -12,4 +12,7 @@
     <color name="blacklight">#96D0CDD5</color>
     <color name="bluelight">#992FB3EF</color>
     <color name="graylight">#47B1ABAB</color>
+    <!--color of backgroud status test-->
+    <color name="pink">#FFDFDF</color>
+    <color name="redlight">#FB6565</color>
 </resources>

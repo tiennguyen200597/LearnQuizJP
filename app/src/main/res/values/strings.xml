@@ -46,4 +46,7 @@
     <string name="tv_start_quiz">Làm đề thi</string>
     <string name="tv_quizdemo">いくら良いマンションだと勧められても、家賃が月30万円もする のでは我々の（_____）庶民しょみんに借りられるはずがない。</string>
     <string name="tv_start_test">Bắt đầu</string>
+    <string name="tv_status_test">Bài thi</string>
+    <string name="tv_cancer">Đóng</string>
+    <string name="tv_click_view_test">Click vào câu hỏi để xem chi tiết</string>
 </resources>
