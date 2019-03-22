@@ -1,9 +1,9 @@
 package com.app.learnquizjp.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
@@ -15,7 +15,6 @@ import com.app.learnquizjp.R
 import com.app.learnquizjp.fragment.QuizFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
-import kotlinx.android.synthetic.main.content_home.view.*
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
    val quizFragment: QuizFragment= QuizFragment()
@@ -70,6 +69,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             com.app.learnquizjp.R.id.nav_camera -> {
                 // Handle the camera action
+                startActivity(Intent(this@HomeActivity,LearningActivity::class.java))
             }
             com.app.learnquizjp.R.id.nav_gallery -> {
                 showFragmentQuiz()
