@@ -38,6 +38,10 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
         }
 
+        btn_sign_in_now.setOnClickListener {
+            startActivity(Intent(this@LoginActivity,SignUpActivity::class.java))
+        }
+
     }
 
 }

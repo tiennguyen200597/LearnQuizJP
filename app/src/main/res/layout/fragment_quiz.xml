@@ -6,9 +6,21 @@
              tools:context=".fragment.QuizFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
+    <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button
+                android:text="@string/tv_practice"
+                android:id="@+id/btn_practice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <Button
+                android:text="@string/tv_test"
+                android:id="@+id/btn_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
 
 </FrameLayout>

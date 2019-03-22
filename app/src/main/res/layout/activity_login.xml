@@ -30,6 +30,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_launcher_background"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="50dp"
+            />
 
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -71,8 +78,67 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/action_sign_in"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/shape"
+            />
+            <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background ="@drawable/shape2"/>
+            <Button
+                    android:id="@+id/btn_loginFB"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/action_loginFb"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/shape1"
+            />
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+            >
+                <TextView
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text1"
+                        android:textSize="16dp"
+                />
+                <TextView
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text2"
+                        android:textSize="16dp"
+                />
+            </LinearLayout>
+            <Button
 
+                    android:id="@+id/btn_sign_in_now"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="259dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="55dp"
+                    android:text="@string/action_Sign_in_now"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/shape"
+            />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

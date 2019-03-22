@@ -16,6 +16,10 @@
         <activity android:name=".activity.LearningActivity">
         </activity>
         <activity
+                android:theme="@style/AppTheme.NoActionBar"
+                android:name=".activity.TestActivity">
+        </activity>
+        <activity
                 android:name=".activity.StartActivity"
                 android:theme="@style/FullscreenTheme">
             <intent-filter>
