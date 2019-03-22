@@ -148,7 +148,8 @@ class TestActivity : AppCompatActivity() {
                     TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
                 )
             )
-            tv_clook.setText(countTime) //SetText cho textview hiện thị thời gian.
+            //setText of textview time
+            tv_clook.setText(countTime)
         }
 
         override fun onFinish() {
@@ -209,9 +210,6 @@ class TestActivity : AppCompatActivity() {
 
                 }
             }))
-
-
-
 
 
 
