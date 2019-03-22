@@ -70,6 +70,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             com.app.learnquizjp.R.id.nav_camera -> {
                 // Handle the camera action
+
             }
             com.app.learnquizjp.R.id.nav_gallery -> {
                 showFragmentQuiz()
