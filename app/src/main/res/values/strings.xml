@@ -49,4 +49,5 @@
     <string name="tv_status_test">Bài thi</string>
     <string name="tv_cancer">Đóng</string>
     <string name="tv_click_view_test">Click vào câu hỏi để xem chi tiết</string>
+    <string name="tv_submit_test">Nộp bài</string>
 </resources>

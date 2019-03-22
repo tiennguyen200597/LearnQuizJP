@@ -166,7 +166,8 @@ class TestActivity : AppCompatActivity() {
         builder.setPositiveButton("Đồng ý") { dialog, which ->
             tv_clook.visibility = View.VISIBLE
             tv_status_test.visibility = View.VISIBLE
-            tv_submit.visibility = View.VISIBLE
+            btn_submit.visibility = View.VISIBLE
+            btn_start.visibility=View.GONE
 
             timer.start()
         }
