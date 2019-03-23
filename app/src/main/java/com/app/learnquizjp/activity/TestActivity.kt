@@ -19,7 +19,6 @@ import com.app.learnquizjp.activity.ui.test.TestFragment
 import kotlinx.android.synthetic.main.test_activity.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
-import android.widget.Toast
 import com.app.learnquizjp.adapter.ChkAnswerAdapter
 import com.app.learnquizjp.base.RecyclerItemClickListener
 import com.app.learnquizjp.model.ABCDQuestion

@@ -30,12 +30,16 @@ class TestFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         tv_bmquiz.text = "Câu " + (mPageNumber + 1)
         tv_question.text = loatASls[mPageNumber].qzcontent
-        tv_answerA.text = loatASls[mPageNumber].ascortect
+        /*tv_answerA.text = loatASls[mPageNumber].ascortect
         tv_answerB.text = loatASls[mPageNumber].asincortecT1
         tv_answerC.text = loatASls[mPageNumber].asincortecT2
-        tv_answerD.text = loatASls[mPageNumber].asincortecT3
+        tv_answerD.text = loatASls[mPageNumber].asincortecT3*/
+        rad_answerA.text = loatASls[mPageNumber].ascortect
+        rad_answerB.text = loatASls[mPageNumber].asincortecT1
+        rad_answerC.text = loatASls[mPageNumber].asincortecT2
+        rad_answerD.text = loatASls[mPageNumber].asincortecT3
 
-        ll_answerA.setOnClickListener {
+        /*ll_answerA.setOnClickListener {
             tv_answerA.setBackgroundResource(R.color.bluelight)
             tv_answerB.setBackgroundResource(R.color.blacklight)
             tv_answerC.setBackgroundResource(R.color.blacklight)
@@ -62,7 +66,7 @@ class TestFragment : Fragment() {
             tv_answerC.setBackgroundResource(R.color.blacklight)
             tv_answerD.setBackgroundResource(R.color.bluelight)
             rad_answerD.isChecked = true
-        }
+        }*/
 
     }
 

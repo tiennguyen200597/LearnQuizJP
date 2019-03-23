@@ -28,5 +28,6 @@
     <style name="MarginQuiz">
         <item name="android:layout_marginTop">@dimen/margin_quiz</item>
         <item name="android:layout_height">50dp</item>
+
     </style>
 </resources>
