@@ -5,15 +5,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioGroup
 import android.widget.TextView
 import com.app.learnquizjp.R
 
-import java.nio.file.Files.size
 
-
-class ChkAnswerAdapter(internal var data: java.util.ArrayList<*>, context: Context) : RecyclerView.Adapter<ChkAnswerAdapter.RecyclerViewHolder>() {
-
+class ChkAnswerAdapter(private var data: java.util.ArrayList<*>, context: Context) :
+    RecyclerView.Adapter<ChkAnswerAdapter.RecyclerViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
@@ -23,8 +20,7 @@ class ChkAnswerAdapter(internal var data: java.util.ArrayList<*>, context: Conte
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        holder.tv_position.text= data[position].toString()
-        holder.rad_group.isEnabled=false
+        holder.tv_position.text = (position+1).toString()
     }
 
     override fun getItemCount(): Int {
@@ -34,11 +30,10 @@ class ChkAnswerAdapter(internal var data: java.util.ArrayList<*>, context: Conte
 
     inner class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         internal var tv_position: TextView
-        internal var rad_group: RadioGroup
+
 
         init {
             tv_position = itemView.findViewById(R.id.tv_position)
-            rad_group = itemView.findViewById(R.id.rad_group)
         }
     }
 }

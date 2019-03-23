@@ -1,17 +1,14 @@
 package com.app.learnquizjp.activity.ui.test
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.TestActivity
 import com.app.learnquizjp.model.Question
-import kotlinx.android.synthetic.main.test_activity.*
 import kotlinx.android.synthetic.main.test_fragment.*
 import java.util.*
 
@@ -19,9 +16,7 @@ import java.util.*
 class TestFragment : Fragment() {
     val ARG_PAGE = "page"
     var mPageNumber: Int = 0
-     var radm:Int = 0
     var loatASls: ArrayList<Question> = ArrayList()
-    val arrAnswer: ArrayList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,42 +28,40 @@ class TestFragment : Fragment() {
     @SuppressLint("ResourceAsColor")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        tv_bmquiz.text="Câu "+(mPageNumber+1)
-        tv_question.text= loatASls[mPageNumber].qzcontent
-            tv_answerA.text=loatASls[mPageNumber].ascortect
-            tv_answerB.text=loatASls[mPageNumber].asincortecT1
-            tv_answerC.text=loatASls[mPageNumber].asincortecT2
-            tv_answerD.text=loatASls[mPageNumber].asincortecT3
-
-
+        tv_bmquiz.text = "Câu " + (mPageNumber + 1)
+        tv_question.text = loatASls[mPageNumber].qzcontent
+        tv_answerA.text = loatASls[mPageNumber].ascortect
+        tv_answerB.text = loatASls[mPageNumber].asincortecT1
+        tv_answerC.text = loatASls[mPageNumber].asincortecT2
+        tv_answerD.text = loatASls[mPageNumber].asincortecT3
 
         ll_answerA.setOnClickListener {
             tv_answerA.setBackgroundResource(R.color.bluelight)
             tv_answerB.setBackgroundResource(R.color.blacklight)
             tv_answerC.setBackgroundResource(R.color.blacklight)
             tv_answerD.setBackgroundResource(R.color.blacklight)
-            rad_answerA.isChecked=true
+            rad_answerA.isChecked = true
         }
         ll_answerB.setOnClickListener {
             tv_answerA.setBackgroundResource(R.color.blacklight)
             tv_answerB.setBackgroundResource(R.color.bluelight)
             tv_answerC.setBackgroundResource(R.color.blacklight)
             tv_answerD.setBackgroundResource(R.color.blacklight)
-            rad_answerB.isChecked=true
+            rad_answerB.isChecked = true
         }
         ll_answerC.setOnClickListener {
             tv_answerA.setBackgroundResource(R.color.blacklight)
             tv_answerB.setBackgroundResource(R.color.blacklight)
             tv_answerC.setBackgroundResource(R.color.bluelight)
             tv_answerD.setBackgroundResource(R.color.blacklight)
-            rad_answerC.isChecked=true
+            rad_answerC.isChecked = true
         }
         ll_answerD.setOnClickListener {
             tv_answerA.setBackgroundResource(R.color.blacklight)
             tv_answerB.setBackgroundResource(R.color.blacklight)
             tv_answerC.setBackgroundResource(R.color.blacklight)
             tv_answerD.setBackgroundResource(R.color.bluelight)
-            rad_answerD.isChecked=true
+            rad_answerD.isChecked = true
         }
 
     }
@@ -79,17 +72,18 @@ class TestFragment : Fragment() {
         val activitiTest = activity as TestActivity?
 
         if (activitiTest != null) {
-            loatASls=activitiTest.getData()        }
+            loatASls = activitiTest.getData()
+        }
 
         mPageNumber = arguments!!.getInt(ARG_PAGE)
 
     }
 
-      public fun create(pageNumber: Int): TestFragment {
-        val fragment:TestFragment = TestFragment()
+    fun create(pageNumber: Int): TestFragment {
+        val fragment: TestFragment = TestFragment()
         val args = Bundle()
         args.putInt(ARG_PAGE, pageNumber)
-        fragment.setArguments(args)
+        fragment.arguments = args
         return fragment
     }
 

@@ -22,6 +22,7 @@ import kotlin.collections.ArrayList
 import android.widget.Toast
 import com.app.learnquizjp.adapter.ChkAnswerAdapter
 import com.app.learnquizjp.base.RecyclerItemClickListener
+import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
 
 
@@ -31,8 +32,13 @@ class TestActivity : AppCompatActivity() {
     val TOTAL_TIMER: Long = 45
     var mPager: ViewPager? = null
     var mPagerAdapter: PagerAdapter? = null
-    val arrAnswer: ArrayList<String> = ArrayList()
+    // list danh sach da dao
+    var lsQS: ArrayList<String> = ArrayList()
+    // arr de trao cu hoi
+    val arrAnswer: ArrayList<ABCDQuestion> = ArrayList()
+    // arr load len tu db
     var arrtest: ArrayList<Question> = ArrayList()
+    //  mang arr de load len man hinh
     var loatASls : ArrayList<Question> = ArrayList()
     lateinit var timer: CounterClass
     @RequiresApi(Build.VERSION_CODES.O)
@@ -55,19 +61,25 @@ class TestActivity : AppCompatActivity() {
                 5)
             arrtest.add(question)
         }
+        //sort
         for (i in 0..34){
-            arrAnswer.add(arrtest[i].ascortect!!)
-            arrAnswer.add(arrtest[i].asincortecT1!!)
-            arrAnswer.add(arrtest[i].asincortecT2!!)
-            arrAnswer.add(arrtest[i].asincortecT3!!)
-            arrAnswer.shuffle();
-            arrtest[i].ascortect=arrAnswer[0]
-            arrtest[i].asincortecT1=arrAnswer[1]
-            arrtest[i].asincortecT2=arrAnswer[2]
-            arrtest[i].asincortecT3=arrAnswer[3]
-
+            var abcdQuestion: ABCDQuestion= ABCDQuestion()
+            lsQS.add(arrtest[i].ascortect!!)
+            lsQS.add(arrtest[i].asincortecT1!!)
+            lsQS.add(arrtest[i].asincortecT2!!)
+            lsQS.add(arrtest[i].asincortecT3!!)
+            lsQS.shuffle()
+            abcdQuestion.ascortect=lsQS[0]
+            abcdQuestion.asincortecT1=lsQS[1]
+            abcdQuestion.asincortecT2=lsQS[2]
+            abcdQuestion.asincortecT3=lsQS[3]
+            arrAnswer.add(abcdQuestion)
+            arrtest[i].ascortect=arrAnswer[i].ascortect
+            arrtest[i].asincortecT1=arrAnswer[i].asincortecT1
+            arrtest[i].asincortecT2=arrAnswer[i].asincortecT2
+            arrtest[i].asincortecT3=arrAnswer[i].asincortecT3
+            lsQS.removeAll(lsQS)
         }
-
         loatASls=arrtest
         //creat arr test end
         mPager = findViewById(R.id.pager) as ViewPager
