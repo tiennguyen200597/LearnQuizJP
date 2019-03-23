@@ -10,15 +10,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.TestActivity
+import com.app.learnquizjp.model.Question
 import kotlinx.android.synthetic.main.test_activity.*
 import kotlinx.android.synthetic.main.test_fragment.*
-
-
+import java.util.*
 
 
 class TestFragment : Fragment() {
     val ARG_PAGE = "page"
     var mPageNumber: Int = 0
+     var radm:Int = 0
+    var loatASls: ArrayList<Question> = ArrayList()
+    val arrAnswer: ArrayList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,40 +34,54 @@ class TestFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         tv_bmquiz.text="Câu "+(mPageNumber+1)
+        tv_question.text= loatASls[mPageNumber].qzcontent
+            tv_answerA.text=loatASls[mPageNumber].ascortect
+            tv_answerB.text=loatASls[mPageNumber].asincortecT1
+            tv_answerC.text=loatASls[mPageNumber].asincortecT2
+            tv_answerD.text=loatASls[mPageNumber].asincortecT3
+
+
+
         ll_answerA.setOnClickListener {
             tv_answerA.setBackgroundResource(R.color.bluelight)
             tv_answerB.setBackgroundResource(R.color.blacklight)
             tv_answerC.setBackgroundResource(R.color.blacklight)
             tv_answerD.setBackgroundResource(R.color.blacklight)
+            rad_answerA.isChecked=true
         }
         ll_answerB.setOnClickListener {
             tv_answerA.setBackgroundResource(R.color.blacklight)
             tv_answerB.setBackgroundResource(R.color.bluelight)
             tv_answerC.setBackgroundResource(R.color.blacklight)
             tv_answerD.setBackgroundResource(R.color.blacklight)
+            rad_answerB.isChecked=true
         }
         ll_answerC.setOnClickListener {
             tv_answerA.setBackgroundResource(R.color.blacklight)
             tv_answerB.setBackgroundResource(R.color.blacklight)
             tv_answerC.setBackgroundResource(R.color.bluelight)
             tv_answerD.setBackgroundResource(R.color.blacklight)
+            rad_answerC.isChecked=true
         }
         ll_answerD.setOnClickListener {
             tv_answerA.setBackgroundResource(R.color.blacklight)
             tv_answerB.setBackgroundResource(R.color.blacklight)
             tv_answerC.setBackgroundResource(R.color.blacklight)
             tv_answerD.setBackgroundResource(R.color.bluelight)
+            rad_answerD.isChecked=true
         }
 
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var activitiTest: TestActivity= TestActivity()
-        var arrtest: ArrayList<Int>
-        arrtest=activitiTest.getData()
-        mPageNumber = arguments!!.getInt(ARG_PAGE)
+        // call activy
+        val activitiTest = activity as TestActivity?
 
+        if (activitiTest != null) {
+            loatASls=activitiTest.getData()        }
+
+        mPageNumber = arguments!!.getInt(ARG_PAGE)
 
     }
 
@@ -75,7 +92,6 @@ class TestFragment : Fragment() {
         fragment.setArguments(args)
         return fragment
     }
-
 
 
 }

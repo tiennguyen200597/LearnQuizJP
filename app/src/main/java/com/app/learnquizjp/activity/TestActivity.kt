@@ -22,15 +22,18 @@ import kotlin.collections.ArrayList
 import android.widget.Toast
 import com.app.learnquizjp.adapter.ChkAnswerAdapter
 import com.app.learnquizjp.base.RecyclerItemClickListener
+import com.app.learnquizjp.model.Question
 
 
 class TestActivity : AppCompatActivity() {
-    val NUM_PAGES = 20
+    val NUM_PAGES = 35
     // timer of test (minute)
     val TOTAL_TIMER: Long = 45
     var mPager: ViewPager? = null
     var mPagerAdapter: PagerAdapter? = null
-    var arrtest: ArrayList<Int> = ArrayList()
+    val arrAnswer: ArrayList<String> = ArrayList()
+    var arrtest: ArrayList<Question> = ArrayList()
+    var loatASls : ArrayList<Question> = ArrayList()
     lateinit var timer: CounterClass
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,9 +42,34 @@ class TestActivity : AppCompatActivity() {
         // creat timet count downl
         timer = CounterClass(TOTAL_TIMER * 60 * 1000, 1000)
         // creat arr test
-        for (item: Int in 1..20) {
-            arrtest.add(item)
+        for ( i : Int in 0..34){
+            var question:Question= Question(
+                i,
+                "学費はすべてアルバイトで 賄って いる ${i+1}",
+                "しはらって ${i+1}",
+                "まかなって ${i+1}",
+                "うるおって ${i+1}",
+                "ふるって ${i+1}",
+                "Đáp án chính xác là đéo biết",
+                5,
+                5)
+            arrtest.add(question)
         }
+        for (i in 0..34){
+            arrAnswer.add(arrtest[i].ascortect!!)
+            arrAnswer.add(arrtest[i].asincortecT1!!)
+            arrAnswer.add(arrtest[i].asincortecT2!!)
+            arrAnswer.add(arrtest[i].asincortecT3!!)
+            arrAnswer.shuffle();
+            arrtest[i].ascortect=arrAnswer[0]
+            arrtest[i].asincortecT1=arrAnswer[1]
+            arrtest[i].asincortecT2=arrAnswer[2]
+            arrtest[i].asincortecT3=arrAnswer[3]
+
+        }
+
+        loatASls=arrtest
+        //creat arr test end
         mPager = findViewById(R.id.pager) as ViewPager
         mPagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
         mPager!!.setAdapter(mPagerAdapter)
@@ -73,8 +101,8 @@ class TestActivity : AppCompatActivity() {
         }
     }
 
-    fun getData(): ArrayList<Int> {
-        return arrtest
+    fun getData(): ArrayList<Question> {
+        return loatASls
     }
 
     inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
@@ -191,7 +219,7 @@ class TestActivity : AppCompatActivity() {
         val alertDialog = builder.create()
         //Creatr adater
         val answerAdapter: ChkAnswerAdapter = ChkAnswerAdapter(arrtest, this)
-        var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
+        var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager
         // create recyview
         var recyclerView: RecyclerView = dialogView.findViewById<RecyclerView>(R.id.rev_result_test)
         recyclerView.apply {
@@ -217,7 +245,26 @@ class TestActivity : AppCompatActivity() {
 
         alertDialog.show()
     }
-    //
+    // create data test
+    /*fun dataTest():ArrayList<Question>{
+        var lsDataTest: ArrayList<Question> =ArrayList()
+        for ( i : Int in 1..35){
+            var question:Question= Question(
+                i,
+                "学費はすべてアルバイトで 賄って いる ${i}",
+                "しはらって ${i}",
+                "まかなって ${i}",
+                "うるおって ${i}",
+                "ふるって ${i}",
+                "Đáp án chính xác là đéo biết",
+                5,
+                5)
+            lsDataTest.add(question)
+
+        }
+
+        return lsDataTest
+    }*/
 
 }
 
