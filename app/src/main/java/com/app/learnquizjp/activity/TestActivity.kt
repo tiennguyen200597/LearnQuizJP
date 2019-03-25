@@ -202,7 +202,7 @@ class TestActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this@TestActivity)
         builder.setTitle("Làm bài thi")
         builder.setMessage("Bạn đã sẵn sàng làm đề?")
-        builder.setPositiveButton("Đồng ý") { dialog, which ->
+        builder.setPositiveButton("Đồng ý") { _, _ ->
             tv_clook.visibility = View.VISIBLE
             tv_status_test.visibility = View.VISIBLE
             btn_submit.visibility = View.VISIBLE
@@ -210,7 +210,7 @@ class TestActivity : AppCompatActivity() {
 
             timer.start()
         }
-        builder.setNegativeButton("Hủy") { dialog, which ->
+        builder.setNegativeButton("Hủy") { _, _ ->
 
         }
 
@@ -230,7 +230,7 @@ class TestActivity : AppCompatActivity() {
         val alertDialog = builder.create()
         //Creatr adater
         val answerAdapter: ChkAnswerAdapter = ChkAnswerAdapter(arrtest, this)
-        var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager
+        var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         // create recyview
         var recyclerView: RecyclerView = dialogView.findViewById<RecyclerView>(R.id.rev_result_test)
         recyclerView.apply {
@@ -242,8 +242,8 @@ class TestActivity : AppCompatActivity() {
             // specify an viewAdapter (see also next example)
             adapter = answerAdapter
         }
-        recyclerView!!.addOnItemTouchListener(
-            RecyclerItemClickListener(this!!, object : RecyclerItemClickListener.OnItemClickListener {
+        recyclerView.addOnItemTouchListener(
+            RecyclerItemClickListener(this@TestActivity, object : RecyclerItemClickListener.OnItemClickListener {
                 override fun onItemClick(view: View, position: Int) {
                     mPager!!.setCurrentItem(position)
                     alertDialog.dismiss()
@@ -256,26 +256,7 @@ class TestActivity : AppCompatActivity() {
 
         alertDialog.show()
     }
-    // create data test
-    /*fun dataTest():ArrayList<Question>{
-        var lsDataTest: ArrayList<Question> =ArrayList()
-        for ( i : Int in 1..35){
-            var question:Question= Question(
-                i,
-                "学費はすべてアルバイトで 賄って いる ${i}",
-                "しはらって ${i}",
-                "まかなって ${i}",
-                "うるおって ${i}",
-                "ふるって ${i}",
-                "Đáp án chính xác là đéo biết",
-                5,
-                5)
-            lsDataTest.add(question)
 
-        }
-
-        return lsDataTest
-    }*/
 
 }
 
