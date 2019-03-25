@@ -13,11 +13,14 @@ import android.view.Menu
 import android.view.MenuItem
 import com.app.learnquizjp.R
 import com.app.learnquizjp.fragment.QuizFragment
+import com.app.learnquizjp.fragment.SettingFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
+
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-   val quizFragment: QuizFragment= QuizFragment()
+    private val quizFragment: QuizFragment = QuizFragment()
+    private val settingFragment : SettingFragment = SettingFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,24 +70,26 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            com.app.learnquizjp.R.id.nav_camera -> {
+            com.app.learnquizjp.R.id.nav_learning -> {
                 // Handle the camera action
                 startActivity(Intent(this@HomeActivity,LearningActivity::class.java))
+                finish()
             }
-            com.app.learnquizjp.R.id.nav_gallery -> {
+            com.app.learnquizjp.R.id.nav_quiz -> {
                 showFragmentQuiz()
             }
-            com.app.learnquizjp.R.id.nav_slideshow -> {
+            com.app.learnquizjp.R.id.nav_setting -> {
 
             }
-            com.app.learnquizjp.R.id.nav_manage -> {
+            com.app.learnquizjp.R.id.nav_feedback -> {
 
             }
-            com.app.learnquizjp.R.id.nav_share -> {
+            com.app.learnquizjp.R.id.nav_about -> {
 
             }
-            com.app.learnquizjp.R.id.nav_send -> {
-
+            com.app.learnquizjp.R.id.nav_log_out -> {
+                startActivity(Intent(this@HomeActivity,LoginActivity::class.java))
+                finish()
             }
         }
 
@@ -102,4 +107,16 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         fragmentTransaction.commit()
     }
+
+    private fun showFragmentSetting(){
+        var fragmentManager : FragmentManager = supportFragmentManager
+        var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
+        if(settingFragment.isAdded){
+            fragmentTransaction.show(settingFragment)
+        }else{
+            fragmentTransaction.add(R.id.container,settingFragment)
+        }
+        fragmentTransaction.commit()
+    }
+
 }

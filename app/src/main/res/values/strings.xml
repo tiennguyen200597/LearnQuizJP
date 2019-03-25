@@ -50,4 +50,14 @@
     <string name="tv_cancer">Đóng</string>
     <string name="tv_click_view_test">Click vào câu hỏi để xem chi tiết</string>
     <string name="tv_submit_test">Nộp bài</string>
+
+
+    <!--Drawer Navigation-->
+    <string name="nav_learning">Learning</string>
+    <string name="nav_quiz">Quiz</string>
+    <string name="nav_setting">Setting</string>
+    <string name="nav_feedback">Feedback</string>
+    <string name="nav_about">About</string>
+    <string name="nav_log_out">Log out</string>
+
 </resources>

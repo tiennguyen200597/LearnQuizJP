@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.ChooseLvActivity
-import com.app.learnquizjp.activity.HomeActivity
 import kotlinx.android.synthetic.main.fragment_quiz.*
 
 
