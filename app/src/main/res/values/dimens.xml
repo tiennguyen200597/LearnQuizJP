@@ -8,7 +8,7 @@
     <dimen name="toolbarheight">30dp</dimen>
     <dimen name="button_magin">20dp</dimen>
     <dimen name="size_answer">40sp</dimen>
-    <dimen name="size_result">28sp</dimen>
+    <dimen name="size_result">24sp</dimen>
     <!--margin quiz-->
     <dimen name="margin_quiz">8dp</dimen>
 </resources>

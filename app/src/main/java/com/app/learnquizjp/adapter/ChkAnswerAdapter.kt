@@ -1,15 +1,19 @@
 package com.app.learnquizjp.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RadioButton
 import android.widget.TextView
 import com.app.learnquizjp.R
+import com.app.learnquizjp.model.Question
 
 
-class ChkAnswerAdapter(private var data: java.util.ArrayList<*>, context: Context) :
+class ChkAnswerAdapter(private var data: ArrayList<Question>, context: Context) :
     RecyclerView.Adapter<ChkAnswerAdapter.RecyclerViewHolder>() {
 
 
@@ -19,8 +23,24 @@ class ChkAnswerAdapter(private var data: java.util.ArrayList<*>, context: Contex
         return RecyclerViewHolder(view)
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         holder.tv_position.text = (position+1).toString()
+        if (data[position].qzstatuschk!=""){
+            holder.ll_position.setBackgroundColor(R.color.grayburn)
+        }
+        if (data[position].qzstatuschk=="a"){
+            holder.rad_a.isChecked=true
+        }
+        else if (data[position].qzstatuschk=="b"){
+            holder.rad_b.isChecked=true
+        }
+        else if (data[position].qzstatuschk=="c"){
+            holder.rad_c.isChecked=true
+        }
+        else if (data[position].qzstatuschk=="d"){
+            holder.rad_d.isChecked=true
+        }
     }
 
     override fun getItemCount(): Int {
@@ -29,12 +49,15 @@ class ChkAnswerAdapter(private var data: java.util.ArrayList<*>, context: Contex
 
 
     inner class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        internal var tv_position: TextView
+        internal var tv_position: TextView = itemView.findViewById(R.id.tv_position)
+        internal var rad_a: RadioButton = itemView.findViewById(R.id.rad_a)
+        internal var rad_b: RadioButton = itemView.findViewById(R.id.rad_b)
+        internal var rad_c: RadioButton = itemView.findViewById(R.id.rad_c)
+        internal var rad_d: RadioButton = itemView.findViewById(R.id.rad_d)
+        internal var ll_position: LinearLayout = itemView.findViewById(R.id.ll_position)
 
 
-        init {
-            tv_position = itemView.findViewById(R.id.tv_position)
-        }
+
     }
 }
 

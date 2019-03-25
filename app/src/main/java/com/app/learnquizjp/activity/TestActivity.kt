@@ -13,6 +13,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.*
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.ui.test.TestFragment
@@ -20,15 +21,19 @@ import kotlinx.android.synthetic.main.test_activity.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 import com.app.learnquizjp.adapter.ChkAnswerAdapter
+import com.app.learnquizjp.base.Communication
 import com.app.learnquizjp.base.RecyclerItemClickListener
 import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
 
 
-class TestActivity : AppCompatActivity() {
+class TestActivity : AppCompatActivity(), Communication {
+
     val NUM_PAGES = 35
     // timer of test (minute)
     val TOTAL_TIMER: Long = 45
+    // total quiz checked
+    var totalQzChked: Int = 0
     var mPager: ViewPager? = null
     var mPagerAdapter: PagerAdapter? = null
     // list danh sach da dao
@@ -38,48 +43,66 @@ class TestActivity : AppCompatActivity() {
     // arr load len tu db
     var arrtest: ArrayList<Question> = ArrayList()
     //  mang arr de load len man hinh
-    var loatASls : ArrayList<Question> = ArrayList()
+    var loatASls: ArrayList<Question> = ArrayList()
     lateinit var timer: CounterClass
+    var dataChkQz: ArrayList<Question> = ArrayList()
+    override fun dataChk(datachk: ArrayList<Question>) {
+        if (datachk != null)
+            dataChkQz = datachk
+    }
+
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.test_activity)
+        //// total quiz checked
+        if (dataChkQz.size!=0){
+               for (i in 0..34){
+                   if (dataChkQz[i].qzstatuschk!=""){
+                       totalQzChked+=1
+                   }
+               }
+        }
+
         // creat timet count downl
         timer = CounterClass(TOTAL_TIMER * 60 * 1000, 1000)
         // creat arr test
-        for ( i : Int in 0..34){
-            var question:Question= Question(
+        for (i: Int in 0..34) {
+            var question: Question = Question(
                 i,
-                "学費はすべてアルバイトで 賄って いる ${i+1}",
-                "しはらって ${i+1}",
-                "まかなって ${i+1}",
-                "うるおって ${i+1}",
-                "ふるって ${i+1}",
+                "学費はすべてアルバイトで 賄って いる ${i + 1}",
+                "しはらって ${i + 1}",
+                "まかなって ${i + 1}",
+                "うるおって ${i + 1}",
+                "ふるって ${i + 1}",
                 "Đáp án chính xác là đéo biết",
                 5,
-                5)
+                5
+            )
             arrtest.add(question)
         }
         //sort
-        for (i in 0..34){
-            var abcdQuestion: ABCDQuestion= ABCDQuestion()
+        for (i in 0..34) {
+            var abcdQuestion: ABCDQuestion = ABCDQuestion()
             lsQS.add(arrtest[i].ascortect!!)
             lsQS.add(arrtest[i].asincortecT1!!)
             lsQS.add(arrtest[i].asincortecT2!!)
             lsQS.add(arrtest[i].asincortecT3!!)
             lsQS.shuffle()
-            abcdQuestion.ascortect=lsQS[0]
-            abcdQuestion.asincortecT1=lsQS[1]
-            abcdQuestion.asincortecT2=lsQS[2]
-            abcdQuestion.asincortecT3=lsQS[3]
+            abcdQuestion.ascortect = lsQS[0]
+            abcdQuestion.asincortecT1 = lsQS[1]
+            abcdQuestion.asincortecT2 = lsQS[2]
+            abcdQuestion.asincortecT3 = lsQS[3]
             arrAnswer.add(abcdQuestion)
-            arrtest[i].ascortect=arrAnswer[i].ascortect
-            arrtest[i].asincortecT1=arrAnswer[i].asincortecT1
-            arrtest[i].asincortecT2=arrAnswer[i].asincortecT2
-            arrtest[i].asincortecT3=arrAnswer[i].asincortecT3
+            arrtest[i].ascortect = arrAnswer[i].ascortect
+            arrtest[i].asincortecT1 = arrAnswer[i].asincortecT1
+            arrtest[i].asincortecT2 = arrAnswer[i].asincortecT2
+            arrtest[i].asincortecT3 = arrAnswer[i].asincortecT3
             lsQS.removeAll(lsQS)
         }
-        loatASls=arrtest
+        loatASls = arrtest
         //creat arr test end
         mPager = findViewById(R.id.pager) as ViewPager
         mPagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
@@ -87,6 +110,7 @@ class TestActivity : AppCompatActivity() {
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.addOnPageChangeListener(viewPagerPageChangeListener)
+        tv_status_test.text="Đã làm: ${totalQzChked}/${NUM_PAGES}"
         // start test btn
         btn_start.setOnClickListener {
             dialogStart()
@@ -206,7 +230,7 @@ class TestActivity : AppCompatActivity() {
             tv_clook.visibility = View.VISIBLE
             tv_status_test.visibility = View.VISIBLE
             btn_submit.visibility = View.VISIBLE
-            btn_start.visibility=View.GONE
+            btn_start.visibility = View.GONE
 
             timer.start()
         }
@@ -229,7 +253,7 @@ class TestActivity : AppCompatActivity() {
         //finally creating the alert dialog and displaying it
         val alertDialog = builder.create()
         //Creatr adater
-        val answerAdapter: ChkAnswerAdapter = ChkAnswerAdapter(arrtest, this)
+        val answerAdapter: ChkAnswerAdapter = ChkAnswerAdapter(dataChkQz, this)
         var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         // create recyview
         var recyclerView: RecyclerView = dialogView.findViewById<RecyclerView>(R.id.rev_result_test)
@@ -249,7 +273,8 @@ class TestActivity : AppCompatActivity() {
                     alertDialog.dismiss()
 
                 }
-            }))
+            })
+        )
 
 
 

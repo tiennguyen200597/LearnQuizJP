@@ -41,7 +41,7 @@
             </LinearLayout>
             <RadioGroup
                     android:weightSum="4"
-                    android:id="@+id/radGroup"
+                    android:id="@+id/radGroupQz"
                     android:minHeight="240dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

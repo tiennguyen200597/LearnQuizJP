@@ -12,6 +12,9 @@ class Question : Serializable {
     var explain: String? = null
     var csfykindcode: Int = 0
     var csfylvcode: Int = 0
+    var qzstatuschk: String? = ""
+    var ascurrent: String? = null
+
 
     constructor() {}
 
