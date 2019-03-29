@@ -6,15 +6,9 @@ class ABCDQuestion {
     var asincortecT2: String? = null
     var asincortecT3: String? = null
 
+    constructor(){}
 
-    constructor() {}
-
-    constructor(
-        ASCORTECT: String,
-        ASINCORTECT1: String,
-        ASINCORTECT2: String,
-        ASINCORTECT3: String
-    ) {
+    constructor(ASCORTECT : String,ASINCORTECT1 : String,ASINCORTECT2 : String,ASINCORTECT3 : String){
         this.ascortect = ASCORTECT
         this.asincortecT1 = ASINCORTECT1
         this.asincortecT2 = ASINCORTECT2

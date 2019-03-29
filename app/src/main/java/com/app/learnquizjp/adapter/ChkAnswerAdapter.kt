@@ -25,21 +25,15 @@ class ChkAnswerAdapter(private var data: ArrayList<Question>, context: Context) 
 
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        holder.tv_position.text = (position+1).toString()
-        if (data[position].qzstatuschk!=""){
+        holder.tv_position.text = (position + 1).toString()
+        if (data[position].qzstatuschk != "") {
             holder.ll_position.setBackgroundColor(R.color.grayburn)
-        }
-        if (data[position].qzstatuschk=="a"){
-            holder.rad_a.isChecked=true
-        }
-        else if (data[position].qzstatuschk=="b"){
-            holder.rad_b.isChecked=true
-        }
-        else if (data[position].qzstatuschk=="c"){
-            holder.rad_c.isChecked=true
-        }
-        else if (data[position].qzstatuschk=="d"){
-            holder.rad_d.isChecked=true
+            when(data[position].qzstatuschk){
+                "a" -> holder.rad_a.isChecked=true
+                "b" -> holder.rad_b.isChecked=true
+                "c" -> holder.rad_c.isChecked=true
+                "d" -> holder.rad_d.isChecked=true
+            }
         }
     }
 

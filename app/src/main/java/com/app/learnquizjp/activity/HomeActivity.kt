@@ -79,7 +79,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 showFragmentQuiz()
             }
             com.app.learnquizjp.R.id.nav_setting -> {
-
+                showFragmentSetting()
             }
             com.app.learnquizjp.R.id.nav_feedback -> {
 

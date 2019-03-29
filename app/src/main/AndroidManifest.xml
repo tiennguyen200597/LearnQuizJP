@@ -14,12 +14,20 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity
+                android:name=".activity.ChooseLevelLearningActivity"
+                android:label="@string/title_activity_choose_level_learning"
+                android:parentActivityName=".activity.LearningActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.app.learnquizjp.activity.LearningActivity"/>
+        </activity>
         <activity android:name=".activity.LearningActivity">
         </activity>
-        <activity android:name=".activity.ChooseLevelLearningActivity"></activity>
         <activity
-                android:theme="@style/AppTheme.NoActionBar"
-                android:name=".activity.TestActivity">
+                android:name=".activity.TestActivity"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
                 android:name=".activity.StartActivity"

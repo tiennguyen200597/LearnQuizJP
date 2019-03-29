@@ -7,7 +7,6 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import com.app.learnquizjp.R
 import kotlinx.android.synthetic.main.activity_learning.*
-import android.content.DialogInterface
 
 class LearningActivity : AppCompatActivity(),View.OnClickListener {
 

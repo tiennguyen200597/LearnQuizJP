@@ -72,28 +72,22 @@ class TestFragment : Fragment() {
     }
 
     private fun getChoiceFromID(ID: Int): String {
-        return if (ID == R.id.rad_answerA) {
-            "a"
-        } else if (ID == R.id.rad_answerB) {
-            "b"
-        } else if (ID == R.id.rad_answerC) {
-            "c"
-        } else if (ID == R.id.rad_answerD) {
-            "d"
-        } else
-            ""
+        return when (ID) {
+            R.id.rad_answerA -> "a"
+            R.id.rad_answerB -> "b"
+            R.id.rad_answerC -> "c"
+            R.id.rad_answerD -> "d"
+            else -> ""
+        }
     }
     private fun getTextFromID(ID: Int): String {
-        return if (ID == R.id.rad_answerA) {
-            rad_answerA.text.toString()
-        } else if (ID == R.id.rad_answerB) {
-            rad_answerA.text.toString()
-        } else if (ID == R.id.rad_answerC) {
-            rad_answerA.text.toString()
-        } else if (ID == R.id.rad_answerD) {
-            rad_answerA.text.toString()
-        } else
-            ""
+        return when (ID) {
+            R.id.rad_answerA -> rad_answerA.text.toString()
+            R.id.rad_answerB -> rad_answerB.text.toString()
+            R.id.rad_answerC -> rad_answerC.text.toString()
+            R.id.rad_answerD -> rad_answerD.text.toString()
+            else -> ""
+        }
     }
 
 
