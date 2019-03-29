@@ -11,26 +11,27 @@ import com.app.learnquizjp.model.Question
 import kotlinx.android.synthetic.main.item_resource_test.view.*
 
 
-class ChkAnswerAdapter(private var data: ArrayList<Question>,val context: Context) :
-    RecyclerView.Adapter<ChkAnswerAdapter.RecyclerViewHolder>() {
+class ChkAnswerAdapter(private var data : ArrayList<Question>,val context: Context) :
+    RecyclerView.Adapter<ChkAnswerAdapter.AnswerHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnswerHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_resource_test, parent, false)
-        return RecyclerViewHolder(view)
+        return AnswerHolder(view)
     }
 
     @SuppressLint("ResourceAsColor")
-    override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder : AnswerHolder, position : Int) {
         holder.tv_position.text = (position + 1).toString()
         if (data[position].qzstatuschk != "") {
             holder.ll_position.setBackgroundColor(R.color.grayburn)
             when(data[position].qzstatuschk){
-                "a" -> holder.rad_a.isChecked=true
-                "b" -> holder.rad_b.isChecked=true
-                "c" -> holder.rad_c.isChecked=true
-                "d" -> holder.rad_d.isChecked=true
+                "a" -> holder.rad_a.isChecked = true
+                "b" -> holder.rad_b.isChecked = true
+                "c" -> holder.rad_c.isChecked = true
+                "d" -> holder.rad_d.isChecked = true
+                else -> ""
             }
         }
     }
@@ -40,13 +41,13 @@ class ChkAnswerAdapter(private var data: ArrayList<Question>,val context: Contex
     }
 
 
-    inner class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tv_position = itemView.tv_position!!
-        val rad_a = itemView.rad_a!!
-        val rad_b = itemView.rad_b!!
-        val rad_c = itemView.rad_c!!
-        val rad_d = itemView.rad_d!!
-        val ll_position = itemView.ll_position!!
+    inner class AnswerHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+        var tv_position = itemView.tv_position!!
+        var rad_a = itemView.rad_a!!
+        var rad_b = itemView.rad_b!!
+        var rad_c = itemView.rad_c!!
+        var rad_d = itemView.rad_d!!
+        var ll_position = itemView.ll_position!!
     }
 
 }

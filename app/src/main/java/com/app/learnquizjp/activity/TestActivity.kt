@@ -46,7 +46,8 @@ class TestActivity : AppCompatActivity(), Communication {
     //  mang arr de load len man hinh
     var loatASls: ArrayList<Question> = ArrayList()
     lateinit var timer: CounterClass
-    var dataChkQz: ArrayList<Question> = ArrayList()
+    var dataChkQz : ArrayList<Question> = ArrayList()
+
     override fun dataChk(datachk: ArrayList<Question>) {
         if (datachk != null)
             dataChkQz = datachk
@@ -59,12 +60,12 @@ class TestActivity : AppCompatActivity(), Communication {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.test_activity)
         //// total quiz checked
-        if (dataChkQz.size!=0){
-               for (i in 0..34){
-                   if (dataChkQz[i].qzstatuschk!=""){
-                       totalQzChked+=1
-                   }
+        if (dataChkQz.size != 0){
+           for (i in 0..34){
+               if (dataChkQz[i].qzstatuschk != ""){
+                   totalQzChked += 1
                }
+           }
         }
 
         // creat timet count downl
@@ -86,7 +87,7 @@ class TestActivity : AppCompatActivity(), Communication {
         }
         //sort
         for (i in 0..34) {
-            var abcdQuestion: ABCDQuestion = ABCDQuestion()
+            var abcdQuestion = ABCDQuestion()
             lsQS.add(arrtest[i].ascortect!!)
             lsQS.add(arrtest[i].asincortecT1!!)
             lsQS.add(arrtest[i].asincortecT2!!)
@@ -235,10 +236,7 @@ class TestActivity : AppCompatActivity(), Communication {
 
             timer.start()
         }
-        builder.setNegativeButton("Hủy") { _, _ ->
-
-        }
-
+        builder.setNegativeButton("Hủy") { _, _ -> }
         builder.show()
     }
 
@@ -254,9 +252,9 @@ class TestActivity : AppCompatActivity(), Communication {
         //finally creating the alert dialog and displaying it
         val alertDialog = builder.create()
         //Creatr adater
-        val answerAdapter = ChkAnswerAdapter(dataChkQz, this)
+        val answerAdapter = ChkAnswerAdapter(dataChkQz, this@TestActivity)
         var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
-        // create recyview
+        // create recycler view
         var recyclerView = dialogView.rev_result_test
         recyclerView.apply {
             // use this setting to improve performance if you know that changes
@@ -272,7 +270,6 @@ class TestActivity : AppCompatActivity(), Communication {
                 override fun onItemClick(view: View, position: Int) {
                     mPager!!.currentItem = position
                     alertDialog.dismiss()
-
                 }
             })
         )
