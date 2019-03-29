@@ -6,14 +6,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.RadioButton
-import android.widget.TextView
 import com.app.learnquizjp.R
 import com.app.learnquizjp.model.Question
+import kotlinx.android.synthetic.main.item_resource_test.view.*
 
 
-class ChkAnswerAdapter(private var data: ArrayList<Question>, context: Context) :
+class ChkAnswerAdapter(private var data: ArrayList<Question>,val context: Context) :
     RecyclerView.Adapter<ChkAnswerAdapter.RecyclerViewHolder>() {
 
 
@@ -43,16 +41,14 @@ class ChkAnswerAdapter(private var data: ArrayList<Question>, context: Context) 
 
 
     inner class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        internal var tv_position: TextView = itemView.findViewById(R.id.tv_position)
-        internal var rad_a: RadioButton = itemView.findViewById(R.id.rad_a)
-        internal var rad_b: RadioButton = itemView.findViewById(R.id.rad_b)
-        internal var rad_c: RadioButton = itemView.findViewById(R.id.rad_c)
-        internal var rad_d: RadioButton = itemView.findViewById(R.id.rad_d)
-        internal var ll_position: LinearLayout = itemView.findViewById(R.id.ll_position)
-
-
-
+        val tv_position = itemView.tv_position!!
+        val rad_a = itemView.rad_a!!
+        val rad_b = itemView.rad_b!!
+        val rad_c = itemView.rad_c!!
+        val rad_d = itemView.rad_d!!
+        val ll_position = itemView.ll_position!!
     }
+
 }
 
 

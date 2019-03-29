@@ -25,6 +25,7 @@ import com.app.learnquizjp.base.Communication
 import com.app.learnquizjp.base.RecyclerItemClickListener
 import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
+import kotlinx.android.synthetic.main.dialog_status_test.view.*
 
 
 class TestActivity : AppCompatActivity(), Communication {
@@ -253,10 +254,10 @@ class TestActivity : AppCompatActivity(), Communication {
         //finally creating the alert dialog and displaying it
         val alertDialog = builder.create()
         //Creatr adater
-        val answerAdapter: ChkAnswerAdapter = ChkAnswerAdapter(dataChkQz, this)
+        val answerAdapter = ChkAnswerAdapter(dataChkQz, this)
         var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         // create recyview
-        var recyclerView: RecyclerView = dialogView.findViewById<RecyclerView>(R.id.rev_result_test)
+        var recyclerView = dialogView.rev_result_test
         recyclerView.apply {
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
@@ -269,19 +270,14 @@ class TestActivity : AppCompatActivity(), Communication {
         recyclerView.addOnItemTouchListener(
             RecyclerItemClickListener(this@TestActivity, object : RecyclerItemClickListener.OnItemClickListener {
                 override fun onItemClick(view: View, position: Int) {
-                    mPager!!.setCurrentItem(position)
+                    mPager!!.currentItem = position
                     alertDialog.dismiss()
 
                 }
             })
         )
-
-
-
-
         alertDialog.show()
     }
-
 
 }
 
