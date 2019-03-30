@@ -1,10 +1,12 @@
 package com.app.learnquizjp.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import com.app.learnquizjp.R
+import com.app.learnquizjp.base.Communication
 import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
 
@@ -15,6 +17,7 @@ class PrepareActivity : AppCompatActivity() {
     // list for change position
     var lsQS: ArrayList<String> = ArrayList()
     var arrtest: ArrayList<Question> = ArrayList()
+    var listQuestion: ArrayList<Question> = ArrayList()
     val arrAnswer: ArrayList<ABCDQuestion> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +37,9 @@ class PrepareActivity : AppCompatActivity() {
                 5,
                 5
             )
-            arrtest.add(question)
+            listQuestion.add(question)
         }
+        arrtest=listQuestion
         //sort
         for (i in 0..34) {
             var abcdQuestion = ABCDQuestion()
@@ -59,6 +63,7 @@ class PrepareActivity : AppCompatActivity() {
         btn_start.setOnClickListener {
             var intent: Intent=Intent(this@PrepareActivity,TestActivity::class.java)
             intent.putExtra("listQuestion",arrtest)
+            intent.putExtra("listQuestionQri",listQuestion)
             startActivity(intent)
         }
     }

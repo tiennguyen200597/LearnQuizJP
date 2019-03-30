@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             <TextView
+                    android:id="@+id/tv_totalTrue"
                     android:text="2/35"
                     android:textSize="@dimen/size_answer"
                     android:layout_width="wrap_content"
@@ -72,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             <TextView
+                    android:id="@+id/tv_totalFail"
                     android:text="2/35"
                     android:textSize="@dimen/size_answer"
                     android:layout_width="wrap_content"
@@ -93,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             <TextView
+                    android:id="@+id/tv_totalDoNot"
                     android:text="2/35"
                     android:textSize="@dimen/size_answer"
                     android:layout_width="wrap_content"

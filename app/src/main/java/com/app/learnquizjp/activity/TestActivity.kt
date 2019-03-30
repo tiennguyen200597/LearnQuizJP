@@ -13,7 +13,6 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.*
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.ui.test.TestFragment
@@ -23,10 +22,8 @@ import kotlin.collections.ArrayList
 import com.app.learnquizjp.adapter.ChkAnswerAdapter
 import com.app.learnquizjp.base.Communication
 import com.app.learnquizjp.base.RecyclerItemClickListener
-import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
 import kotlinx.android.synthetic.main.dialog_status_test.view.*
-import android.support.v4.app.NotificationCompat.getExtras
 import android.content.Intent
 
 
@@ -45,6 +42,7 @@ class TestActivity : AppCompatActivity(), Communication {
     // arr de trao cu hoi
 
     var listQuestion : ArrayList<Question> = ArrayList()
+    var listQuestionQri : ArrayList<Question> = ArrayList()
     //  mang arr de load len man hinh
     var loatASls: ArrayList<Question> = ArrayList()
     lateinit var timer: CounterClass
@@ -73,8 +71,8 @@ class TestActivity : AppCompatActivity(), Communication {
         val bd = intent.extras
         if (bd != null) {
             listQuestion = bd.get("listQuestion") as ArrayList<Question>
+            listQuestionQri = bd.get("listQuestionQri") as ArrayList<Question>
         }
-
         // creat timet count downl
         timer = CounterClass(TOTAL_TIMER * 60 * 1000, 1000)
         // creat arr test
@@ -92,6 +90,9 @@ class TestActivity : AppCompatActivity(), Communication {
         // check status test
         tv_status_test.setOnClickListener {
             showStatusTestDialog()
+        }
+        btn_submit.setOnClickListener {
+            dialogSubmit()
         }
     }
 
@@ -232,6 +233,22 @@ class TestActivity : AppCompatActivity(), Communication {
             alertDialog.dismiss()
         }
         alertDialog.show()
+    }
+    // submit dialog
+    fun dialogSubmit() {
+        val builder = AlertDialog.Builder(this@TestActivity)
+        builder.setTitle("Nộp bài thi")
+        builder.setMessage("Bạn đã chắc chắn muốn nộp bài?")
+        builder.setPositiveButton("Đồng ý") { _, _ ->
+            var intent: Intent=Intent(this@TestActivity,ResultActivity::class.java)
+            intent.putExtra("listQuestionQri",listQuestionQri)
+            intent.putExtra("dataChkQz",dataChkQz)
+            startActivity(intent)
+        }
+        builder.setNegativeButton("Hủy") { _, _ ->
+
+        }
+        builder.show()
     }
 
 }

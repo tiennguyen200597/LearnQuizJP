@@ -28,7 +28,6 @@ class TestFragment : Fragment() {
         return inflater.inflate(R.layout.test_fragment, container, false)
     }
 
-    @SuppressLint("ResourceAsColor")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         tv_bmquiz.text = "Câu " + (mPageNumber + 1)
