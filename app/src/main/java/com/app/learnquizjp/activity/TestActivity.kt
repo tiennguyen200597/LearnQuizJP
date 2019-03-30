@@ -26,6 +26,9 @@ import com.app.learnquizjp.base.RecyclerItemClickListener
 import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
 import kotlinx.android.synthetic.main.dialog_status_test.view.*
+import android.support.v4.app.NotificationCompat.getExtras
+import android.content.Intent
+
 
 
 class TestActivity : AppCompatActivity(), Communication {
@@ -40,9 +43,8 @@ class TestActivity : AppCompatActivity(), Communication {
     // list danh sach da dao
     var lsQS: ArrayList<String> = ArrayList()
     // arr de trao cu hoi
-    val arrAnswer: ArrayList<ABCDQuestion> = ArrayList()
-    // arr load len tu db
-    var arrtest: ArrayList<Question> = ArrayList()
+
+    var listQuestion : ArrayList<Question> = ArrayList()
     //  mang arr de load len man hinh
     var loatASls: ArrayList<Question> = ArrayList()
     lateinit var timer: CounterClass
@@ -60,51 +62,23 @@ class TestActivity : AppCompatActivity(), Communication {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.test_activity)
         //// total quiz checked
-        if (dataChkQz.size != 0){
+/*        if (dataChkQz.size != 0){
            for (i in 0..34){
                if (dataChkQz[i].qzstatuschk != ""){
                    totalQzChked += 1
                }
            }
+        }*/
+        val intent = intent
+        val bd = intent.extras
+        if (bd != null) {
+            listQuestion = bd.get("listQuestion") as ArrayList<Question>
         }
 
         // creat timet count downl
         timer = CounterClass(TOTAL_TIMER * 60 * 1000, 1000)
         // creat arr test
-        for (i: Int in 0..34) {
-            var question: Question = Question(
-                i,
-                "学費はすべてアルバイトで 賄って いる ${i + 1}",
-                "しはらって ${i + 1}",
-                "まかなって ${i + 1}",
-                "うるおって ${i + 1}",
-                "ふるって ${i + 1}",
-                "Đáp án chính xác là đéo biết",
-                5,
-                5
-            )
-            arrtest.add(question)
-        }
-        //sort
-        for (i in 0..34) {
-            var abcdQuestion = ABCDQuestion()
-            lsQS.add(arrtest[i].ascortect!!)
-            lsQS.add(arrtest[i].asincortecT1!!)
-            lsQS.add(arrtest[i].asincortecT2!!)
-            lsQS.add(arrtest[i].asincortecT3!!)
-            lsQS.shuffle()
-            abcdQuestion.ascortect = lsQS[0]
-            abcdQuestion.asincortecT1 = lsQS[1]
-            abcdQuestion.asincortecT2 = lsQS[2]
-            abcdQuestion.asincortecT3 = lsQS[3]
-            arrAnswer.add(abcdQuestion)
-            arrtest[i].ascortect = arrAnswer[i].ascortect
-            arrtest[i].asincortecT1 = arrAnswer[i].asincortecT1
-            arrtest[i].asincortecT2 = arrAnswer[i].asincortecT2
-            arrtest[i].asincortecT3 = arrAnswer[i].asincortecT3
-            lsQS.removeAll(lsQS)
-        }
-        loatASls = arrtest
+
         //creat arr test end
         mPager = findViewById(R.id.pager) as ViewPager
         mPagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
@@ -113,10 +87,8 @@ class TestActivity : AppCompatActivity(), Communication {
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.addOnPageChangeListener(viewPagerPageChangeListener)
         tv_status_test.text="Đã làm: ${totalQzChked}/${NUM_PAGES}"
-        // start test btn
-        btn_start.setOnClickListener {
-            dialogStart()
-        }
+       //    start clook
+        timer.start()
         // check status test
         tv_status_test.setOnClickListener {
             showStatusTestDialog()
@@ -139,7 +111,7 @@ class TestActivity : AppCompatActivity(), Communication {
     }
 
     fun getData(): ArrayList<Question> {
-        return loatASls
+        return listQuestion
     }
 
     inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
@@ -148,15 +120,13 @@ class TestActivity : AppCompatActivity(), Communication {
         override fun getItem(position: Int): Fragment {
             return testFragment.create(position)
         }
-
         override fun getCount(): Int {
             return NUM_PAGES
         }
     }
-
+    //annimation
     inner class DepthPageTransformer : ViewPager.PageTransformer {
         val MIN_SCALE = 0.75f
-
         override fun transformPage(view: View, position: Float) {
             val pageWidth = view.width
 
@@ -223,22 +193,7 @@ class TestActivity : AppCompatActivity(), Communication {
         }
     }
 
-    // stat test dialog
-    fun dialogStart() {
-        val builder = AlertDialog.Builder(this@TestActivity)
-        builder.setTitle("Làm bài thi")
-        builder.setMessage("Bạn đã sẵn sàng làm đề?")
-        builder.setPositiveButton("Đồng ý") { _, _ ->
-            tv_clook.visibility = View.VISIBLE
-            tv_status_test.visibility = View.VISIBLE
-            btn_submit.visibility = View.VISIBLE
-            btn_start.visibility = View.GONE
 
-            timer.start()
-        }
-        builder.setNegativeButton("Hủy") { _, _ -> }
-        builder.show()
-    }
 
     private fun showStatusTestDialog() {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
@@ -252,7 +207,7 @@ class TestActivity : AppCompatActivity(), Communication {
         //finally creating the alert dialog and displaying it
         val alertDialog = builder.create()
         //Creatr adater
-        val answerAdapter = ChkAnswerAdapter(dataChkQz, this@TestActivity)
+        val answerAdapter = ChkAnswerAdapter(dataChkQz)
         var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         // create recycler view
         var recyclerView = dialogView.rev_result_test
@@ -273,6 +228,9 @@ class TestActivity : AppCompatActivity(), Communication {
                 }
             })
         )
+        dialogView.btn_cancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
         alertDialog.show()
     }
 

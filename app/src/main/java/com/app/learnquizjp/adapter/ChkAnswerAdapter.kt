@@ -1,54 +1,53 @@
 package com.app.learnquizjp.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RadioGroup
+import android.widget.TextView
 import com.app.learnquizjp.R
 import com.app.learnquizjp.model.Question
-import kotlinx.android.synthetic.main.item_resource_test.view.*
 
-
-class ChkAnswerAdapter(private var data : ArrayList<Question>,val context: Context) :
-    RecyclerView.Adapter<ChkAnswerAdapter.AnswerHolder>() {
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnswerHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_resource_test, parent, false)
-        return AnswerHolder(view)
+class ChkAnswerAdapter : RecyclerView.Adapter<AnswerHolder> {
+    override fun onBindViewHolder(holder: AnswerHolder, p1: Int) {
+        holder.tv_position.text = (p1 + 1).toString()
+        if (data[p1].qzstatuschk != 0) {
+            when (data[p1].qzstatuschk) {
+                1 -> holder.radioGroup.check(R.id.rad_a)
+                2 -> holder.radioGroup.check(R.id.rad_b)
+                3 -> holder.radioGroup.check(R.id.rad_c)
+                4 -> holder.radioGroup.check(R.id.rad_d)
+            }
+        } else {
+            holder.radioGroup.clearCheck()
+        }
     }
 
-    @SuppressLint("ResourceAsColor")
-    override fun onBindViewHolder(holder : AnswerHolder, position : Int) {
-        holder.tv_position.text = (position + 1).toString()
-        if (data[position].qzstatuschk != "") {
-            holder.ll_position.setBackgroundColor(R.color.grayburn)
-            when(data[position].qzstatuschk){
-                "a" -> holder.rad_a.isChecked = true
-                "b" -> holder.rad_b.isChecked = true
-                "c" -> holder.rad_c.isChecked = true
-                "d" -> holder.rad_d.isChecked = true
-                else -> ""
-            }
-        }
+    private var data: ArrayList<Question>
+
+    constructor(data: ArrayList<Question>) : super() {
+        this.data = data
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-
-    inner class AnswerHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        var tv_position = itemView.tv_position!!
-        var rad_a = itemView.rad_a!!
-        var rad_b = itemView.rad_b!!
-        var rad_c = itemView.rad_c!!
-        var rad_d = itemView.rad_d!!
-        var ll_position = itemView.ll_position!!
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnswerHolder {
+        return AnswerHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_resource_test, parent, false))
     }
+
+}
+
+
+class AnswerHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
+        var radioGroup: RadioGroup = itemView!!.findViewById(R.id.rad_group)
+        var tv_position: TextView = itemView!!.findViewById(R.id.tv_position)
+        var ll_position: LinearLayout = itemView!!.findViewById(R.id.ll_position)
 
 }
 

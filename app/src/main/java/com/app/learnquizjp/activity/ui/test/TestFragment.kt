@@ -71,13 +71,13 @@ class TestFragment : Fragment() {
         return fragment
     }
 
-    private fun getChoiceFromID(ID: Int): String {
+    private fun getChoiceFromID(ID: Int): Int {
         return when (ID) {
-            R.id.rad_answerA -> "a"
-            R.id.rad_answerB -> "b"
-            R.id.rad_answerC -> "c"
-            R.id.rad_answerD -> "d"
-            else -> ""
+            R.id.rad_answerA -> 1
+            R.id.rad_answerB -> 2
+            R.id.rad_answerC -> 3
+            R.id.rad_answerD -> 4
+            else -> 0
         }
     }
     private fun getTextFromID(ID: Int): String {

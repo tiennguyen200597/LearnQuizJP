@@ -11,7 +11,7 @@ class ChooseLvActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.app.learnquizjp.R.layout.activity_choose_lv)
         tv_lever_N5.setOnClickListener {
-            startActivity(Intent(this@ChooseLvActivity,TestActivity::class.java))
+            startActivity(Intent(this@ChooseLvActivity,PrepareActivity::class.java))
         }
     }
 }

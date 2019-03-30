@@ -60,5 +60,6 @@
     <string name="nav_about">About</string>
     <string name="nav_log_out">Log out</string>
     <string name="title_activity_choose_level_learning">ChooseLevelLearningActivity</string>
+    <string name="title_activity_prepare">PrepareActivity</string>
 
 </resources>

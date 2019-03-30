@@ -15,6 +15,15 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
+                android:name=".activity.PrepareActivity"
+                android:label="@string/title_activity_prepare"
+                android:parentActivityName=".activity.ChooseLvActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.app.learnquizjp.activity.ChooseLvActivity"/>
+        </activity>
+        <activity
                 android:name=".activity.ChooseLevelLearningActivity"
                 android:label="@string/title_activity_choose_level_learning"
                 android:parentActivityName=".activity.LearningActivity"

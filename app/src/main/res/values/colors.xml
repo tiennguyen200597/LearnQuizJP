@@ -14,6 +14,7 @@
     <color name="graylight">#47B1ABAB</color>
     <color name="grayburn">#0C444747</color>
     <!--color of backgroud status test-->
-    <color name="pink">#60FFDFDF</color>
+    <color name="pink">#41FFDFDF</color>
     <color name="redlight">#FB6565</color>
+    <color name="orange">#FF8400</color>
 </resources>

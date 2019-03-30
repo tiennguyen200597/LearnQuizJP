@@ -16,7 +16,6 @@ class StartActivity : AppCompatActivity() {
                 val intent:Intent= Intent(this@StartActivity,LoginActivity::class.java)
                 startActivity(intent)
             }
-
             override fun onTick(millisUntilFinished: Long) {
             }
 

@@ -12,7 +12,7 @@ class Question : Serializable {
     var explain: String? = null
     var csfykindcode: Int = 0
     var csfylvcode: Int = 0
-    var qzstatuschk: String? = ""
+    var qzstatuschk: Int = 0
     var ascurrent: String? = null
 
 
