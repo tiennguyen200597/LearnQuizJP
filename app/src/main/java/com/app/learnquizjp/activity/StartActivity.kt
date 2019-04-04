@@ -3,23 +3,29 @@ package com.app.learnquizjp.activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.CountDownTimer
+import android.view.animation.AnimationUtils
 import com.app.learnquizjp.R
+import com.app.learnquizjp.base.MyBounceInterpolator
+import kotlinx.android.synthetic.main.activity_start.*
+import java.util.*
+
 
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_start)
+        setContentView(com.app.learnquizjp.R.layout.activity_start)
+        var animation = AnimationUtils.loadAnimation(this@StartActivity,R.anim.bounce)
+        var myBounceInterpolator = MyBounceInterpolator(0.2,10.0)
+        animation.interpolator = myBounceInterpolator
+        imgLogo.startAnimation(animation)
+
         // Count down interval 3 second
-        object :CountDownTimer(3000,3000){
-            override fun onFinish() {
-                val intent:Intent= Intent(this@StartActivity,LoginActivity::class.java)
-                startActivity(intent)
+        val timer = Timer()
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                startActivity(Intent(this@StartActivity,LoginActivity::class.java))
+                finish()
             }
-            override fun onTick(millisUntilFinished: Long) {
-            }
-
-        }.start()
-
+        }, 3000)
     }
 }
