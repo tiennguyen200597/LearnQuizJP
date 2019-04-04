@@ -13,161 +13,155 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <android.support.v7.widget.CardView
+        <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
+
+            <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="5dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginLeft="16dp">
+                    android:padding="8dp">
 
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
+                <TextView
+                        android:text="N5"
+                        android:layout_width="20dp"
+                        android:layout_marginTop="16dp"
                         android:layout_height="wrap_content"
-                        android:background="#EED0DA"
-                        android:padding="8dp">
+                        android:id="@+id/tvN5"
+                        android:layout_marginRight="16dp"/>
+                <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" app:srcCompat="@drawable/n5_learning"
+                        android:id="@+id/imgN5" android:layout_weight="1"/>
 
-                        <TextView
-                                android:text="N5"
-                                android:layout_width="20dp"
-                                android:layout_marginTop="16dp"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tvN5"
-                                android:layout_marginRight="16dp"/>
-                        <ImageButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="150dp" app:srcCompat="@drawable/ic_menu_gallery"
-                                android:id="@+id/imgN5" android:layout_weight="1"/>
+            </LinearLayout>
 
-                </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
 
-            <android.support.v7.widget.CardView
+            <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="5dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginLeft="16dp">
+                    android:padding="8dp">
 
-                <LinearLayout
-                        android:orientation="horizontal"
+                <TextView
+                        android:text="N4"
+                        android:layout_width="20dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_height="wrap_content" android:id="@+id/tvN4"/>
+                <ImageButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#EED0DA"
-                        android:padding="8dp">
+                        android:layout_height="150dp" app:srcCompat="@drawable/n4_learning"
+                        android:id="@+id/imgN4" android:layout_weight="1"/>
 
-                    <TextView
-                            android:text="N4"
-                            android:layout_width="20dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_height="wrap_content" android:id="@+id/tvN4"/>
-                    <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="150dp" app:srcCompat="@drawable/ic_menu_gallery"
-                            android:id="@+id/imgN4" android:layout_weight="1"/>
+            </LinearLayout>
 
-                </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
 
-            <android.support.v7.widget.CardView
+            <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="5dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginLeft="16dp">
-
-                <LinearLayout
-                        android:orientation="horizontal"
+                    android:padding="8dp">
+                <TextView
+                        android:text="N3"
+                        android:layout_width="20dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_height="wrap_content" android:id="@+id/tvN3"/>
+                <ImageButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:background="#EED0DA">
+                        android:layout_height="150dp" app:srcCompat="@drawable/n3_learning"
+                        android:id="@+id/imgN3" android:layout_weight="1"/>
 
-                    <TextView
-                            android:text="N3"
-                            android:layout_width="20dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_height="wrap_content" android:id="@+id/tvN3"/>
-                    <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="150dp" app:srcCompat="@drawable/ic_menu_gallery"
-                            android:id="@+id/imgN3" android:layout_weight="1"/>
+            </LinearLayout>
 
-                </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
 
-            <android.support.v7.widget.CardView
+            <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="5dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginLeft="16dp">
+                    android:padding="8dp">
 
-                <LinearLayout
-                        android:orientation="horizontal"
+                <TextView
+                        android:text="N2"
+                        android:layout_width="20dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_height="wrap_content" android:id="@+id/tvN2"/>
+                <ImageButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:background="#EED0DA">
+                        android:layout_height="150dp" app:srcCompat="@drawable/n2_learning"
+                        android:id="@+id/imgN2" android:layout_weight="1"/>
 
-                    <TextView
-                            android:text="N2"
-                            android:layout_width="20dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_height="wrap_content" android:id="@+id/tvN2"/>
-                    <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="150dp" app:srcCompat="@drawable/ic_menu_gallery"
-                            android:id="@+id/imgN2" android:layout_weight="1"/>
+            </LinearLayout>
 
-                </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
 
-            <android.support.v7.widget.CardView
+            <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="5dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginLeft="16dp">
+                    android:padding="8dp">
 
-                <LinearLayout
-                        android:orientation="horizontal"
+                <TextView
+                        android:text="N1"
+                        android:layout_width="20dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_height="wrap_content" android:id="@+id/tvN1"/>
+                <ImageButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:background="#EED0DA">
+                        android:layout_height="150dp" app:srcCompat="@drawable/n1_learning"
+                        android:id="@+id/imgN1" android:layout_weight="1"/>
 
-                    <TextView
-                            android:text="N1"
-                            android:layout_width="20dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_height="wrap_content" android:id="@+id/tvN1"/>
-                    <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="150dp" app:srcCompat="@drawable/ic_menu_gallery"
-                            android:id="@+id/imgN1" android:layout_weight="1"/>
+            </LinearLayout>
 
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 

@@ -32,7 +32,13 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.app.learnquizjp.activity.LearningActivity"/>
         </activity>
-        <activity android:name=".activity.LearningActivity">
+        <activity
+                android:name=".activity.LearningActivity"
+                android:label="Chọn mức độ học"
+                android:parentActivityName=".activity.HomeActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.app.learnquizjp.activity.HomeActivity"/>
         </activity>
         <activity
                 android:name=".activity.TestActivity"

@@ -15,35 +15,35 @@
     >
         <TextView
                 android:padding="@dimen/activity_vertical_margin"
-                android:drawableLeft="@drawable/ic_menu_manage"
+                android:drawableLeft="@drawable/quiz_level_icon"
                 android:id="@+id/tv_lever_N5"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/tv_lever_N5"/>
+                android:text="@string/tv_lever_N1"/>
         <TextView
                 android:padding="@dimen/activity_vertical_margin"
-                android:drawableLeft="@drawable/ic_menu_manage"
+                android:drawableLeft="@drawable/quiz_level_icon"
                 android:id="@+id/tv_lever_N4"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/tv_lever_N5"/>
+                android:text="@string/tv_lever_N2"/>
         <TextView
                 android:padding="@dimen/activity_vertical_margin"
-                android:drawableLeft="@drawable/ic_menu_manage"
+                android:drawableLeft="@drawable/quiz_level_icon"
                 android:id="@+id/tv_lever_N3"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/tv_lever_N5"/>
+                android:text="@string/tv_lever_N3"/>
         <TextView
                 android:padding="@dimen/activity_vertical_margin"
-                android:drawableLeft="@drawable/ic_menu_manage"
+                android:drawableLeft="@drawable/quiz_level_icon"
                 android:id="@+id/tv_lever_N2"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/tv_lever_N5"/>
+                android:text="@string/tv_lever_N4"/>
         <TextView
                 android:padding="@dimen/activity_vertical_margin"
-                android:drawableLeft="@drawable/ic_menu_manage"
+                android:drawableLeft="@drawable/quiz_level_icon"
                 android:id="@+id/tv_lever_N1"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

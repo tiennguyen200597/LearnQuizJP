@@ -35,6 +35,10 @@
     <string name="title_activity_start">StartActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="tv_lever_N1">N1</string>
+    <string name="tv_lever_N2">N2</string>
+    <string name="tv_lever_N3">N3</string>
+    <string name="tv_lever_N4">N4</string>
     <string name="tv_lever_N5">N5</string>
     <string name="tv_practice">Luyện tập</string>
     <string name="tv_test">Thi thử</string>
@@ -53,6 +57,7 @@
 
 
     <!--Drawer Navigation-->
+    <string name="nav_home">Home</string>
     <string name="nav_learning">Learning</string>
     <string name="nav_quiz">Quiz</string>
     <string name="nav_setting">Setting</string>
@@ -61,5 +66,6 @@
     <string name="nav_log_out">Log out</string>
     <string name="title_activity_choose_level_learning">ChooseLevelLearningActivity</string>
     <string name="title_activity_prepare">PrepareActivity</string>
+
 
 </resources>
