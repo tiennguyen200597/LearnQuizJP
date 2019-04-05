@@ -1,12 +1,9 @@
 package com.app.learnquizjp.activity
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import com.app.learnquizjp.R
-import com.app.learnquizjp.base.Communication
 import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
 
@@ -26,7 +23,7 @@ class PrepareActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         for (i: Int in 0..34) {
-            var question: Question = Question(
+            var question = Question(
                 i,
                 "学費はすべてアルバイトで 賄って いる ${i + 1}",
                 "しはらって ${i + 1}",
@@ -61,7 +58,7 @@ class PrepareActivity : AppCompatActivity() {
         }
 
         btn_start.setOnClickListener {
-            var intent: Intent=Intent(this@PrepareActivity,TestActivity::class.java)
+            var intent = Intent(this@PrepareActivity,TestActivity::class.java)
             intent.putExtra("listQuestion",arrtest)
             intent.putExtra("listQuestionQri",listQuestion)
             startActivity(intent)

@@ -185,7 +185,7 @@ class TestActivity : AppCompatActivity(), Communication {
                 )
             )
             //setText of textview time
-            tv_clook.setText(countTime)
+            tv_clook.text = countTime
         }
 
         override fun onFinish() {
@@ -234,8 +234,9 @@ class TestActivity : AppCompatActivity(), Communication {
         }
         alertDialog.show()
     }
+
     // submit dialog
-    fun dialogSubmit() {
+    private fun dialogSubmit() {
         val builder = AlertDialog.Builder(this@TestActivity)
         builder.setTitle("Nộp bài thi")
         builder.setMessage("Bạn đã chắc chắn muốn nộp bài?")
