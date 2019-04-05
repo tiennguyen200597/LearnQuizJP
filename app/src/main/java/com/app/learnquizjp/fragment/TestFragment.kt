@@ -1,4 +1,4 @@
-package com.app.learnquizjp.activity.ui.test
+package com.app.learnquizjp.fragment
 
 import android.content.Context
 import android.os.Bundle

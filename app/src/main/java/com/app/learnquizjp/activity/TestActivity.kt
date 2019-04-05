@@ -15,7 +15,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
 import com.app.learnquizjp.R
-import com.app.learnquizjp.activity.ui.test.TestFragment
+import com.app.learnquizjp.fragment.TestFragment
 import kotlinx.android.synthetic.main.test_activity.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
