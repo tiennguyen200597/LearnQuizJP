@@ -1,5 +1,6 @@
 package com.app.learnquizjp.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
@@ -38,9 +39,19 @@ class ResultActivity : AppCompatActivity() {
             }
 
         }
+        tv_result.text="${totalTrue}/${dataChkQz.size}"
         tv_totalTrue.text="${totalTrue}/${dataChkQz.size}"
         tv_totalFail.text="${totalFail}/${dataChkQz.size}"
         tv_totalDoNot.text="${totalDoNot}/${dataChkQz.size}"
+        var review:Boolean=true
+        btn_review.setOnClickListener {
+            var inreview:Intent= Intent(this@ResultActivity,TestActivity::class.java)
+          /*  inreview.putExtra("review",review)
+            inreview.putExtra("listQuestionQri",listQuestionQri)
+            inreview.putExtra("dataChkQz",dataChkQz)*/
+            startActivity(inreview)
+        }
+
 
 
 

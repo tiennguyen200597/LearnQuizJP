@@ -22,6 +22,7 @@
                 android:layout_height="100dp"
                 android:src="@drawable/quiz_level_icon"/>
         <TextView
+                android:id="@+id/tv_result"
                 android:layout_marginBottom="24dp"
                 android:layout_marginTop="16dp"
                 android:textSize="@dimen/activity_vertical_margin"
@@ -60,9 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tv_true"
             />
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+
 
         </LinearLayout>
         <LinearLayout
@@ -83,9 +82,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tv_fail"
             />
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+
 
         </LinearLayout>
         <LinearLayout
@@ -105,13 +102,16 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tv_do_not"
             />
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+
 
         </LinearLayout>
 
     </LinearLayout>
+    <Button
+            android:layout_gravity="center"
+            android:id="@+id/btn_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

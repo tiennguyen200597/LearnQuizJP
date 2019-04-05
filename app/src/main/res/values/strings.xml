@@ -69,6 +69,8 @@
     <string name="nav_log_out">Log out</string>
     <string name="title_activity_choose_level_learning">ChooseLevelLearningActivity</string>
     <string name="title_activity_prepare">PrepareActivity</string>
+    <string name="tv_totalChecked">Đã làm: %2$d câu</string>
+    <string name="tv_view">Xem đáp án</string>
 
 
 </resources>

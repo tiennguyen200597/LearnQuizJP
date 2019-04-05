@@ -1,5 +1,6 @@
 package com.app.learnquizjp.activity
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -25,10 +26,15 @@ import com.app.learnquizjp.base.RecyclerItemClickListener
 import com.app.learnquizjp.model.Question
 import kotlinx.android.synthetic.main.dialog_status_test.view.*
 import android.content.Intent
+import kotlinx.android.synthetic.main.dialog_status_test.*
+import kotlinx.android.synthetic.main.test_fragment.*
+
+
 
 
 
 class TestActivity : AppCompatActivity(), Communication {
+
 
     val NUM_PAGES = 35
     // timer of test (minute)
@@ -55,7 +61,7 @@ class TestActivity : AppCompatActivity(), Communication {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.test_activity)
+        setContentView(com.app.learnquizjp.R.layout.test_activity)
         //// total quiz checked
 /*        if (dataChkQz.size != 0){
            for (i in 0..34){
@@ -69,7 +75,6 @@ class TestActivity : AppCompatActivity(), Communication {
         if (bd != null) {
             listQuestion = bd.get("listQuestion") as ArrayList<Question>
             listQuestionQri = bd.get("listQuestionQri") as ArrayList<Question>
-            totalChecked=bd.getInt("totalChecked")
 
         }
         // creat timet count downl
@@ -77,7 +82,7 @@ class TestActivity : AppCompatActivity(), Communication {
         // creat arr test
 
         //creat arr test end
-        mPager = findViewById(R.id.pager) as ViewPager
+        mPager = findViewById(com.app.learnquizjp.R.id.pager) as ViewPager
         mPagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
         mPager!!.adapter = mPagerAdapter
         mPager!!.setPageTransformer(true, DepthPageTransformer())
@@ -86,9 +91,11 @@ class TestActivity : AppCompatActivity(), Communication {
        /* tv_status_test.text="Đã làm: ${totalChecked}/${NUM_PAGES}"*/
        //    start clook
         timer.start()
+
         // check status test
         tv_status_test.setOnClickListener {
             showStatusTestDialog()
+
         }
         btn_submit.setOnClickListener {
             dialogSubmit()
@@ -195,11 +202,12 @@ class TestActivity : AppCompatActivity(), Communication {
 
 
 
+    @SuppressLint("ResourceType")
     private fun showStatusTestDialog() {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         val viewGroup = findViewById<ViewGroup>(android.R.id.content)
         //then we will inflate the custom alert dialog xml that we created
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_status_test, viewGroup, false)
+        val dialogView = LayoutInflater.from(this).inflate(com.app.learnquizjp.R.layout.dialog_status_test, viewGroup, false)
         //Now we need an AlertDialog.Builder object
         val builder = AlertDialog.Builder(this)
         //setting the view of the builder to our custom view that we already inflated
@@ -207,6 +215,13 @@ class TestActivity : AppCompatActivity(), Communication {
         //finally creating the alert dialog and displaying it
         val alertDialog = builder.create()
         //Creatr adater
+        for (i in 0..(dataChkQz.size-1)) {
+            if (dataChkQz[i].qzstatuschk == 0) {
+                totalChecked += 1
+            }
+        }
+        dialogView.tv_totalChecked.text= "Đã làm: ${35-totalChecked} câu"
+        totalChecked=0
         val answerAdapter = ChkAnswerAdapter(dataChkQz)
         var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         // create recycler view
