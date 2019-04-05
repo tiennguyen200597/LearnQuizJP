@@ -49,8 +49,7 @@ class TestActivity : AppCompatActivity(), Communication {
     var dataChkQz : ArrayList<Question> = ArrayList()
 
     override fun dataChk(datachk: ArrayList<Question>) {
-        if (datachk != null)
-            dataChkQz = datachk
+        dataChkQz = datachk
     }
 
 
@@ -80,7 +79,7 @@ class TestActivity : AppCompatActivity(), Communication {
         //creat arr test end
         mPager = findViewById(R.id.pager) as ViewPager
         mPagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
-        mPager!!.setAdapter(mPagerAdapter)
+        mPager!!.adapter = mPagerAdapter
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.addOnPageChangeListener(viewPagerPageChangeListener)

@@ -20,7 +20,7 @@
                 android:layout_gravity="center"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_menu_manage"/>
+                android:src="@drawable/quiz_level_icon"/>
         <TextView
                 android:layout_marginBottom="24dp"
                 android:layout_marginTop="16dp"
