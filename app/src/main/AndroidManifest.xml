@@ -14,14 +14,42 @@
             android:roundIcon="@mipmap/ic_launcher"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+
+        <activity android:name=".activity.QuizActivity"
+                  android:parentActivityName=".activity.HomeActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.app.learnquizjp.activity.HomeActivity"/>
+        </activity>
+        <activity android:name=".activity.ChooseLevelPracticeActivity"
+                  android:parentActivityName=".activity.QuizActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.app.learnquizjp.activity.QuizActivity"/>
+        </activity>
+        <activity
+                android:name=".activity.ChooseLevelTestActivity"
+                android:parentActivityName=".activity.QuizActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.app.learnquizjp.activity.QuizActivity"/>
+        </activity>
         <activity
                 android:name=".activity.PrepareActivity"
                 android:label="@string/title_activity_prepare"
-                android:parentActivityName=".activity.ChooseLvActivity"
+                android:parentActivityName=".activity.ChooseLevelTestActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.app.learnquizjp.activity.ChooseLvActivity"/>
+                    android:value="com.app.learnquizjp.activity.ChooseLevelTestActivity"/>
+        </activity>
+        <activity
+                android:name=".activity.LearningActivity"
+                android:label="Chọn mức độ học"
+                android:parentActivityName=".activity.HomeActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.app.learnquizjp.activity.HomeActivity"/>
         </activity>
         <activity
                 android:name=".activity.ChooseLevelLearningActivity"
@@ -31,14 +59,6 @@
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.app.learnquizjp.activity.LearningActivity"/>
-        </activity>
-        <activity
-                android:name=".activity.LearningActivity"
-                android:label="Chọn mức độ học"
-                android:parentActivityName=".activity.HomeActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.app.learnquizjp.activity.HomeActivity"/>
         </activity>
         <activity
                 android:name=".activity.TestActivity"
@@ -56,11 +76,11 @@
         <activity
                 android:name=".activity.ResultActivity"
                 android:label="@string/title_activity_result"
-                android:parentActivityName=".activity.ChooseLvActivity"
+                android:parentActivityName=".activity.ChooseLevelTestActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.app.learnquizjp.activity.ChooseLvActivity"/>
+                    android:value="com.app.learnquizjp.activity.ChooseLevelTestActivity"/>
         </activity>
         <activity
                 android:name=".activity.HomeActivity"
@@ -80,8 +100,7 @@
                 android:label="@string/title_activity_login"
                 android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activity.ChooseLvActivity">
-        </activity>
+
     </application>
 
 </manifest>

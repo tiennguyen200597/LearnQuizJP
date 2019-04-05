@@ -3,7 +3,6 @@ package com.app.learnquizjp.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
@@ -12,7 +11,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.app.learnquizjp.R
-import com.app.learnquizjp.fragment.QuizFragment
+import com.app.learnquizjp.fragment.AboutFragment
+import com.app.learnquizjp.fragment.FeedbackFragment
 import com.app.learnquizjp.fragment.SettingFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -20,18 +20,15 @@ import kotlinx.android.synthetic.main.app_bar_home.*
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private val quizFragment: QuizFragment = QuizFragment()
     private val settingFragment : SettingFragment = SettingFragment()
+    private val feedbackFragment : FeedbackFragment = FeedbackFragment()
+    private val aboutFragment : AboutFragment = AboutFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.app.learnquizjp.R.layout.activity_home)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             R.string.navigation_drawer_open,
@@ -79,16 +76,16 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent(this, LearningActivity::class.java))
             }
             com.app.learnquizjp.R.id.nav_quiz -> {
-                showFragmentQuiz()
+                startActivity(Intent(this,QuizActivity::class.java))
             }
             com.app.learnquizjp.R.id.nav_setting -> {
                 showFragmentSetting()
             }
             com.app.learnquizjp.R.id.nav_feedback -> {
-
+                showFragmentFeedback()
             }
             com.app.learnquizjp.R.id.nav_about -> {
-
+                showFragmentAbout()
             }
             com.app.learnquizjp.R.id.nav_log_out -> {
                 startActivity(Intent(this, LoginActivity::class.java))
@@ -98,17 +95,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
-    }
-    private fun showFragmentQuiz(){
-        var fragmentManager: FragmentManager =supportFragmentManager
-        var fragmentTransaction: FragmentTransaction =fragmentManager.beginTransaction()
-        if (quizFragment.isAdded){
-            fragmentTransaction.show(quizFragment)
-        }
-        else{
-            fragmentTransaction.add(R.id.container,quizFragment)
-        }
-        fragmentTransaction.commit()
     }
 
     private fun showFragmentSetting(){
@@ -122,6 +108,26 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fragmentTransaction.commit()
     }
 
+    private fun showFragmentFeedback(){
+        var fragmentManager : FragmentManager = supportFragmentManager
+        var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
+        if(feedbackFragment.isAdded){
+            fragmentTransaction.show(feedbackFragment)
+        }else{
+            fragmentTransaction.add(R.id.container,feedbackFragment)
+        }
+        fragmentTransaction.commit()
+    }
 
+    private fun showFragmentAbout(){
+        var fragmentManager : FragmentManager = supportFragmentManager
+        var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
+        if(aboutFragment.isAdded){
+            fragmentTransaction.show(aboutFragment)
+        }else{
+            fragmentTransaction.add(R.id.container,aboutFragment)
+        }
+        fragmentTransaction.commit()
+    }
 
 }
