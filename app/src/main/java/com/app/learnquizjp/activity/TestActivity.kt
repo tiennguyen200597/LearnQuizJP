@@ -34,7 +34,7 @@ class TestActivity : AppCompatActivity(), Communication {
     // timer of test (minute)
     val TOTAL_TIMER: Long = 45
     // total quiz checked
-    var totalQzChked: Int = 0
+    var totalChecked: Int = 0
     var mPager: ViewPager? = null
     var mPagerAdapter: PagerAdapter? = null
     // list danh sach da dao
@@ -51,8 +51,6 @@ class TestActivity : AppCompatActivity(), Communication {
     override fun dataChk(datachk: ArrayList<Question>) {
         dataChkQz = datachk
     }
-
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,6 +69,8 @@ class TestActivity : AppCompatActivity(), Communication {
         if (bd != null) {
             listQuestion = bd.get("listQuestion") as ArrayList<Question>
             listQuestionQri = bd.get("listQuestionQri") as ArrayList<Question>
+            totalChecked=bd.getInt("totalChecked")
+
         }
         // creat timet count downl
         timer = CounterClass(TOTAL_TIMER * 60 * 1000, 1000)
@@ -83,7 +83,7 @@ class TestActivity : AppCompatActivity(), Communication {
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.addOnPageChangeListener(viewPagerPageChangeListener)
-        tv_status_test.text="Đã làm: ${totalQzChked}/${NUM_PAGES}"
+       /* tv_status_test.text="Đã làm: ${totalChecked}/${NUM_PAGES}"*/
        //    start clook
         timer.start()
         // check status test

@@ -1,21 +1,26 @@
 package com.app.learnquizjp.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.app.learnquizjp.Constants
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.TestActivity
 import com.app.learnquizjp.base.Communication
 import com.app.learnquizjp.model.Question
+import kotlinx.android.synthetic.main.test_activity.*
 import kotlinx.android.synthetic.main.test_fragment.*
 import java.util.*
 
 
-class TestFragment : Fragment() {
+class TestFragment : Fragment(){
     val ARG_PAGE = "page"
+    // total quiz checked
+    var totalChecked: Int = 0
     var mPageNumber: Int = 0
     var loatASls: ArrayList<Question> = ArrayList()
     lateinit var communication:Communication
@@ -38,8 +43,11 @@ class TestFragment : Fragment() {
         radGroupQz.setOnCheckedChangeListener { _, checkedId ->
             loatASls[mPageNumber].qzstatuschk=getChoiceFromID(checkedId)
             loatASls[mPageNumber].ascurrent=getTextFromID(checkedId)
+
+            activity!!.tv_status_test.text=(totalChecked+1).toString()
             communication!!.dataChk(loatASls)
         }
+
 
     }
 
@@ -50,6 +58,8 @@ class TestFragment : Fragment() {
 
         if (activitiTest != null) {
             loatASls = activitiTest.getData()
+            totalChecked=activitiTest.totalChecked
+
         }
 
         mPageNumber = arguments!!.getInt(ARG_PAGE)
