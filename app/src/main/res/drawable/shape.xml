@@ -17,4 +17,13 @@
     <size
             android:width="270dp"
             android:height="60dp"/>
+    <item android:state_focused="false">
+        <shape android:shape="rectangle" >
+            <corners android:radius="3dip" />
+            <!--color of boder-->
+            <stroke android:width="1dip" android:color="@color/redlight" />
+            <!--color of background-->
+            <solid android:color="@color/redlight" />
+        </shape>
+    </item>
 </shape>

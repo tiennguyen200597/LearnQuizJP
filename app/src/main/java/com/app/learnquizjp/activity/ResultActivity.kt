@@ -34,7 +34,8 @@ class ResultActivity : AppCompatActivity() {
             }
             else if  (dataChkQz[i].ascurrent.equals(listQuestionQri[i].ascortect)){
                 totalTrue+=1
-            }else if (dataChkQz[i].ascurrent!="" &&dataChkQz[i].ascurrent.equals(listQuestionQri[i].ascortect)==false){
+            }
+            else if (dataChkQz[i].ascurrent!="" &&dataChkQz[i].ascurrent.equals(listQuestionQri[i].ascortect)==false){
                 totalFail+=1
             }
 
@@ -45,10 +46,9 @@ class ResultActivity : AppCompatActivity() {
         tv_totalDoNot.text="${totalDoNot}/${dataChkQz.size}"
         var review:Boolean=true
         btn_review.setOnClickListener {
-            var inreview:Intent= Intent(this@ResultActivity,TestActivity::class.java)
-          /*  inreview.putExtra("review",review)
+            var inreview:Intent= Intent(this@ResultActivity,ReviewActivity::class.java)
             inreview.putExtra("listQuestionQri",listQuestionQri)
-            inreview.putExtra("dataChkQz",dataChkQz)*/
+            inreview.putExtra("dataChkQz",dataChkQz)
             startActivity(inreview)
         }
 

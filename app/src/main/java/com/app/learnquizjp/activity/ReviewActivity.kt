@@ -21,29 +21,30 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.learnquizjp.R
 import com.app.learnquizjp.adapter.ChkAnswerAdapter
+import com.app.learnquizjp.base.Communication
 import com.app.learnquizjp.base.RecyclerItemClickListener
+import com.app.learnquizjp.fragment.ReviewFragment
 import com.app.learnquizjp.fragment.TestFragment
 import com.app.learnquizjp.model.Question
 import kotlinx.android.synthetic.main.activity_choose_level_learning.*
 
 import kotlinx.android.synthetic.main.activity_review.*
 import kotlinx.android.synthetic.main.dialog_status_test.view.*
+import kotlinx.android.synthetic.main.fragment_review.*
 import kotlinx.android.synthetic.main.test_activity.*
 import java.util.concurrent.TimeUnit
 
-class ReviewActivity : AppCompatActivity() {
+class ReviewActivity : AppCompatActivity(), Communication {
+    override fun dataChk(datachk: ArrayList<Question>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     val NUM_PAGES = 35
-    // timer of test (minute)
-    val TOTAL_TIMER: Long = 45
     // total quiz checked
     var totalChecked: Int = 0
     var mPager: ViewPager? = null
     var mPagerAdapter: PagerAdapter? = null
     // list danh sach da dao
-    var lsQS: ArrayList<String> = ArrayList()
-    // arr de trao cu hoi
-
     var listQuestion : ArrayList<Question> = ArrayList()
     var listQuestionQri : ArrayList<Question> = ArrayList()
     //  mang arr de load len man hinh
@@ -60,22 +61,21 @@ class ReviewActivity : AppCompatActivity() {
         val intent = intent
         val bd = intent.extras
         if (bd != null) {
-            listQuestion = bd.get("listQuestion") as ArrayList<Question>
+            listQuestion = bd.get("dataChkQz") as ArrayList<Question>
             listQuestionQri = bd.get("listQuestionQri") as ArrayList<Question>
         }
 
         // creat arr test
 
         //creat arr test end
-        mPager = findViewById(com.app.learnquizjp.R.id.pager) as ViewPager
+        mPager = findViewById<ViewPager>(com.app.learnquizjp.R.id.page_r)
         mPagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
         mPager!!.adapter = mPagerAdapter
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.addOnPageChangeListener(viewPagerPageChangeListener)
-
         // check status test
-        tv_status_test.setOnClickListener {
+        tv_review.setOnClickListener {
             showStatusTestDialog()
 
         }
@@ -86,7 +86,7 @@ class ReviewActivity : AppCompatActivity() {
     val viewPagerPageChangeListener = object : ViewPager.OnPageChangeListener {
         // nhận giá trị của view hiện tại
         override fun onPageSelected(position: Int) {
-            tv_review.text = (position + 1).toString() + "/" + NUM_PAGES
+            tv_status_quiz_r.text = (position + 1).toString() + "/" + NUM_PAGES
         }
 
         override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {
@@ -102,10 +102,10 @@ class ReviewActivity : AppCompatActivity() {
     }
 
     inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-        var testFragment: TestFragment = TestFragment()
+        var reviewFragment: ReviewFragment = ReviewFragment()
         // vị trí hiện tại của view page
         override fun getItem(position: Int): Fragment {
-            return testFragment.create(position)
+            return reviewFragment.create(position)
         }
         override fun getCount(): Int {
             return NUM_PAGES
@@ -149,8 +149,6 @@ class ReviewActivity : AppCompatActivity() {
 
     }
 
-
-    @SuppressLint("ResourceType")
     private fun showStatusTestDialog() {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         val viewGroup = findViewById<ViewGroup>(android.R.id.content)

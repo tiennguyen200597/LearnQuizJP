@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.app.learnquizjp.Constants
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.TestActivity
 import com.app.learnquizjp.base.Communication
@@ -41,9 +40,6 @@ class TestFragment : Fragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        if (review){
-            btn_review.visibility=View.VISIBLE
-        }
         tv_bmquiz.text = "Câu " + (mPageNumber + 1)
         tv_question.text = loatASls[mPageNumber].qzcontent
         rad_answerA.text = loatASls[mPageNumber].ascortect
@@ -73,19 +69,9 @@ class TestFragment : Fragment(){
 
         if (activitiTest != null) {
             loatASls = activitiTest!!.getData()
-
         }
         mPageNumber = arguments!!.getInt(ARG_PAGE)
-        val intent : Intent? = null
 
-
-        if (intent != null) {
-            review = intent.getBooleanExtra("review",false)
-            dataChkQz = intent.getByteArrayExtra("dataChkQz") as ArrayList<Question>
-        }
-        if (review){
-            loatASls=dataChkQz
-        }
 
     }
 

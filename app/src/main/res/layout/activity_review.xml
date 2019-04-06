@@ -21,7 +21,7 @@
                 android:background="@drawable/shape_status_quiz"
                 android:gravity="center"
                 android:text="1/35"
-                android:id="@+id/tv_status_quiz"
+                android:id="@+id/tv_status_quiz_r"
                 android:textColor="@color/black"
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -73,7 +73,7 @@
     </LinearLayout>
 
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-                                       android:id="@+id/pager"
+                                       android:id="@+id/page_r"
                                        android:layout_width="match_parent"
                                        android:layout_height="fill_parent"/>
 </LinearLayout>
