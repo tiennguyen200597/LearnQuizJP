@@ -11,7 +11,7 @@ import com.app.learnquizjp.Constants.Companion.isDEBUG
 class DBHelper(context: Context?) : SQLiteOpenHelper(context, "dictionary.sql", null, 1) {
 
     init {
-        if ( isDEBUG) Log.i("CREATE_KOTOBA_TABLE", CREATE_KOTOBA_TABLE)
+        if (isDEBUG) Log.i("CREATE_KOTOBA_TABLE", CREATE_KOTOBA_TABLE)
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -19,7 +19,7 @@ class DBHelper(context: Context?) : SQLiteOpenHelper(context, "dictionary.sql", 
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $CREATE_KOTOBA_TABLE")
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_KOTOBA_TABLE)
     }
 
 }
