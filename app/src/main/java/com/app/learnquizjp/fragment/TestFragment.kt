@@ -21,10 +21,17 @@ class TestFragment : Fragment(){
     val ARG_PAGE = "page"
     // total quiz checked
     var totalChecked: Int = 0
+    //review
+    var review:Boolean = false
+    var totalDoNot: Int = 0
     var mPageNumber: Int = 0
-    var loatASls: ArrayList<Question> = ArrayList()
-    lateinit var communication:Communication
 
+
+    var loatASls: ArrayList<Question> = ArrayList()
+    var dataChkQz: ArrayList<Question> = ArrayList()
+    var listQuestionQri: ArrayList<Question> = ArrayList()
+    lateinit var communication:Communication
+    var activitiTest: TestActivity? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +41,9 @@ class TestFragment : Fragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+      /*  if (review){
+            btn_review.visibility=View.VISIBLE
+        }*/
         tv_bmquiz.text = "Câu " + (mPageNumber + 1)
         tv_question.text = loatASls[mPageNumber].qzcontent
         rad_answerA.text = loatASls[mPageNumber].ascortect
@@ -43,26 +53,39 @@ class TestFragment : Fragment(){
         radGroupQz.setOnCheckedChangeListener { _, checkedId ->
             loatASls[mPageNumber].qzstatuschk=getChoiceFromID(checkedId)
             loatASls[mPageNumber].ascurrent=getTextFromID(checkedId)
-
-            activity!!.tv_status_test.text=(totalChecked+1).toString()
             communication!!.dataChk(loatASls)
+            for (i in 0..(loatASls.size-1)) {
+                if (loatASls[i].qzstatuschk == 0) {
+                    totalDoNot += 1
+                }
+            }
+            totalChecked=35-totalDoNot
+            activity!!.tv_status_test.text=totalChecked.toString()
+            totalDoNot=0
+
         }
-
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // call activy
-        val activitiTest = activity as TestActivity?
+        activitiTest = activity as TestActivity?
 
         if (activitiTest != null) {
-            loatASls = activitiTest.getData()
-            totalChecked=activitiTest.totalChecked
+            loatASls = activitiTest!!.getData()
 
         }
-
         mPageNumber = arguments!!.getInt(ARG_PAGE)
+        val intent : Intent? = null
+
+
+        if (intent != null) {
+            review = intent.getBooleanExtra("review",false)
+            dataChkQz = intent.getByteArrayExtra("dataChkQz") as ArrayList<Question>
+        }
+        if (review){
+            loatASls=dataChkQz
+        }
 
     }
 
@@ -100,5 +123,7 @@ class TestFragment : Fragment(){
 
 
 }
+
+
 
 

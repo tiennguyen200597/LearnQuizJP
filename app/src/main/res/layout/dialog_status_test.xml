@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp">
         <TextView
+                android:id="@+id/tv_totalChecked"
                 android:textColor="@color/bluelight"
                 android:textSize="20sp"
                 android:layout_weight="1"
