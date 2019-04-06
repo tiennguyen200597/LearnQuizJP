@@ -103,7 +103,7 @@ class TestActivity : AppCompatActivity(), Communication {
     }
 
     // change viewpager
-    val viewPagerPageChangeListener = object : ViewPager.OnPageChangeListener {
+    private val viewPagerPageChangeListener = object : ViewPager.OnPageChangeListener {
         // nhận giá trị của view hiện tại
         override fun onPageSelected(position: Int) {
             tv_status_quiz.text = (position + 1).toString() + "/" + NUM_PAGES
@@ -131,7 +131,7 @@ class TestActivity : AppCompatActivity(), Communication {
             return NUM_PAGES
         }
     }
-    //annimation
+    //animation
     inner class DepthPageTransformer : ViewPager.PageTransformer {
         val MIN_SCALE = 0.75f
         override fun transformPage(view: View, position: Float) {
@@ -169,7 +169,7 @@ class TestActivity : AppCompatActivity(), Communication {
 
     }
 
-    // set clook countDown
+    // set clock countDown
     inner class CounterClass
     /**
      * @param millisInFuture    The number of millis in the future from the call

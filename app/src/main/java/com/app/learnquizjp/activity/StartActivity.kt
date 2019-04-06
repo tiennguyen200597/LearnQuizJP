@@ -1,9 +1,13 @@
 package com.app.learnquizjp.activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Button
+import android.widget.ImageView
 import com.app.learnquizjp.R
 import com.app.learnquizjp.base.MyBounceInterpolator
 import kotlinx.android.synthetic.main.activity_start.*
@@ -14,11 +18,7 @@ class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.app.learnquizjp.R.layout.activity_start)
-        var animation = AnimationUtils.loadAnimation(this@StartActivity,R.anim.bounce)
-        var myBounceInterpolator = MyBounceInterpolator(0.2,10.0)
-        animation.interpolator = myBounceInterpolator
-        imgLogo.startAnimation(animation)
-
+        animateImageView()
         // Count down interval 3 second
         val timer = Timer()
         timer.schedule(object : TimerTask() {
@@ -28,4 +28,32 @@ class StartActivity : AppCompatActivity() {
             }
         }, 3000)
     }
+
+    internal fun animateImageView() {
+        // Load the animation
+        val myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce)
+        //val animationDuration = 0.2 * 1000
+        //myAnim.duration = animationDuration.toLong()
+
+        // Use custom animation interpolator to achieve the bounce effect
+        val interpolator = MyBounceInterpolator(0.2,20.0)
+
+        myAnim.interpolator = interpolator
+
+        // Animate the button
+        val img = findViewById<View>(R.id.imgLogo) as ImageView
+        img.startAnimation(myAnim)
+
+        // Run button animation again after it finished
+        myAnim.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(arg0: Animation) {}
+
+            override fun onAnimationRepeat(arg0: Animation) {}
+
+            override fun onAnimationEnd(arg0: Animation) {
+                animateImageView()
+            }
+        })
+    }
+
 }

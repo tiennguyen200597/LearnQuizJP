@@ -7,13 +7,14 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
-import com.app.learnquizjp.R
 import com.app.learnquizjp.base.MyBounceInterpolator
 import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
 
 import kotlinx.android.synthetic.main.activity_prepare.*
 import kotlinx.android.synthetic.main.content_prepare.*
+import android.support.v7.app.AlertDialog
+
 
 class PrepareActivity : AppCompatActivity() {
     // list for change position
@@ -24,7 +25,7 @@ class PrepareActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_prepare)
+        setContentView(com.app.learnquizjp.R.layout.activity_prepare)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         animateButton()
@@ -63,17 +64,26 @@ class PrepareActivity : AppCompatActivity() {
             lsQS.removeAll(lsQS)
         }
 
-        btn_start.setOnClickListener {
+        btn_start.setOnClickListener { onStartQuiz() }
+    }
+
+    fun onStartQuiz(){
+        val dialog = AlertDialog.Builder(this)
+        dialog.setTitle("Confirmation")
+        dialog.setMessage("Are you sure to start the quiz now ?")
+        dialog.setNegativeButton("Yes") { _, _ ->
             var intent = Intent(this@PrepareActivity,TestActivity::class.java)
             intent.putExtra("listQuestion",arrtest)
             intent.putExtra("listQuestionQri",listQuestion)
             startActivity(intent)
         }
+        dialog.setPositiveButton("No") { dialog, _ -> dialog.dismiss() }
+        dialog.show()
     }
 
     internal fun animateButton() {
         // Load the animation
-        val myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce)
+        val myAnim = AnimationUtils.loadAnimation(this, com.app.learnquizjp.R.anim.bounce)
         //val animationDuration = 0.2 * 1000
         //myAnim.duration = animationDuration.toLong()
 
@@ -83,7 +93,7 @@ class PrepareActivity : AppCompatActivity() {
         myAnim.interpolator = interpolator
 
         // Animate the button
-        val button = findViewById<View>(R.id.btn_start) as Button
+        val button = findViewById<View>(com.app.learnquizjp.R.id.btn_start) as Button
         button.startAnimation(myAnim)
 
         // Run button animation again after it finished

@@ -11,10 +11,10 @@ class QuizActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
-        btn_practice.setOnClickListener {
+        tvPractice.setOnClickListener {
             startActivity(Intent(this,ChooseLevelPracticeActivity::class.java))
         }
-        btn_test.setOnClickListener {
+        tvTest.setOnClickListener {
             startActivity(Intent(this,ChooseLevelTestActivity::class.java))
         }
     }

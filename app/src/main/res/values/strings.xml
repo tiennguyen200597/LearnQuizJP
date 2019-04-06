@@ -80,5 +80,21 @@
     <string name="tv_totalChecked">Đã làm: %2$d câu</string>
     <string name="tv_view">Xem đáp án</string>
 
+    <!--PrepareActivity-->
+    <string name="prepare_warning">
+        This quiz will test your Japanese ability\n
+        Number of question : 35\n
+        Time : 45 minutes\n
+        Pass score : 60%\n
+        Click button below to start the quiz
+    </string>
+
+    <!--QuizActivity-->
+    <string name="quiz_tv_warning">Choose the way to test ability</string>
+    <string name="quiz_tv_practice">Practice</string>
+    <string name="quiz_tv_test">Test</string>
+    <string name="quiz_tv_practice_title">Practice session</string>
+    <string name="quiz_tv_test_title">Quiz session </string>
+
 
 </resources>
