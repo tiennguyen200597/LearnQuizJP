@@ -2,22 +2,22 @@ package com.app.learnquizjp.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.app.learnquizjp.Constants
+
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.TestActivity
 import com.app.learnquizjp.base.Communication
 import com.app.learnquizjp.model.Question
 import kotlinx.android.synthetic.main.test_activity.*
 import kotlinx.android.synthetic.main.test_fragment.*
-import java.util.*
+import java.util.ArrayList
 
-
-class TestFragment : Fragment(){
+class ReviewFragment : Fragment() {
     val ARG_PAGE = "page"
     // total quiz checked
     var totalChecked: Int = 0
@@ -30,20 +30,17 @@ class TestFragment : Fragment(){
     var loatASls: ArrayList<Question> = ArrayList()
     var dataChkQz: ArrayList<Question> = ArrayList()
     var listQuestionQri: ArrayList<Question> = ArrayList()
-    lateinit var communication:Communication
+    lateinit var communication: Communication
     var activitiTest: TestActivity? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.test_fragment, container, false)
+        return inflater.inflate(R.layout.activity_review, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        if (review){
-            btn_review.visibility=View.VISIBLE
-        }
         tv_bmquiz.text = "Câu " + (mPageNumber + 1)
         tv_question.text = loatASls[mPageNumber].qzcontent
         rad_answerA.text = loatASls[mPageNumber].ascortect
@@ -76,16 +73,6 @@ class TestFragment : Fragment(){
 
         }
         mPageNumber = arguments!!.getInt(ARG_PAGE)
-        val intent : Intent? = null
-
-
-        if (intent != null) {
-            review = intent.getBooleanExtra("review",false)
-            dataChkQz = intent.getByteArrayExtra("dataChkQz") as ArrayList<Question>
-        }
-        if (review){
-            loatASls=dataChkQz
-        }
 
     }
 
@@ -120,10 +107,4 @@ class TestFragment : Fragment(){
             else -> ""
         }
     }
-
-
 }
-
-
-
-

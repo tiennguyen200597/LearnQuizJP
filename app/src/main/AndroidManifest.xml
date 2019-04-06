@@ -14,15 +14,25 @@
             android:roundIcon="@mipmap/ic_launcher"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
-        <activity android:name=".activity.QuizActivity"
-                  android:parentActivityName=".activity.HomeActivity">
+        <activity
+                android:name=".activity.ReviewActivity"
+                android:label="@string/title_activity_review"
+                android:parentActivityName=".activity.ResultActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.app.learnquizjp.activity.ResultActivity"/>
+        </activity>
+        <activity
+                android:name=".activity.QuizActivity"
+                android:parentActivityName=".activity.HomeActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.app.learnquizjp.activity.HomeActivity"/>
         </activity>
-        <activity android:name=".activity.ChooseLevelPracticeActivity"
-                  android:parentActivityName=".activity.QuizActivity">
+        <activity
+                android:name=".activity.ChooseLevelPracticeActivity"
+                android:parentActivityName=".activity.QuizActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.app.learnquizjp.activity.QuizActivity"/>
@@ -100,7 +110,6 @@
                 android:label="@string/title_activity_login"
                 android:screenOrientation="portrait">
         </activity>
-
     </application>
 
 </manifest>
