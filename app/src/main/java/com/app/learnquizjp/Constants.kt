@@ -4,18 +4,18 @@ open class Constants {
 
     companion object {
 
-        val isDEBUG = true
+        const val isDEBUG = true
 
         //User Table
-        val KOTOBA_TABLE = "kotoba"
+        const val KOTOBA_TABLE = "kotoba"
         //Column
-        val KOTOBA_ID = "id"
-        val KOTOBA_HIRAGANA = "hiragana"
-        val KOTOBA_KANJI = "kanji"
-        val KOTOBA_DESCRIPTION = "description"
-        val KOTOBA_EXAMPLE = "example"
+        const val KOTOBA_ID = "id"
+        const val KOTOBA_HIRAGANA = "hiragana"
+        const val KOTOBA_KANJI = "kanji"
+        const val KOTOBA_DESCRIPTION = "description"
+        const val KOTOBA_EXAMPLE = "example"
         //Query create kotoba(id int primary key auto increment,hiragana nvarchar(50) not null, kanji nvarchar(50), description nvarchar(50) not null,example nvarchar(255))
-        val CREATE_KOTOBA_TABLE = "CREATE TABLE " + KOTOBA_TABLE + "(" +
+        const val CREATE_KOTOBA_TABLE = "CREATE TABLE " + KOTOBA_TABLE + "(" +
                 "" + KOTOBA_ID + " INT PRIMARY KEY AUTO INCREMENT," +
                 "" + KOTOBA_HIRAGANA + " NVARCHAR(50) NOT NULL," +
                 "" + KOTOBA_KANJI + " NVARCHAR(50)," +
