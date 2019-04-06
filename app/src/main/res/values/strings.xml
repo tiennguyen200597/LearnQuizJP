@@ -29,6 +29,13 @@
     <string name="action_settings">Settings</string>
     <string name="login_tv_register_new_account">Register new account</string>
 
+    <!--SignUpActivity-->
+    <string name="register_tv_back_login">Already have account</string>
+    <string name="action_register">Register</string>
+    <string name="register_tv_title">Register new account</string>
+    <string name="register_tv_warning">All field has been required</string>
+
+
     <!--HomeActivity-->
     <string name="home_btn_search">Search</string>
 

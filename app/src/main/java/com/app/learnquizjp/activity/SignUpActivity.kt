@@ -23,6 +23,7 @@ import android.widget.TextView
 
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
+import android.content.Intent
 import kotlinx.android.synthetic.main.activity_login.*
 
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -37,8 +38,10 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.app.learnquizjp.R.layout.activity_sign_up)
-
-
+        tvLogin.setOnClickListener {
+            startActivity(Intent(this@SignUpActivity,LoginActivity::class.java))
+            finish()
+        }
     }
 
 }

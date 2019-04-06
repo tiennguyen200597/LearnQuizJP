@@ -3,7 +3,12 @@ package com.app.learnquizjp.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.Button
 import com.app.learnquizjp.R
+import com.app.learnquizjp.base.MyBounceInterpolator
 import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
 
@@ -22,6 +27,7 @@ class PrepareActivity : AppCompatActivity() {
         setContentView(R.layout.activity_prepare)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        animateButton()
         for (i: Int in 0..34) {
             var question = Question(
                 i,
@@ -65,4 +71,30 @@ class PrepareActivity : AppCompatActivity() {
         }
     }
 
+    internal fun animateButton() {
+        // Load the animation
+        val myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce)
+        //val animationDuration = 0.2 * 1000
+        //myAnim.duration = animationDuration.toLong()
+
+        // Use custom animation interpolator to achieve the bounce effect
+        val interpolator = MyBounceInterpolator(0.2,20.0)
+
+        myAnim.interpolator = interpolator
+
+        // Animate the button
+        val button = findViewById<View>(R.id.btn_start) as Button
+        button.startAnimation(myAnim)
+
+        // Run button animation again after it finished
+        myAnim.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(arg0: Animation) {}
+
+            override fun onAnimationRepeat(arg0: Animation) {}
+
+            override fun onAnimationEnd(arg0: Animation) {
+                animateButton()
+            }
+        })
+    }
 }

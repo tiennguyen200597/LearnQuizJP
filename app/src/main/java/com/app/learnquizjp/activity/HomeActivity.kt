@@ -13,6 +13,7 @@ import android.view.MenuItem
 import com.app.learnquizjp.R
 import com.app.learnquizjp.fragment.AboutFragment
 import com.app.learnquizjp.fragment.FeedbackFragment
+import com.app.learnquizjp.fragment.HomeFragment
 import com.app.learnquizjp.fragment.SettingFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.app_bar_home.*
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    private val homeFragment : HomeFragment = HomeFragment()
     private val settingFragment : SettingFragment = SettingFragment()
     private val feedbackFragment : FeedbackFragment = FeedbackFragment()
     private val aboutFragment : AboutFragment = AboutFragment()
@@ -68,8 +70,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             com.app.learnquizjp.R.id.nav_home -> {
-                startActivity(Intent(this, HomeActivity::class.java))
-                finish()
+                showFragmentHome()
             }
             com.app.learnquizjp.R.id.nav_learning -> {
                 // Handle the camera action
@@ -97,13 +98,24 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+    private fun showFragmentHome(){
+        var fragmentManager : FragmentManager = supportFragmentManager
+        var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
+        if(homeFragment.isAdded){
+            fragmentTransaction.show(homeFragment)
+        }else{
+            fragmentTransaction.replace(R.id.container,homeFragment)
+        }
+        fragmentTransaction.commit()
+    }
+
     private fun showFragmentSetting(){
         var fragmentManager : FragmentManager = supportFragmentManager
         var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
         if(settingFragment.isAdded){
             fragmentTransaction.show(settingFragment)
         }else{
-            fragmentTransaction.add(R.id.container,settingFragment)
+            fragmentTransaction.replace(R.id.container,settingFragment)
         }
         fragmentTransaction.commit()
     }
@@ -114,7 +126,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if(feedbackFragment.isAdded){
             fragmentTransaction.show(feedbackFragment)
         }else{
-            fragmentTransaction.add(R.id.container,feedbackFragment)
+            fragmentTransaction.replace(R.id.container,feedbackFragment)
         }
         fragmentTransaction.commit()
     }
@@ -125,7 +137,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if(aboutFragment.isAdded){
             fragmentTransaction.show(aboutFragment)
         }else{
-            fragmentTransaction.add(R.id.container,aboutFragment)
+            fragmentTransaction.replace(R.id.container,aboutFragment)
         }
         fragmentTransaction.commit()
     }

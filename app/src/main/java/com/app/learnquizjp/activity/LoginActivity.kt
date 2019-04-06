@@ -34,12 +34,14 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.app.learnquizjp.R.layout.activity_login)
         // Set up the login form.
-        email_sign_in_button.setOnClickListener {
+        btnLogin.setOnClickListener {
             startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
+            finish()
         }
 
-        btn_sign_in_now.setOnClickListener {
+        tvRegister.setOnClickListener {
             startActivity(Intent(this@LoginActivity,SignUpActivity::class.java))
+            finish()
         }
 
     }

@@ -9,7 +9,7 @@
 
     <ImageView
             android:id="@+id/imgLogo"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/ic_launcher_round"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
