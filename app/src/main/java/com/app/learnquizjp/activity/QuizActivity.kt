@@ -3,8 +3,9 @@ package com.app.learnquizjp.activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.app.learnquizjp.R
 import kotlinx.android.synthetic.main.activity_quiz.*
+import com.app.learnquizjp.R
+
 
 class QuizActivity : AppCompatActivity() {
 
@@ -18,4 +19,5 @@ class QuizActivity : AppCompatActivity() {
             startActivity(Intent(this,ChooseLevelTestActivity::class.java))
         }
     }
+
 }

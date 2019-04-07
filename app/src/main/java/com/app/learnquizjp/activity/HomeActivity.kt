@@ -30,7 +30,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(com.app.learnquizjp.R.layout.activity_home)
         setSupportActionBar(toolbar)
-
+        showFragmentHome()
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             R.string.navigation_drawer_open,
