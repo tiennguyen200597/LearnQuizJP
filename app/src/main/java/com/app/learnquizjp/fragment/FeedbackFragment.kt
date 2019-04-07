@@ -10,8 +10,7 @@ import com.app.learnquizjp.R
 class FeedbackFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view : View = inflater.inflate(R.layout.fragment_feedback, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_feedback, container, false)
     }
 
 }

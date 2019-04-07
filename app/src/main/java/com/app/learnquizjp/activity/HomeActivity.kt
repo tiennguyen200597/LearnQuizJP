@@ -3,6 +3,7 @@ package com.app.learnquizjp.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
@@ -11,12 +12,10 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.app.learnquizjp.R
-import com.app.learnquizjp.fragment.AboutFragment
-import com.app.learnquizjp.fragment.FeedbackFragment
-import com.app.learnquizjp.fragment.HomeFragment
-import com.app.learnquizjp.fragment.SettingFragment
+import com.app.learnquizjp.fragment.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
+import kotlinx.android.synthetic.main.nav_header_home.*
 
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -25,12 +24,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val settingFragment : SettingFragment = SettingFragment()
     private val feedbackFragment : FeedbackFragment = FeedbackFragment()
     private val aboutFragment : AboutFragment = AboutFragment()
+    private val userFragment : UserFragment = UserFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.app.learnquizjp.R.layout.activity_home)
         setSupportActionBar(toolbar)
-        showFragmentHome()
+        showFragment(homeFragment)
+        getUserInformation()
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             R.string.navigation_drawer_open,
@@ -69,26 +70,29 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            com.app.learnquizjp.R.id.nav_home -> {
-                showFragmentHome()
+            R.id.imgUserAva -> {
+                showFragment(userFragment)
             }
-            com.app.learnquizjp.R.id.nav_learning -> {
+            R.id.nav_home -> {
+                showFragment(homeFragment)
+            }
+            R.id.nav_learning -> {
                 // Handle the camera action
                 startActivity(Intent(this, LearningActivity::class.java))
             }
-            com.app.learnquizjp.R.id.nav_quiz -> {
+            R.id.nav_quiz -> {
                 startActivity(Intent(this,QuizActivity::class.java))
             }
-            com.app.learnquizjp.R.id.nav_setting -> {
-                showFragmentSetting()
+            R.id.nav_setting -> {
+                showFragment(settingFragment)
             }
-            com.app.learnquizjp.R.id.nav_feedback -> {
-                showFragmentFeedback()
+            R.id.nav_feedback -> {
+                showFragment(feedbackFragment)
             }
-            com.app.learnquizjp.R.id.nav_about -> {
-                showFragmentAbout()
+            R.id.nav_about -> {
+                showFragment(aboutFragment)
             }
-            com.app.learnquizjp.R.id.nav_log_out -> {
+            R.id.nav_log_out -> {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
@@ -98,48 +102,22 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun showFragmentHome(){
+    private fun getUserInformation(){
+        var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
+        var username : String = sharedPreferences.getString("USERNAME","")
+        var email : String = sharedPreferences.getString("EMAIL","")
+        tvUsername.text = username
+        tvEmail.text = email
+    }
+
+    private fun showFragment(fragment : Fragment){
         var fragmentManager : FragmentManager = supportFragmentManager
         var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
-        if(homeFragment.isAdded){
-            fragmentTransaction.show(homeFragment)
+        if(fragment.isAdded){
+            fragmentTransaction.show(fragment)
         }else{
-            fragmentTransaction.replace(R.id.container,homeFragment)
+            fragmentTransaction.replace(R.id.container,fragment)
         }
         fragmentTransaction.commit()
     }
-
-    private fun showFragmentSetting(){
-        var fragmentManager : FragmentManager = supportFragmentManager
-        var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
-        if(settingFragment.isAdded){
-            fragmentTransaction.show(settingFragment)
-        }else{
-            fragmentTransaction.replace(R.id.container,settingFragment)
-        }
-        fragmentTransaction.commit()
-    }
-
-    private fun showFragmentFeedback(){
-        var fragmentManager : FragmentManager = supportFragmentManager
-        var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
-        if(feedbackFragment.isAdded){
-            fragmentTransaction.show(feedbackFragment)
-        }else{
-            fragmentTransaction.replace(R.id.container,feedbackFragment)
-        }
-        fragmentTransaction.commit()
-    }
-
-    private fun showFragmentAbout(){
-        var fragmentManager : FragmentManager = supportFragmentManager
-        var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
-        if(aboutFragment.isAdded){
-            fragmentTransaction.show(aboutFragment)
-        }else{
-            fragmentTransaction.replace(R.id.container,aboutFragment)
-        }
-        fragmentTransaction.commit()
-    }
-
 }

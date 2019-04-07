@@ -7,7 +7,7 @@
     <string name="title_login_fb">LOGIN WITH FACEBOOK</string>
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
+    <string name="prompt_username">Username</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="prompt_repassword">Repassword (optional)</string>
     <string name="action_sign_in">LOGIN</string>
@@ -28,6 +28,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="login_tv_register_new_account">Register new account</string>
+    <string name="login_cb_remember">Remember me</string>
+    <string name="notify_empty_user">Username can not be empty</string>
+    <string name="notify_length_pass">Password length at least 4 characters</string>
+    <string name="notify_empty_pass">Password can not be empty</string>
+    <string name="login_successful">Login successful</string>
+    <string name="login_fail">Login fail</string>
 
     <!--SignUpActivity-->
     <string name="register_tv_back_login">Already have account</string>
@@ -75,13 +81,21 @@
     <string name="nav_feedback">Feedback</string>
     <string name="nav_about">About</string>
     <string name="nav_log_out">Log out</string>
+
+    <!--UserFragment-->
+    <string name="user_fragment_action_save">Save</string>
+    <string name="user_fragment_action_cancel">Cancel</string>
+
+    <!--ChooseLevelLearningActivity-->
     <string name="title_activity_choose_level_learning">ChooseLevelLearningActivity</string>
-    <string name="title_activity_prepare">PrepareActivity</string>
+
+    <!--ReviewActivity-->
     <string name="tv_totalChecked">Đã làm: %2$d câu</string>
     <string name="tv_view">Xem đáp án</string>
     <string name="title_activity_review">ReviewActivity</string>
 
     <!--PrepareActivity-->
+    <string name="title_activity_prepare">PrepareActivity</string>
     <string name="prepare_warning">
         This quiz will test your Japanese ability\n
         Number of question : 35\n
@@ -97,6 +111,10 @@
     <string name="quiz_tv_practice_title">Practice session</string>
     <string name="quiz_tv_test_title">Quiz session </string>
     <string name="tv_detail">Xem chi tiết</string>
+    <string name="user_fragment_title">User Profile</string>
+    <string name="user_fragment_username">username</string>
+    <string name="user_fragment_email">email</string>
+    <string name="user_fragment_password">password</string>
 
 
 </resources>

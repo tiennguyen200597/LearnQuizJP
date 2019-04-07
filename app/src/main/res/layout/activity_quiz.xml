@@ -37,10 +37,11 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"/>
 
-            <TextView
+git            <TextView
                     android:id="@+id/tvPractice"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
+                    android:textSize="25sp"
                     android:text="@string/quiz_tv_practice"
                     android:textColor="#ffffff"
                     android:gravity="center"
@@ -67,6 +68,7 @@
                     android:id="@+id/tvTest"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
+                    android:textSize="25sp"
                     android:text="@string/quiz_tv_test"
                     android:textColor="#ffffff"
                     android:gravity="center"
