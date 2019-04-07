@@ -79,6 +79,7 @@
     <string name="title_activity_prepare">PrepareActivity</string>
     <string name="tv_totalChecked">Đã làm: %2$d câu</string>
     <string name="tv_view">Xem đáp án</string>
+    <string name="title_activity_review">ReviewActivity</string>
 
     <!--PrepareActivity-->
     <string name="prepare_warning">
@@ -95,6 +96,7 @@
     <string name="quiz_tv_test">Test</string>
     <string name="quiz_tv_practice_title">Practice session</string>
     <string name="quiz_tv_test_title">Quiz session </string>
+    <string name="tv_detail">Xem chi tiết</string>
 
 
 </resources>

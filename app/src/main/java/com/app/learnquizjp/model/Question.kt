@@ -13,6 +13,7 @@ class Question : Serializable {
     var csfykindcode: Int = 0
     var csfylvcode: Int = 0
     var qzstatuschk: Int = 0
+    var qzstatuschktrue: Int = 0
     var ascurrent: String? = null
 
 

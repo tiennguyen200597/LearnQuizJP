@@ -1,103 +1,92 @@
 package com.app.learnquizjp.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.support.annotation.RequiresApi
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.app.learnquizjp.R
-import com.app.learnquizjp.fragment.TestFragment
-import kotlinx.android.synthetic.main.test_activity.*
-import java.util.concurrent.TimeUnit
-import kotlin.collections.ArrayList
 import com.app.learnquizjp.adapter.ChkAnswerAdapter
 import com.app.learnquizjp.base.Communication
 import com.app.learnquizjp.base.RecyclerItemClickListener
+import com.app.learnquizjp.fragment.ReviewFragment
+import com.app.learnquizjp.fragment.TestFragment
 import com.app.learnquizjp.model.Question
+import kotlinx.android.synthetic.main.activity_choose_level_learning.*
+
+import kotlinx.android.synthetic.main.activity_review.*
 import kotlinx.android.synthetic.main.dialog_status_test.view.*
-import android.content.Intent
-import kotlinx.android.synthetic.main.dialog_status_test.*
-import kotlinx.android.synthetic.main.test_fragment.*
+import kotlinx.android.synthetic.main.fragment_review.*
+import kotlinx.android.synthetic.main.test_activity.*
+import java.util.concurrent.TimeUnit
 
-
-
-
-
-class TestActivity : AppCompatActivity(), Communication {
+class ReviewActivity : AppCompatActivity(), Communication {
+    override fun dataChk(datachk: ArrayList<Question>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     val NUM_PAGES = 35
-    // timer of test (minute)
-    val TOTAL_TIMER: Long = 45
     // total quiz checked
     var totalChecked: Int = 0
     var mPager: ViewPager? = null
     var mPagerAdapter: PagerAdapter? = null
     // list danh sach da dao
-    var lsQS: ArrayList<String> = ArrayList()
-    // arr de trao cu hoi
-
     var listQuestion : ArrayList<Question> = ArrayList()
     var listQuestionQri : ArrayList<Question> = ArrayList()
     //  mang arr de load len man hinh
     var loatASls: ArrayList<Question> = ArrayList()
-    lateinit var timer: CounterClass
+
     var dataChkQz : ArrayList<Question> = ArrayList()
 
-    override fun dataChk(datachk: ArrayList<Question>) {
-        dataChkQz = datachk
-    }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.app.learnquizjp.R.layout.test_activity)
+        setContentView(com.app.learnquizjp.R.layout.activity_review)
         val intent = intent
         val bd = intent.extras
         if (bd != null) {
-            listQuestion = bd.get("listQuestion") as ArrayList<Question>
+            listQuestion = bd.get("dataChkQz") as ArrayList<Question>
             listQuestionQri = bd.get("listQuestionQri") as ArrayList<Question>
-
         }
-        // creat timet count downl
-        timer = CounterClass(TOTAL_TIMER * 60 * 1000, 1000)
+
         // creat arr test
 
         //creat arr test end
-        mPager = findViewById(com.app.learnquizjp.R.id.pager) as ViewPager
+        mPager = findViewById<ViewPager>(com.app.learnquizjp.R.id.page_r)
         mPagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
         mPager!!.adapter = mPagerAdapter
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.setPageTransformer(true, DepthPageTransformer())
         mPager!!.addOnPageChangeListener(viewPagerPageChangeListener)
-       /* tv_status_test.text="Đã làm: ${totalChecked}/${NUM_PAGES}"*/
-       //    start clook
-        timer.start()
-
         // check status test
-        tv_status_test.setOnClickListener {
+        tv_review.setOnClickListener {
             showStatusTestDialog()
 
         }
-        btn_submit.setOnClickListener {
-            dialogSubmit()
-        }
+
     }
 
     // change viewpager
-    private val viewPagerPageChangeListener = object : ViewPager.OnPageChangeListener {
+    val viewPagerPageChangeListener = object : ViewPager.OnPageChangeListener {
         // nhận giá trị của view hiện tại
         override fun onPageSelected(position: Int) {
-            tv_status_quiz.text = (position + 1).toString() + "/" + NUM_PAGES
+            tv_status_quiz_r.text = (position + 1).toString() + "/" + NUM_PAGES
         }
 
         override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {
@@ -113,16 +102,16 @@ class TestActivity : AppCompatActivity(), Communication {
     }
 
     inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-        var testFragment: TestFragment = TestFragment()
+        var reviewFragment: ReviewFragment = ReviewFragment()
         // vị trí hiện tại của view page
         override fun getItem(position: Int): Fragment {
-            return testFragment.create(position)
+            return reviewFragment.create(position)
         }
         override fun getCount(): Int {
             return NUM_PAGES
         }
     }
-    //animation
+    //annimation
     inner class DepthPageTransformer : ViewPager.PageTransformer {
         val MIN_SCALE = 0.75f
         override fun transformPage(view: View, position: Float) {
@@ -160,40 +149,6 @@ class TestActivity : AppCompatActivity(), Communication {
 
     }
 
-    // set clock countDown
-    inner class CounterClass
-    /**
-     * @param millisInFuture    The number of millis in the future from the call
-     * to [.start] until the countdown is done and [.onFinish]
-     * is called.
-     * @param countDownInterval The interval along the way to receive
-     * [.onTick] callbacks.
-     */
-    //millisInFuture: 60*1000
-    //countDownInterval:  1000
-        (millisInFuture: Long, countDownInterval: Long) : CountDownTimer(millisInFuture, countDownInterval) {
-
-        override fun onTick(millisUntilFinished: Long) {
-            val countTime = String.format(
-                "%02d:%02d",
-                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
-                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
-                    TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
-                )
-            )
-            //setText of textview time
-            tv_clook.text = countTime
-        }
-
-        override fun onFinish() {
-            tv_clook.setText("00:00")  //SetText cho textview hiện thị thời gian.
-            /*result()*/
-        }
-    }
-
-
-
-    @SuppressLint("ResourceType")
     private fun showStatusTestDialog() {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         val viewGroup = findViewById<ViewGroup>(android.R.id.content)
@@ -227,7 +182,7 @@ class TestActivity : AppCompatActivity(), Communication {
             adapter = answerAdapter
         }
         recyclerView.addOnItemTouchListener(
-            RecyclerItemClickListener(this@TestActivity, object : RecyclerItemClickListener.OnItemClickListener {
+            RecyclerItemClickListener(this@ReviewActivity, object : RecyclerItemClickListener.OnItemClickListener {
                 override fun onItemClick(view: View, position: Int) {
                     mPager!!.currentItem = position
                     alertDialog.dismiss()
@@ -240,31 +195,6 @@ class TestActivity : AppCompatActivity(), Communication {
         alertDialog.show()
     }
 
-    // submit dialog
-    private fun dialogSubmit() {
-        val builder = AlertDialog.Builder(this@TestActivity)
-        builder.setTitle("Nộp bài thi")
-        builder.setMessage("Bạn đã chắc chắn muốn nộp bài?")
-        builder.setPositiveButton("Đồng ý") { _, _ ->
-            var intent: Intent=Intent(this@TestActivity,ResultActivity::class.java)
-            intent.putExtra("listQuestionQri",listQuestionQri)
-            intent.putExtra("dataChkQz",dataChkQz)
-            startActivity(intent)
-        }
-        builder.setNegativeButton("Hủy") { _, _ ->
 
-        }
-        builder.show()
-    }
 
 }
-
-
-
-
-
-
-
-
-
-

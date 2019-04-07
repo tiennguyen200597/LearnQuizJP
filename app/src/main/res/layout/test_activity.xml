@@ -45,7 +45,7 @@
 
             <TextView
                     android:gravity="center"
-                    android:text="Đã làm: 2/35"
+                    android:text="Đã làm: 0/35"
                     android:id="@+id/tv_status_test"
                     android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
                     android:layout_marginRight="@dimen/nav_header_vertical_spacing"
