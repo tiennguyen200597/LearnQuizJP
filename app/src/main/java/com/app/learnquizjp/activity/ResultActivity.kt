@@ -44,7 +44,6 @@ class ResultActivity : AppCompatActivity() {
         tv_totalTrue.text="${totalTrue}/${dataChkQz.size}"
         tv_totalFail.text="${totalFail}/${dataChkQz.size}"
         tv_totalDoNot.text="${totalDoNot}/${dataChkQz.size}"
-        var review:Boolean=true
         btn_review.setOnClickListener {
             var inreview:Intent= Intent(this@ResultActivity,ReviewActivity::class.java)
             inreview.putExtra("listQuestionQri",listQuestionQri)

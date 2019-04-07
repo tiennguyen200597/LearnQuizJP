@@ -1,57 +1,37 @@
 package com.app.learnquizjp.activity
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.support.annotation.RequiresApi
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.app.learnquizjp.R
 import com.app.learnquizjp.adapter.ChkAnswerAdapter
-import com.app.learnquizjp.base.Communication
 import com.app.learnquizjp.base.RecyclerItemClickListener
 import com.app.learnquizjp.fragment.ReviewFragment
-import com.app.learnquizjp.fragment.TestFragment
 import com.app.learnquizjp.model.Question
-import kotlinx.android.synthetic.main.activity_choose_level_learning.*
-
 import kotlinx.android.synthetic.main.activity_review.*
 import kotlinx.android.synthetic.main.dialog_status_test.view.*
-import kotlinx.android.synthetic.main.fragment_review.*
-import kotlinx.android.synthetic.main.test_activity.*
-import java.util.concurrent.TimeUnit
 
-class ReviewActivity : AppCompatActivity(), Communication {
-    override fun dataChk(datachk: ArrayList<Question>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
+class ReviewActivity : AppCompatActivity() {
     val NUM_PAGES = 35
     // total quiz checked
     var totalChecked: Int = 0
     var mPager: ViewPager? = null
     var mPagerAdapter: PagerAdapter? = null
     // list danh sach da dao
-    var listQuestion : ArrayList<Question> = ArrayList()
-    var listQuestionQri : ArrayList<Question> = ArrayList()
-    //  mang arr de load len man hinh
-    var loatASls: ArrayList<Question> = ArrayList()
-
-    var dataChkQz : ArrayList<Question> = ArrayList()
-
+    var listQuestion: ArrayList<Question> = ArrayList()
+    var listQuestionQri: ArrayList<Question> = ArrayList()
+    var dataChkQz: ArrayList<Question> = ArrayList()
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -65,9 +45,6 @@ class ReviewActivity : AppCompatActivity(), Communication {
             listQuestionQri = bd.get("listQuestionQri") as ArrayList<Question>
         }
 
-        // creat arr test
-
-        //creat arr test end
         mPager = findViewById<ViewPager>(com.app.learnquizjp.R.id.page_r)
         mPagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
         mPager!!.adapter = mPagerAdapter
@@ -77,11 +54,8 @@ class ReviewActivity : AppCompatActivity(), Communication {
         // check status test
         tv_review.setOnClickListener {
             showStatusTestDialog()
-
         }
-
     }
-
     // change viewpager
     val viewPagerPageChangeListener = object : ViewPager.OnPageChangeListener {
         // nhận giá trị của view hiện tại
@@ -107,10 +81,12 @@ class ReviewActivity : AppCompatActivity(), Communication {
         override fun getItem(position: Int): Fragment {
             return reviewFragment.create(position)
         }
+
         override fun getCount(): Int {
             return NUM_PAGES
         }
     }
+
     //annimation
     inner class DepthPageTransformer : ViewPager.PageTransformer {
         val MIN_SCALE = 0.75f
@@ -146,14 +122,14 @@ class ReviewActivity : AppCompatActivity(), Communication {
             }
         }
 
-
     }
 
     private fun showStatusTestDialog() {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         val viewGroup = findViewById<ViewGroup>(android.R.id.content)
         //then we will inflate the custom alert dialog xml that we created
-        val dialogView = LayoutInflater.from(this).inflate(com.app.learnquizjp.R.layout.dialog_status_test, viewGroup, false)
+        val dialogView =
+            LayoutInflater.from(this).inflate(com.app.learnquizjp.R.layout.dialog_status_test, viewGroup, false)
         //Now we need an AlertDialog.Builder object
         val builder = AlertDialog.Builder(this)
         //setting the view of the builder to our custom view that we already inflated
@@ -161,13 +137,13 @@ class ReviewActivity : AppCompatActivity(), Communication {
         //finally creating the alert dialog and displaying it
         val alertDialog = builder.create()
         //Creatr adater
-        for (i in 0..(dataChkQz.size-1)) {
+        for (i in 0..(dataChkQz.size - 1)) {
             if (dataChkQz[i].qzstatuschk == 0) {
                 totalChecked += 1
             }
         }
-        dialogView.tv_totalChecked.text= "Đã làm: ${35-totalChecked} câu"
-        totalChecked=0
+        dialogView.tv_totalChecked.text = "Đã làm: ${35 - totalChecked} câu"
+        totalChecked = 0
         val answerAdapter = ChkAnswerAdapter(dataChkQz)
         var viewManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         // create recycler view
@@ -194,7 +170,6 @@ class ReviewActivity : AppCompatActivity(), Communication {
         }
         alertDialog.show()
     }
-
 
 
 }

@@ -60,7 +60,7 @@ class ReviewFragment : Fragment() {
             }
         }
         btn_show_answer.setOnClickListener {
-            val dialog = BottomSheetDialog(this!!.activity!!)
+            val dialog = BottomSheetDialog(this.activity!!)
             val view = layoutInflater.inflate(R.layout.dialog_show_answer, null)
             val close = view.findViewById<ImageView>(R.id.iv_close)
             close.setOnClickListener {

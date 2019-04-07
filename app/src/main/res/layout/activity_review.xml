@@ -6,14 +6,12 @@
 
     <LinearLayout
             android:padding="@dimen/nav_header_vertical_spacing"
-            android:weightSum="10"
+            android:weightSum="9"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/graylight"
             android:orientation="horizontal">
-
-
 
         <TextView
                 android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
@@ -24,28 +22,13 @@
                 android:id="@+id/tv_status_quiz_r"
                 android:textColor="@color/black"
                 android:layout_width="0dp"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
         />
         <TextView
-                android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
-                android:layout_marginRight="@dimen/nav_header_vertical_spacing"
-                android:background="@drawable/shape_clook"
-                android:layout_weight="3"
-                android:id="@+id/tv_clook"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/black"
-        />
-
-
-
-
-        <TextView
-                android:gravity="center"
-                android:text="Đã làm: 2/35"
+                android:text="Kiểm tra"
                 android:id="@+id/tv_review"
                 android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
                 android:layout_marginRight="@dimen/nav_header_vertical_spacing"
@@ -56,9 +39,8 @@
                 android:layout_gravity="center"
         />
 
-
         <Button
-                android:layout_weight="2.5"
+                android:layout_weight="3"
                 android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
                 android:layout_marginRight="@dimen/nav_header_vertical_spacing"
                 android:id="@+id/btn_submit"
