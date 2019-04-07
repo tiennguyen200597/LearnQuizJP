@@ -14,13 +14,10 @@ import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
 import com.app.learnquizjp.service.QuestionService
 import com.google.gson.Gson
-
 import kotlinx.android.synthetic.main.activity_prepare.*
 import kotlinx.android.synthetic.main.content_prepare.*
 import java.io.IOException
 import java.nio.charset.Charset
-
-
 class PrepareActivity : AppCompatActivity() {
     //io
     private val JSON_FILE = "question.json"
@@ -38,7 +35,7 @@ class PrepareActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         animateButton()
-        // get data
+        // get data by json sever
         listQuestion= getData() as ArrayList<Question>
         arrtest=listQuestion
         //sort
