@@ -2,7 +2,9 @@ package com.app.learnquizjp.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -10,13 +12,20 @@ import android.widget.Button
 import com.app.learnquizjp.base.MyBounceInterpolator
 import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
+import com.app.learnquizjp.service.QuestionService
+import com.google.gson.Gson
 
 import kotlinx.android.synthetic.main.activity_prepare.*
 import kotlinx.android.synthetic.main.content_prepare.*
-import android.support.v7.app.AlertDialog
+import java.io.IOException
+import java.nio.charset.Charset
 
 
 class PrepareActivity : AppCompatActivity() {
+    //io
+    private val JSON_FILE = "question.json"
+    private val TAG = "MainActivity"
+    val charset: Charset = Charsets.UTF_8
     // list for change position
     var lsQS: ArrayList<String> = ArrayList()
     var arrtest: ArrayList<Question> = ArrayList()
@@ -29,20 +38,8 @@ class PrepareActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         animateButton()
-        for (i: Int in 0..34) {
-            var question = Question(
-                i,
-                "学費はすべてアルバイトで 賄って いる ${i + 1}",
-                "しはらって ${i + 1}",
-                "まかなって ${i + 1}",
-                "うるおって ${i + 1}",
-                "ふるって ${i + 1}",
-                "Đáp án chính xác là đéo biết",
-                5,
-                5
-            )
-            listQuestion.add(question)
-        }
+        // get data
+        listQuestion= getData() as ArrayList<Question>
         arrtest=listQuestion
         //sort
         for (i in 0..34) {
@@ -106,5 +103,30 @@ class PrepareActivity : AppCompatActivity() {
                 animateButton()
             }
         })
+    }
+    /* Convert JSON String Model via GSON */
+    fun getData(): List<Question> {
+        val jsonString = getAssetsJSON(JSON_FILE)
+        Log.d(TAG, "Json: " + jsonString!!)
+        val gson = Gson()
+        val base = gson.fromJson(jsonString, QuestionService::class.java)
+        return base.question
+    }
+    /* Get File in Assets Folder */
+    fun getAssetsJSON(fileName: String): String? {
+        var json: String? = null
+        try {
+            val inputStream = this.assets.open(fileName)
+            val size = inputStream.available()
+            val buffer = ByteArray(size)
+            inputStream.read(buffer)
+            inputStream.close()
+            json = String(buffer, charset)
+
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        return json
     }
 }
