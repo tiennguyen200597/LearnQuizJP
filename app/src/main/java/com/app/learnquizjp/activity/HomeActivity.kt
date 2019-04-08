@@ -31,7 +31,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(com.app.learnquizjp.R.layout.activity_home)
         setSupportActionBar(toolbar)
         showFragment(homeFragment)
-        getUserInformation()
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             R.string.navigation_drawer_open,
@@ -39,8 +38,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
         nav_view.setNavigationItemSelectedListener(this)
+        getUserInformation()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -106,6 +105,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
         var username : String = sharedPreferences.getString("USERNAME","")
         var email : String = sharedPreferences.getString("EMAIL","")
+
         tvUsername.text = username
         tvEmail.text = email
     }

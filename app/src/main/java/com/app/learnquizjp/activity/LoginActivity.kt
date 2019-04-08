@@ -33,9 +33,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun getLastLoginStatus(){
         var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
-        edtUsername.setText(sharedPreferences.getString("USERNAME",""))
-        edtPassword.setText(sharedPreferences.getString("PASSWORD","1234"))
         cbRemember.isChecked = sharedPreferences.getBoolean("STATUS",false)
+        if(cbRemember.isChecked){
+            edtUsername.setText(sharedPreferences.getString("USERNAME",""))
+            edtPassword.setText(sharedPreferences.getString("PASSWORD","1234"))
+        }else{
+            edtUsername.text = null
+            edtPassword.text = null
+        }
     }
 
     private fun checkLoginInformation(){
@@ -71,15 +76,11 @@ class LoginActivity : AppCompatActivity() {
     private fun rememberUserInfomation(u : String,p : String,status : Boolean){
         var sharePreferences = this.getSharedPreferences("USER_ACCOUNT", Context.MODE_PRIVATE)
         val editor = sharePreferences!!.edit()
-        if(!status){
-            editor.clear()
-        }else{
-            editor.putString("USERNAME",u)
-            editor.putString("PASSWORD",p)
-            editor.putBoolean("STATUS",status)
-        }
+        editor.clear()
+        editor.putString("USERNAME",u)
+        editor.putString("PASSWORD",p)
+        editor.putBoolean("STATUS",status)
         editor.apply()
     }
-
 
 }
