@@ -1,6 +1,7 @@
 package com.app.learnquizjp.activity
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.app.learnquizjp.R
@@ -31,7 +33,12 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(com.app.learnquizjp.R.layout.activity_home)
         setSupportActionBar(toolbar)
         showFragment(homeFragment)
-        getUserInformation()
+        var sharedPreferences : SharedPreferences = this.getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
+        var username : String = sharedPreferences.getString("USERNAME","")
+        Log.e("username",username)
+        var email : String? = sharedPreferences.getString("EMAIL","")
+//        tvUsername.text = username
+//        tvEmail.text = email
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             R.string.navigation_drawer_open,
@@ -102,13 +109,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun getUserInformation(){
-        var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
-        var username : String = sharedPreferences.getString("USERNAME","")
-        var email : String = sharedPreferences.getString("EMAIL","")
-        tvUsername.text = username
-        tvEmail.text = email
-    }
+//    private fun getUserInformation(){
+//        var sharedPreferences = this.getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
+//        var username : String = sharedPreferences.getString("USERNAME","")
+//        var email : String = sharedPreferences.getString("EMAIL","")
+//        Log.i("data",username + email)
+//        tvUsername!!.setText(username)
+//        tvEmail?.text = email
+//    }
 
     private fun showFragment(fragment : Fragment){
         var fragmentManager : FragmentManager = supportFragmentManager

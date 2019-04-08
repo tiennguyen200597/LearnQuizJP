@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun getLastLoginStatus(){
-        var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
+        var sharedPreferences = this.getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
         edtUsername.setText(sharedPreferences.getString("USERNAME",""))
         edtPassword.setText(sharedPreferences.getString("PASSWORD","1234"))
         cbRemember.isChecked = sharedPreferences.getBoolean("STATUS",false)
@@ -57,8 +57,8 @@ class LoginActivity : AppCompatActivity() {
 
         }else{
             if((username == "admin" && password == "admin") ||
-                (((username == "namnt") || (username == "tiennv")) && password == getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE).getString("PASSWORD","1234"))){
-                rememberUserInfomation(username,password,cbRemember.isChecked)
+                (((username == "namnt") || (username == "tiennv")) && password == "1234")){
+                rememberUserInformation(username,password,cbRemember.isChecked)
                 Toast.makeText(this@LoginActivity,getString(R.string.login_successful),Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
                 finish()
@@ -68,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun rememberUserInfomation(u : String,p : String,status : Boolean){
+    private fun rememberUserInformation(u : String,p : String,status : Boolean){
         var sharePreferences = this.getSharedPreferences("USER_ACCOUNT", Context.MODE_PRIVATE)
         val editor = sharePreferences!!.edit()
         if(!status){

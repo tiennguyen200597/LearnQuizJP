@@ -85,6 +85,10 @@
     <!--UserFragment-->
     <string name="user_fragment_action_save">Save</string>
     <string name="user_fragment_action_cancel">Cancel</string>
+    <string name="user_fragment_title">User Profile</string>
+    <string name="user_fragment_username">username</string>
+    <string name="user_fragment_email">email</string>
+    <string name="user_fragment_password">password</string>
 
     <!--ChooseLevelLearningActivity-->
     <string name="title_activity_choose_level_learning">ChooseLevelLearningActivity</string>
@@ -111,10 +115,6 @@
     <string name="quiz_tv_practice_title">Practice session</string>
     <string name="quiz_tv_test_title">Quiz session </string>
     <string name="tv_detail">Xem chi tiết</string>
-    <string name="user_fragment_title">User Profile</string>
-    <string name="user_fragment_username">username</string>
-    <string name="user_fragment_email">email</string>
-    <string name="user_fragment_password">password</string>
 
 
 </resources>
