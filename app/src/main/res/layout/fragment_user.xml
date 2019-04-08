@@ -13,31 +13,31 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="#ffffff"
-                android:layout_gravity="center">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:layout_gravity="center">
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/user_fragment_title"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="30sp"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_fragment_title"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="8dp"/>
 
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:orientation="horizontal"
-                    android:weightSum="5"
-                    android:padding="8dp"
-                    android:layout_margin="8dp">
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:padding="8dp"
+                android:layout_margin="8dp">
 
                 <LinearLayout
                         android:layout_width="0dp"
@@ -46,75 +46,60 @@
                         android:orientation="vertical">
 
                     <ImageButton
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_action_camera"
-                            android:id="@+id/btnCamera"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_action_camera"
+                        android:id="@+id/btnCamera"/>
 
                     <ImageButton
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_action_folder_open"
-                            android:id="@+id/btnFolder"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_action_folder_open"
+                        android:id="@+id/btnFolder"/>
 
                 </LinearLayout>
 
                 <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4"
-                        android:src="@drawable/noimg"
-                        android:layout_gravity="center"
-                        android:id="@+id/imgUserAva"/>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:src="@drawable/noimg"
+                    android:layout_gravity="center"
+                    android:id="@+id/imgUserAva"/>
 
             </LinearLayout>
 
             <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/user_fragment_username"
-                    android:id="@+id/edtUsername"
-                    android:enabled="false"
-                    android:layout_margin="8dp"/>
-
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/user_fragment_email"
-                    android:id="@+id/edtEmail"
-                    android:inputType="textEmailAddress"
-                    android:layout_margin="8dp"/>
-
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/user_fragment_password"
-                    android:id="@+id/edtPassword"
-                    android:inputType="textPassword"
-                    android:layout_margin="8dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_fragment_email"
+                android:id="@+id/edtEmail"
+                android:enabled="false"
+                android:inputType="textEmailAddress"
+                android:layout_margin="8dp"/>
 
             <LinearLayout
-                    android:layout_width="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp">
+
+                <Button
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_margin="16dp">
+                    android:id="@+id/btnAdd"
+                    android:text="@string/user_fragment_action_save"/>
 
                 <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/btnAdd"
-                        android:text="@string/user_fragment_action_save"/>
-
-                <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/btnCancel"
-                        android:text="@string/user_fragment_action_cancel"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnReset"
+                    android:text="@string/user_fragment_action_reset_password"/>
 
             </LinearLayout>
 

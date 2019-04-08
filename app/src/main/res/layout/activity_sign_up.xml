@@ -18,6 +18,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+            <ProgressBar
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/progressBar"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"/>
+
             <LinearLayout
                     android:id="@+id/linearLoginForm"
                     android:layout_width="match_parent"
@@ -54,16 +62,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="8dp"
+                        app:counterEnabled="true">
 
                     <EditText
-                            android:id="@+id/edtUsername"
+                            android:id="@+id/edtEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/prompt_username"
-                            android:inputType="text"
+                            android:inputType="textEmailAddress"
                             android:maxLines="1"
-                            android:singleLine="true"/>
+                            android:singleLine="true"
+                            android:selectAllOnFocus="true"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -71,7 +81,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="8dp"
+                        app:counterEnabled="true">
 
                     <EditText
                             android:id="@+id/edtPassword"
@@ -83,7 +94,8 @@
                             android:imeOptions="actionUnspecified"
                             android:inputType="textPassword"
                             android:maxLines="1"
-                            android:singleLine="true"/>
+                            android:singleLine="true"
+                            android:selectAllOnFocus="true"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -91,7 +103,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="32dp">
+                        android:layout_marginBottom="32dp"
+                        app:counterEnabled="true">
 
                     <EditText
                             android:id="@+id/edtRePassword"
@@ -103,7 +116,8 @@
                             android:imeOptions="actionUnspecified"
                             android:inputType="textPassword"
                             android:maxLines="1"
-                            android:singleLine="true"/>
+                            android:singleLine="true"
+                            android:selectAllOnFocus="true"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -123,19 +137,20 @@
                     android:textColor="@color/colorPrimary"
                     android:background="@drawable/shape"/>
 
+            <TextView
+                    android:id="@+id/tvLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_tv_back_login"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginTop="48dp"
+                    android:textSize="18sp"/>
+
         </LinearLayout>
 
     </ScrollView>
 
-    <TextView
-            android:id="@+id/tvLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/register_tv_back_login" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.498"/>
+
 
 </android.support.constraint.ConstraintLayout>
 

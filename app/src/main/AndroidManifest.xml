@@ -9,13 +9,15 @@
 
     <application
             android:allowBackup="true"
+            android:hardwareAccelerated="false"
             android:icon="@mipmap/ic_launcher_round"
             android:label="@string/app_name"
+            android:largeHeap="true"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            android:hardwareAccelerated="false"
-            android:largeHeap="true">
+            android:theme="@style/AppTheme">
+        <activity android:name=".activity.ResetPasswordActivity">
+        </activity>
         <activity
                 android:name=".activity.ReviewActivity"
                 android:label="@string/title_activity_review"
@@ -25,15 +27,16 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.app.learnquizjp.activity.ResultActivity"/>
         </activity>
-
-        <activity android:name=".activity.QuizActivity"
-                  android:parentActivityName=".activity.HomeActivity">
+        <activity
+                android:name=".activity.QuizActivity"
+                android:parentActivityName=".activity.HomeActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.app.learnquizjp.activity.HomeActivity"/>
         </activity>
-        <activity android:name=".activity.ChooseLevelPracticeActivity"
-                  android:parentActivityName=".activity.QuizActivity">
+        <activity
+                android:name=".activity.ChooseLevelPracticeActivity"
+                android:parentActivityName=".activity.QuizActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.app.learnquizjp.activity.QuizActivity"/>
@@ -101,8 +104,8 @@
         <activity
                 android:name=".activity.SignUpActivity"
                 android:label="@string/title_activity_sign_up"
-                android:theme="@style/AppTheme.NoActionBar"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
                 android:name=".activity.LoginActivity"
@@ -110,7 +113,6 @@
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
-
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@
     <string name="title_login_fb">LOGIN WITH FACEBOOK</string>
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->
-    <string name="prompt_username">Username</string>
+    <string name="prompt_username">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="prompt_repassword">Repassword (optional)</string>
     <string name="action_sign_in">LOGIN</string>
@@ -27,20 +27,32 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="login_tv_register_new_account">Register new account</string>
+    <string name="login_tv_register_new_account">Not a member? Get registered now!</string>
     <string name="login_cb_remember">Remember me</string>
-    <string name="notify_empty_user">Username can not be empty</string>
-    <string name="notify_length_pass">Password length at least 4 characters</string>
+    <string name="notify_empty_email">Email can not be empty</string>
+    <string name="notify_length_pass">Password too short, enter minimum 6 characters!</string>
     <string name="notify_empty_pass">Password can not be empty</string>
     <string name="login_successful">Login successful</string>
-    <string name="login_fail">Login fail</string>
+    <string name="login_fail">Authentication failed, check your email and password or sign up</string>
+    <string name="login_forget_password">Forget your password ?</string>
+
 
     <!--SignUpActivity-->
-    <string name="register_tv_back_login">Already have account</string>
+    <string name="register_tv_back_login">Already have account? Login now</string>
     <string name="action_register">Register</string>
     <string name="register_tv_title">Register new account</string>
     <string name="register_tv_warning">All field has been required</string>
+    <string name="signup_password_not_match">Password not match</string>
+    <string name="register_successful">createUserWithEmail:onComplete:</string>
 
+    <!--ResetPasswordActivity-->
+    <string name="forgot_pass_title">Reset your password</string>
+    <string name="forgot_pass_confirm">We just need your registered Email Id to sent you password reset instructions
+    </string>
+    <string name="action_reset_password">Reset password</string>
+    <string name="forgot_pass_empty_email">Enter your registered email id</string>
+    <string name="forgot_pass_sent_successful">We have sent you instructions to reset your password!</string>
+    <string name="forgot_pass_sent_fail">Failed to send reset email!</string>
 
     <!--HomeActivity-->
     <string name="home_btn_search">Search</string>
@@ -84,11 +96,12 @@
 
     <!--UserFragment-->
     <string name="user_fragment_action_save">Save</string>
-    <string name="user_fragment_action_cancel">Cancel</string>
     <string name="user_fragment_title">User Profile</string>
     <string name="user_fragment_username">username</string>
     <string name="user_fragment_email">email</string>
     <string name="user_fragment_password">password</string>
+    <string name="user_fragment_action_reset_password">Reset password</string>
+
 
     <!--ChooseLevelLearningActivity-->
     <string name="title_activity_choose_level_learning">ChooseLevelLearningActivity</string>
@@ -113,7 +126,7 @@
     <string name="quiz_tv_practice">Practice</string>
     <string name="quiz_tv_test">Test</string>
     <string name="quiz_tv_practice_title">Practice session</string>
-    <string name="quiz_tv_test_title">Quiz session </string>
+    <string name="quiz_tv_test_title">Quiz session</string>
     <string name="tv_detail">Xem chi tiết</string>
 
 

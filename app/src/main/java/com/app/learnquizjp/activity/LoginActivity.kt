@@ -5,17 +5,29 @@ import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import android.text.TextUtils
+import android.view.View
 import android.widget.Toast
 import com.app.learnquizjp.R
-
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
+
+
 
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Init FireBase Auth and auto login if have account
+//        var auth : FirebaseAuth = FirebaseAuth.getInstance()
+//        if(auth.currentUser != null){
+//            startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
+//            finish()
+//        }
+        //Set the view now
         setContentView(com.app.learnquizjp.R.layout.activity_login)
+
         //Get SharePreference to get the last status
         getLastLoginStatus()
 
@@ -29,55 +41,76 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
+        tvForgetPass.setOnClickListener {
+            startActivity(Intent(this@LoginActivity,ResetPasswordActivity::class.java))
+            finish()
+        }
+
     }
 
     private fun getLastLoginStatus(){
         var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
         cbRemember.isChecked = sharedPreferences.getBoolean("STATUS",false)
         if(cbRemember.isChecked){
-            edtUsername.setText(sharedPreferences.getString("USERNAME",""))
+            edtEmail.setText(sharedPreferences.getString("EMAIL",""))
             edtPassword.setText(sharedPreferences.getString("PASSWORD","1234"))
         }else{
-            edtUsername.text = null
+            edtEmail.text = null
             edtPassword.text = null
         }
     }
 
     private fun checkLoginInformation(){
-        var username : String = edtUsername.text.toString().trim()
+        var auth : FirebaseAuth = FirebaseAuth.getInstance()
+        var email : String = edtEmail.text.toString().trim()
         var password : String = edtPassword.text.toString().trim()
-        if(password.length < 4 || username.isEmpty() || password.isEmpty()){
 
-            if(username.isEmpty()){
-                edtUsername.error = getString(R.string.notify_empty_user);
-            }
+        if(TextUtils.isEmpty(email)){
+            edtEmail.error = getString(R.string.notify_empty_email)
+            return
+        }
+        if(TextUtils.isEmpty(password)){
+            edtPassword.error = getString(R.string.notify_empty_pass)
+            return
+        }
+//        if(password.length < 6){
+//            edtPassword.error = getString(R.string.notify_length_pass)
+//            return
+//        }
+        progressBar.visibility = View.VISIBLE
 
-            if(password.length < 4){
-                edtPassword.error = getString(R.string.notify_length_pass);
-            }
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this@LoginActivity) { task ->
+            // If sign in fails, display a message to the user. If sign in succeeds
+            // the auth state listener will be notified and logic to handle the
+            // signed in user can be handled in the listener.
+            progressBar.visibility = View.GONE
 
-            if(password.isEmpty()){
-                edtPassword.error = getString(R.string.notify_empty_pass);
-            }
-
-        }else{
-            if((username == "admin" && password == "admin") ||
-                (((username == "namnt") || (username == "tiennv")) && password == getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE).getString("PASSWORD","1234"))){
-                rememberUserInfomation(username,password,cbRemember.isChecked)
+            if(!task.isSuccessful){
+                // there was an error
+                when {
+                    email == "admin@gmail.com" && password == "admin" -> {
+                        rememberUserInfomation(email,password,cbRemember.isChecked)
+                        Toast.makeText(this@LoginActivity,getString(R.string.login_successful),Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
+                        finish()
+                    }
+                    password.length < 6 -> edtPassword.error = getString(R.string.notify_length_pass)
+                    else -> Toast.makeText(this@LoginActivity, getString(R.string.login_fail), Toast.LENGTH_LONG).show()
+                }
+            }else {
+                rememberUserInfomation(email,password,cbRemember.isChecked)
                 Toast.makeText(this@LoginActivity,getString(R.string.login_successful),Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
+                startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                 finish()
-            }else{
-                Toast.makeText(this@LoginActivity,getString(R.string.login_fail),Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun rememberUserInfomation(u : String,p : String,status : Boolean){
+    private fun rememberUserInfomation(e : String,p : String,status : Boolean){
         var sharePreferences = this.getSharedPreferences("USER_ACCOUNT", Context.MODE_PRIVATE)
         val editor = sharePreferences!!.edit()
         editor.clear()
-        editor.putString("USERNAME",u)
+        editor.putString("EMAIL",e)
         editor.putString("PASSWORD",p)
         editor.putBoolean("STATUS",status)
         editor.apply()

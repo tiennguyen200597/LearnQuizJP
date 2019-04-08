@@ -9,12 +9,11 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.app.learnquizjp.R
 import com.app.learnquizjp.fragment.*
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
@@ -33,7 +32,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(com.app.learnquizjp.R.layout.activity_home)
         setSupportActionBar(toolbar)
         showFragment(homeFragment)
-
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             com.app.learnquizjp.R.string.navigation_drawer_open,
@@ -70,33 +68,19 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        var auth : FirebaseAuth = FirebaseAuth.getInstance()
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            com.app.learnquizjp.R.id.nav_home -> {
-                showFragment(homeFragment)
-            }
-            com.app.learnquizjp.R.id.nav_learning -> {
-                // Handle the camera action
-                startActivity(Intent(this, LearningActivity::class.java))
-            }
-            com.app.learnquizjp.R.id.nav_quiz -> {
-                startActivity(Intent(this,QuizActivity::class.java))
-            }
-            com.app.learnquizjp.R.id.nav_setting -> {
-                showFragment(settingFragment)
-            }
-            com.app.learnquizjp.R.id.nav_feedback -> {
-                showFragment(feedbackFragment)
-            }
-            com.app.learnquizjp.R.id.nav_about -> {
-                showFragment(aboutFragment)
-            }
-            com.app.learnquizjp.R.id.nav_log_out -> {
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
+            R.id.nav_home -> showFragment(homeFragment)
+            R.id.nav_learning -> startActivity(Intent(this, LearningActivity::class.java))
+            R.id.nav_quiz -> startActivity(Intent(this,QuizActivity::class.java))
+            R.id.nav_setting -> showFragment(settingFragment)
+            R.id.nav_feedback -> showFragment(feedbackFragment)
+            R.id.nav_about -> showFragment(aboutFragment)
+            R.id.nav_log_out -> {
+                auth.signOut()
             }
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
@@ -106,13 +90,12 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var username : String = sharedPreferences.getString("USERNAME","")
         var email : String = sharedPreferences.getString("EMAIL","")
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
-        navigationView.setNavigationItemSelectedListener(this)
         val header = navigationView.getHeaderView(0)
         header.tvUsername.text = username
         header.tvEmail.text = email
         header.imgUserAva.setOnClickListener {
             showFragment(userFragment)
-            drawer_layout.closeDrawer(Gravity.START,false)
+            drawer_layout.closeDrawer(GravityCompat.START,false)
         }
     }
 
