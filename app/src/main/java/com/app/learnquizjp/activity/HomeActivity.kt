@@ -9,12 +9,14 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import com.app.learnquizjp.R
 import com.app.learnquizjp.fragment.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
-import kotlinx.android.synthetic.main.nav_header_home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 
 
@@ -31,7 +33,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(com.app.learnquizjp.R.layout.activity_home)
         setSupportActionBar(toolbar)
         showFragment(homeFragment)
-        getUserInformation()
+
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             com.app.learnquizjp.R.string.navigation_drawer_open,
@@ -39,8 +41,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
         nav_view.setNavigationItemSelectedListener(this)
+        getUserInformation()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -70,9 +72,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            com.app.learnquizjp.R.id.imgUserAva -> {
-                showFragment(userFragment)
-            }
             com.app.learnquizjp.R.id.nav_home -> {
                 showFragment(homeFragment)
             }
@@ -106,11 +105,15 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
         var username : String = sharedPreferences.getString("USERNAME","")
         var email : String = sharedPreferences.getString("EMAIL","")
-        val navigationView = findViewById<NavigationView>(com.app.learnquizjp.R.id.nav_view)
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
         val header = navigationView.getHeaderView(0)
         header.tvUsername.text = username
         header.tvEmail.text = email
+        header.imgUserAva.setOnClickListener {
+            showFragment(userFragment)
+            drawer_layout.closeDrawer(Gravity.START,false)
+        }
     }
 
     private fun showFragment(fragment : Fragment){
