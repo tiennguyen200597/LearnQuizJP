@@ -11,11 +11,11 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.app.learnquizjp.R
 import com.app.learnquizjp.fragment.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.nav_header_home.*
+import kotlinx.android.synthetic.main.nav_header_home.view.*
 
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -31,15 +31,16 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(com.app.learnquizjp.R.layout.activity_home)
         setSupportActionBar(toolbar)
         showFragment(homeFragment)
+        getUserInformation()
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
+            com.app.learnquizjp.R.string.navigation_drawer_open,
+            com.app.learnquizjp.R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+
         nav_view.setNavigationItemSelectedListener(this)
-        getUserInformation()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -69,29 +70,29 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.imgUserAva -> {
+            com.app.learnquizjp.R.id.imgUserAva -> {
                 showFragment(userFragment)
             }
-            R.id.nav_home -> {
+            com.app.learnquizjp.R.id.nav_home -> {
                 showFragment(homeFragment)
             }
-            R.id.nav_learning -> {
+            com.app.learnquizjp.R.id.nav_learning -> {
                 // Handle the camera action
                 startActivity(Intent(this, LearningActivity::class.java))
             }
-            R.id.nav_quiz -> {
+            com.app.learnquizjp.R.id.nav_quiz -> {
                 startActivity(Intent(this,QuizActivity::class.java))
             }
-            R.id.nav_setting -> {
+            com.app.learnquizjp.R.id.nav_setting -> {
                 showFragment(settingFragment)
             }
-            R.id.nav_feedback -> {
+            com.app.learnquizjp.R.id.nav_feedback -> {
                 showFragment(feedbackFragment)
             }
-            R.id.nav_about -> {
+            com.app.learnquizjp.R.id.nav_about -> {
                 showFragment(aboutFragment)
             }
-            R.id.nav_log_out -> {
+            com.app.learnquizjp.R.id.nav_log_out -> {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
@@ -105,9 +106,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
         var username : String = sharedPreferences.getString("USERNAME","")
         var email : String = sharedPreferences.getString("EMAIL","")
-
-        tvUsername.text = username
-        tvEmail.text = email
+        val navigationView = findViewById<NavigationView>(com.app.learnquizjp.R.id.nav_view)
+        navigationView.setNavigationItemSelectedListener(this)
+        val header = navigationView.getHeaderView(0)
+        header.tvUsername.text = username
+        header.tvEmail.text = email
     }
 
     private fun showFragment(fragment : Fragment){
@@ -116,8 +119,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if(fragment.isAdded){
             fragmentTransaction.show(fragment)
         }else{
-            fragmentTransaction.replace(R.id.container,fragment)
+            fragmentTransaction.replace(com.app.learnquizjp.R.id.container,fragment)
         }
         fragmentTransaction.commit()
     }
+
 }
