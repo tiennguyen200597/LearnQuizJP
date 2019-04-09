@@ -14,6 +14,7 @@ import android.view.MenuItem
 import com.app.learnquizjp.R
 import com.app.learnquizjp.fragment.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
@@ -41,6 +42,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
         getUserInformation()
+        val storage = FirebaseStorage.getInstance()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -78,7 +80,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_feedback -> showFragment(feedbackFragment)
             R.id.nav_about -> showFragment(aboutFragment)
             R.id.nav_log_out -> {
-                auth.signOut()
+                startActivity(Intent(this@HomeActivity,LoginActivity::class.java))
+                finish()
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)

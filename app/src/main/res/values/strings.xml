@@ -101,8 +101,11 @@
     <string name="user_fragment_password">password</string>
     <string name="user_fragment_action_reset_password">Reset password</string>
     <string name="action_cancel">Cancel</string>
-
-
+    <string name="notify_input_new_password">Input your new password</string>
+    <string name="notify_change_password_successful">Password is updated, sign in with new password!</string>
+    <string name="notify_change_password_fail">Failed to update password!</string>
+    <string name="notify_upload_avatar_fail">Image can not be uploaded ! Please check your connection</string>
+    <string name="notify_upload_avatar_successful">Upload image successful</string>
 
     <!--ChooseLevelLearningActivity-->
     <string name="title_activity_choose_level_learning">ChooseLevelLearningActivity</string>
@@ -129,9 +132,6 @@
     <string name="quiz_tv_practice_title">Practice session</string>
     <string name="quiz_tv_test_title">Quiz session</string>
     <string name="tv_detail">Xem chi tiết</string>
-    <string name="notify_input_new_password">Input your new password</string>
-    <string name="notify_change_password_successful">Password is updated, sign in with new password!</string>
-    <string name="notify_change_password_fail">Failed to update password!</string>
 
 
 </resources>
