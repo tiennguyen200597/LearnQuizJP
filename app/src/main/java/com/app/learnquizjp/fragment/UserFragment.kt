@@ -13,15 +13,19 @@ import kotlinx.android.synthetic.main.fragment_user.view.*
 import android.app.AlertDialog
 import android.content.Context
 import com.app.learnquizjp.R
-
+import kotlinx.android.synthetic.main.dialog_update_password.*
+import android.widget.Toast
 
 class UserFragment : Fragment(){
 
+    private lateinit var auth : FirebaseAuth
+    private lateinit var authListener : FirebaseAuth.AuthStateListener
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view : View = inflater.inflate(R.layout.fragment_user, container, false)
-        var auth : FirebaseAuth = FirebaseAuth.getInstance()
-        var user : FirebaseUser? = auth.currentUser
-        var authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+        auth = FirebaseAuth.getInstance()
+        val user : FirebaseUser? = auth.currentUser
+        authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
             if (user == null) {
                 // user auth state is changed - user is null
@@ -37,16 +41,46 @@ class UserFragment : Fragment(){
             val dialogView = inflater.inflate(R.layout.dialog_update_password, null)
             dialog.setView(dialogView)
             val dialog_update_password = dialog.show()
+            btnReset.setOnClickListener {
+                if (user != null && edtPassword.text.toString().trim() != "") {
+                    if (edtPassword.text.toString().trim().length < 6) {
+                        edtPassword.error = getString(R.string.notify_length_pass)
+                    } else {
+                        user.updatePassword(edtPassword.text.toString().trim()).addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Toast.makeText(activity, getString(R.string.notify_change_password_successful), Toast.LENGTH_SHORT).show()
+                                signOut()
+                            } else {
+                                Toast.makeText(activity, getString(R.string.notify_change_password_fail), Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                } else if (edtPassword.text.toString().trim() == "") {
+                    edtPassword.error = getString(R.string.notify_input_new_password)
+                }
+            }
+            btnCancel.setOnClickListener {
+                dialog_update_password.dismiss()
+            }
+
         }
 
         return view
     }
+    fun signOut(){
+        auth.signOut()
+    }
 
-//    private fun getUserInformation(){
-//        var sharedPreferences = container.getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
-//        var username : String = sharedPreferences.getString("USERNAME","")
-//        var email : String = sharedPreferences.getString("EMAIL","")
-//        tvUsername.text = username
-//        tvEmail.text = email
-//    }
+
+    override fun onStart() {
+        super.onStart()
+        auth.addAuthStateListener { authListener }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if(authListener != null){
+            auth.removeAuthStateListener { authListener }
+        }
+    }
 }

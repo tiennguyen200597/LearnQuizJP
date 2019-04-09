@@ -21,6 +21,14 @@
             "package_name": "com.app.learnquizjp",
             "certificate_hash": "1c092531d72ea6f4a2f18e5c87c59a0ac40b3ee5"
           }
+        },
+        {
+          "client_id": "491213962585-9thc9fojgfi68trdsqibcu28i0b5hj5g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.learnquizjp",
+            "certificate_hash": "2ec5aa755a9a0879917ddb9751f1ea883cc907e7"
+          }
         }
       ],
       "api_key": [

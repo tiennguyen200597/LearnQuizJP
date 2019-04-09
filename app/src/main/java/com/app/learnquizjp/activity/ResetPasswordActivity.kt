@@ -26,7 +26,7 @@ class ResetPasswordActivity : AppCompatActivity() {
 
         btnReset.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View) {
-                val email = edtEmail.getText().toString().trim()
+                val email = edtEmail.text.toString().trim()
                 if (TextUtils.isEmpty(email)) {
                     edtEmail.error = getString(R.string.forgot_pass_empty_email)
                     return
