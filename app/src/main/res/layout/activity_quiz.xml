@@ -37,7 +37,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"/>
 
-git            <TextView
+            <TextView
                     android:id="@+id/tvPractice"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"

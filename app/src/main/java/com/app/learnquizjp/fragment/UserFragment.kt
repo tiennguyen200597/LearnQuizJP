@@ -9,6 +9,9 @@ import com.app.learnquizjp.activity.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import android.content.Intent
+import kotlinx.android.synthetic.main.fragment_user.view.*
+import android.app.AlertDialog
+import android.content.Context
 import com.app.learnquizjp.R
 
 
@@ -27,6 +30,15 @@ class UserFragment : Fragment(){
                 activity!!.finish()
             }
         }
+
+        view.btnReset.setOnClickListener {
+            val dialog = AlertDialog.Builder(context)
+            val inflater = activity!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val dialogView = inflater.inflate(R.layout.dialog_update_password, null)
+            dialog.setView(dialogView)
+            val dialog_update_password = dialog.show()
+        }
+
         return view
     }
 
