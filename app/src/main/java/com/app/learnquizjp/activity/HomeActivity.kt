@@ -87,11 +87,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun getUserInformation(){
         var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
-        var username : String = sharedPreferences.getString("USERNAME","")
         var email : String = sharedPreferences.getString("EMAIL","")
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val header = navigationView.getHeaderView(0)
-        header.tvUsername.text = username
         header.tvEmail.text = email
         header.imgUserAva.setOnClickListener {
             showFragment(userFragment)
@@ -105,7 +103,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if(fragment.isAdded){
             fragmentTransaction.show(fragment)
         }else{
-            fragmentTransaction.replace(com.app.learnquizjp.R.id.container,fragment)
+            fragmentTransaction.replace(R.id.container,fragment)
         }
         fragmentTransaction.commit()
     }

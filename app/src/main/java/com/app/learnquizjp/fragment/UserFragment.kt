@@ -11,7 +11,10 @@ import com.google.firebase.auth.FirebaseUser
 import android.content.Intent
 import kotlinx.android.synthetic.main.fragment_user.view.*
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.widget.Button
+import android.widget.EditText
 import com.app.learnquizjp.R
 import kotlinx.android.synthetic.main.dialog_update_password.*
 import android.widget.Toast
@@ -40,7 +43,10 @@ class UserFragment : Fragment(){
             val inflater = activity!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val dialogView = inflater.inflate(R.layout.dialog_update_password, null)
             dialog.setView(dialogView)
-            val dialog_update_password = dialog.show()
+            val dialog_update_password : Dialog = dialog.show()
+            val edtPassword : EditText =  dialog_update_password.edtPassword
+            val btnReset : Button = dialog_update_password.btnReset
+            val btnCancel : Button = dialog_update_password.btnCancel
             btnReset.setOnClickListener {
                 if (user != null && edtPassword.text.toString().trim() != "") {
                     if (edtPassword.text.toString().trim().length < 6) {
@@ -49,7 +55,7 @@ class UserFragment : Fragment(){
                         user.updatePassword(edtPassword.text.toString().trim()).addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 Toast.makeText(activity, getString(R.string.notify_change_password_successful), Toast.LENGTH_SHORT).show()
-                                signOut()
+                                auth.signOut()
                             } else {
                                 Toast.makeText(activity, getString(R.string.notify_change_password_fail), Toast.LENGTH_SHORT).show()
                             }
@@ -67,10 +73,6 @@ class UserFragment : Fragment(){
 
         return view
     }
-    fun signOut(){
-        auth.signOut()
-    }
-
 
     override fun onStart() {
         super.onStart()
