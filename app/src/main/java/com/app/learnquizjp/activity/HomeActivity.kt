@@ -22,17 +22,12 @@ import kotlinx.android.synthetic.main.nav_header_home.view.*
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private val homeFragment : HomeFragment = HomeFragment()
-    private val settingFragment : SettingFragment = SettingFragment()
-    private val feedbackFragment : FeedbackFragment = FeedbackFragment()
-    private val aboutFragment : AboutFragment = AboutFragment()
-    private val userFragment : UserFragment = UserFragment()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.app.learnquizjp.R.layout.activity_home)
         setSupportActionBar(toolbar)
-        showFragment(homeFragment)
+        var fragment = HomeFragment()
+        loadFragment(fragment)
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             com.app.learnquizjp.R.string.navigation_drawer_open,
@@ -42,7 +37,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
         getUserInformation()
-        val storage = FirebaseStorage.getInstance()
+        //val storage = FirebaseStorage.getInstance()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -70,15 +65,28 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        var fragment : Fragment
         var auth : FirebaseAuth = FirebaseAuth.getInstance()
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_home -> showFragment(homeFragment)
+            R.id.nav_home -> {
+                fragment = HomeFragment()
+                loadFragment(fragment)
+            }
             R.id.nav_learning -> startActivity(Intent(this, LearningActivity::class.java))
             R.id.nav_quiz -> startActivity(Intent(this,QuizActivity::class.java))
-            R.id.nav_setting -> showFragment(settingFragment)
-            R.id.nav_feedback -> showFragment(feedbackFragment)
-            R.id.nav_about -> showFragment(aboutFragment)
+            R.id.nav_setting -> {
+                fragment = SettingFragment()
+                loadFragment(fragment)
+            }
+            R.id.nav_feedback -> {
+                fragment = FeedbackFragment()
+                loadFragment(fragment)
+            }
+            R.id.nav_about -> {
+                fragment = AboutFragment()
+                loadFragment(fragment)
+            }
             R.id.nav_log_out -> {
                 startActivity(Intent(this@HomeActivity,LoginActivity::class.java))
                 finish()
@@ -89,18 +97,19 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun getUserInformation(){
+        var fragment = UserFragment()
         var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
         var email : String = sharedPreferences.getString("EMAIL","")
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val header = navigationView.getHeaderView(0)
         header.tvEmail.text = email
         header.imgUserAva.setOnClickListener {
-            showFragment(userFragment)
+            loadFragment(fragment)
             drawer_layout.closeDrawer(GravityCompat.START,false)
         }
     }
 
-    private fun showFragment(fragment : Fragment){
+    private fun loadFragment(fragment : Fragment){
         var fragmentManager : FragmentManager = supportFragmentManager
         var fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
         if(fragment.isAdded){

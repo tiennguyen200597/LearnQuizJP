@@ -17,4 +17,5 @@
     <color name="pink">#41FFDFDF</color>
     <color name="redlight">#FB6565</color>
     <color name="orange">#FF8400</color>
+    <color name="bgBottomNavigation">#3CA0D8</color>
 </resources>
