@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import com.app.learnquizjp.R
+import com.app.learnquizjp.base.ConstantsPro.Companion.JSON_FILE
+import com.app.learnquizjp.base.ConstantsPro.Companion.LISTQUESTION
+import com.app.learnquizjp.base.ConstantsPro.Companion.LISTQUESTIONQRI
 import com.app.learnquizjp.base.MyBounceInterpolator
 import com.app.learnquizjp.model.ABCDQuestion
 import com.app.learnquizjp.model.Question
@@ -19,9 +22,7 @@ import kotlinx.android.synthetic.main.content_prepare.*
 import java.io.IOException
 import java.nio.charset.Charset
 class PrepareActivity : AppCompatActivity() {
-    //io
-    private val JSON_FILE = "question.json"
-    private val TAG = "MainActivity"
+
     val charset: Charset = Charsets.UTF_8
     // list for change position
     var lsQS: ArrayList<String> = ArrayList()
@@ -61,17 +62,18 @@ class PrepareActivity : AppCompatActivity() {
         btn_start.setOnClickListener { onStartQuiz() }
     }
 
-    fun onStartQuiz(){
+    private fun onStartQuiz(){
         val dialog = AlertDialog.Builder(this)
-        dialog.setTitle("Confirmation")
-        dialog.setMessage("Are you sure to start the quiz now ?")
-        dialog.setNegativeButton("Yes") { _, _ ->
+        dialog.setTitle(getString(R.string.prepare_ac_up))
+        dialog.setMessage(getString(R.string.prepare_ac_up_check))
+        dialog.setNegativeButton(getString(R.string.prepare_ac_yes)) { _, _ ->
             var intent = Intent(this@PrepareActivity,TestActivity::class.java)
-            intent.putExtra("listQuestion",arrtest)
-            intent.putExtra("listQuestionQri",listQuestion)
+            intent.putExtra(LISTQUESTION,arrtest)
+            //load to db
+            intent.putExtra(LISTQUESTIONQRI,listQuestion)
             startActivity(intent)
         }
-        dialog.setPositiveButton("No") { dialog, _ -> dialog.dismiss() }
+        dialog.setPositiveButton(getString(R.string.prepare_ac_no)) { dialog, _ -> dialog.dismiss() }
         dialog.show()
     }
 
@@ -104,13 +106,12 @@ class PrepareActivity : AppCompatActivity() {
     /* Convert JSON String Model via GSON */
     fun getData(): List<Question> {
         val jsonString = getAssetsJSON(JSON_FILE)
-        Log.d(TAG, "Json: " + jsonString!!)
         val gson = Gson()
         val base = gson.fromJson(jsonString, QuestionService::class.java)
         return base.question
     }
     /* Get File in Assets Folder */
-    fun getAssetsJSON(fileName: String): String? {
+    private fun getAssetsJSON(fileName: String): String? {
         var json: String? = null
         try {
             val inputStream = this.assets.open(fileName)

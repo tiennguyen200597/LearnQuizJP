@@ -4,8 +4,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import com.app.learnquizjp.Constants.Companion.CREATE_KOTOBA_TABLE
-import com.app.learnquizjp.Constants.Companion.KOTOBA_TABLE
+import com.app.learnquizjp.base.Constants.Companion.CREATE_KOTOBA_TABLE
+import com.app.learnquizjp.base.Constants.Companion.KOTOBA_TABLE
 
 
 class DBHelper(context: Context?) : SQLiteOpenHelper(context, "dictionary.sql", null, 1) {

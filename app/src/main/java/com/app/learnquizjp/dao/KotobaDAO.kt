@@ -1,6 +1,6 @@
 package com.app.learnquizjp.dao
 
-import com.app.learnquizjp.Constants
+import com.app.learnquizjp.base.Constants
 import android.content.ContentValues
 import android.content.Context
 import com.app.learnquizjp.database.DBHelper

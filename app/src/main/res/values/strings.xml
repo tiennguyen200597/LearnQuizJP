@@ -132,6 +132,17 @@
     <string name="quiz_tv_practice_title">Practice session</string>
     <string name="quiz_tv_test_title">Quiz session</string>
 
+    <!--TestActivity-->
+    <string name="test_ac_up">Nộp bài thi</string>
+    <string name="test_ac_up_check">Bạn đã chắc chắn muốn nộp bài?</string>
+    <string name="test_ac_igon">Đồng ý</string>
+    <string name="test_ac_cancle">Hủy</string>
+
+    <!--PrepareActivity-->
+    <string name="prepare_ac_up">Confirmation</string>
+    <string name="prepare_ac_up_check">Are you sure to start the quiz now ?</string>
+    <string name="prepare_ac_yes">Yes</string>
+    <string name="prepare_ac_no">No</string>
 
     <!--LearningDetailActivity-->
     <string name="title_activity_learning_detail">LearningDetailActivity</string>

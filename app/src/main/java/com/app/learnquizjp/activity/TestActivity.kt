@@ -15,7 +15,6 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
-import com.app.learnquizjp.R
 import com.app.learnquizjp.fragment.TestFragment
 import kotlinx.android.synthetic.main.test_activity.*
 import java.util.concurrent.TimeUnit
@@ -26,11 +25,10 @@ import com.app.learnquizjp.base.RecyclerItemClickListener
 import com.app.learnquizjp.model.Question
 import kotlinx.android.synthetic.main.dialog_status_test.view.*
 import android.content.Intent
-import kotlinx.android.synthetic.main.dialog_status_test.*
-import kotlinx.android.synthetic.main.test_fragment.*
-
-
-
+import com.app.learnquizjp.R
+import com.app.learnquizjp.base.ConstantsPro.Companion.DATACHKQZ
+import com.app.learnquizjp.base.ConstantsPro.Companion.LISTQUESTION
+import com.app.learnquizjp.base.ConstantsPro.Companion.LISTQUESTIONQRI
 
 
 class TestActivity : AppCompatActivity(), Communication {
@@ -42,14 +40,10 @@ class TestActivity : AppCompatActivity(), Communication {
     var totalChecked: Int = 0
     var mPager: ViewPager? = null
     var mPagerAdapter: PagerAdapter? = null
-    // list danh sach da dao
-    var lsQS: ArrayList<String> = ArrayList()
-    // arr de trao cu hoi
-
+    // arr sort
     var listQuestion : ArrayList<Question> = ArrayList()
     var listQuestionQri : ArrayList<Question> = ArrayList()
     //  mang arr de load len man hinh
-    var loatASls: ArrayList<Question> = ArrayList()
     lateinit var timer: CounterClass
     var dataChkQz : ArrayList<Question> = ArrayList()
 
@@ -64,9 +58,9 @@ class TestActivity : AppCompatActivity(), Communication {
         val intent = intent
         val bd = intent.extras
         if (bd != null) {
-            listQuestion = bd.get("listQuestion") as ArrayList<Question>
-            listQuestionQri = bd.get("listQuestionQri") as ArrayList<Question>
-
+            listQuestion = bd.get(LISTQUESTION) as ArrayList<Question>
+            //
+            listQuestionQri = bd.get(LISTQUESTIONQRI) as ArrayList<Question>
         }
         // creat timet count downl
         timer = CounterClass(TOTAL_TIMER * 60 * 1000, 1000)
@@ -243,15 +237,15 @@ class TestActivity : AppCompatActivity(), Communication {
     // submit dialog
     private fun dialogSubmit() {
         val builder = AlertDialog.Builder(this@TestActivity)
-        builder.setTitle("Nộp bài thi")
-        builder.setMessage("Bạn đã chắc chắn muốn nộp bài?")
-        builder.setPositiveButton("Đồng ý") { _, _ ->
+        builder.setTitle(getString(R.string.test_ac_up))
+        builder.setMessage(getString(R.string.test_ac_up_check))
+        builder.setPositiveButton(getString(R.string.test_ac_igon)) { _, _ ->
             var intent: Intent=Intent(this@TestActivity,ResultActivity::class.java)
-            intent.putExtra("listQuestionQri",listQuestionQri)
-            intent.putExtra("dataChkQz",dataChkQz)
+            intent.putExtra(LISTQUESTIONQRI,listQuestionQri)
+            intent.putExtra(DATACHKQZ,dataChkQz)
             startActivity(intent)
         }
-        builder.setNegativeButton("Hủy") { _, _ ->
+        builder.setNegativeButton(getString(R.string.test_ac_cancle)) { _, _ ->
 
         }
         builder.show()

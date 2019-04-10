@@ -1,11 +1,9 @@
-package com.app.learnquizjp
+package com.app.learnquizjp.base
 
 open class Constants {
 
     companion object {
-
         const val isDEBUG = true
-
         //User Table
         const val KOTOBA_TABLE = "kotoba"
         //Column
