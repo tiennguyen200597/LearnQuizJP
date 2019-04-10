@@ -131,7 +131,16 @@
     <string name="quiz_tv_test">Test</string>
     <string name="quiz_tv_practice_title">Practice session</string>
     <string name="quiz_tv_test_title">Quiz session</string>
-    <string name="tv_detail">Xem chi tiết</string>
+
+
+    <!--LearningDetailActivity-->
+    <string name="title_activity_learning_detail">LearningDetailActivity</string>
+    <string name="title_word">New word</string>
+    <string name="title_grammar">Grammar</string>
+    <string name="title_kanji">Kanji</string>
+    <string name="title_bot_word">Word</string>
+    <string name="title_bot_grammar">Grammar</string>
+    <string name="title_bot_kanji">Kanji</string>
 
 
 </resources>

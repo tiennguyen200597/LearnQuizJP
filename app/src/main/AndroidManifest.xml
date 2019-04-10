@@ -16,6 +16,14 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity
+                android:name=".activity.LearningDetailActivity"
+                android:label="@string/title_activity_learning_detail"
+                android:parentActivityName=".activity.ChooseLevelLearningActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.app.learnquizjp.activity.ChooseLevelLearningActivity"/>
+        </activity>
         <activity android:name=".activity.ResetPasswordActivity">
         </activity>
         <activity
