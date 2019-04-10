@@ -143,6 +143,7 @@
     <string name="prepare_ac_up_check">Are you sure to start the quiz now ?</string>
     <string name="prepare_ac_yes">Yes</string>
     <string name="prepare_ac_no">No</string>
+    <!--LearningActivity-->
 
     <!--LearningDetailActivity-->
     <string name="title_activity_learning_detail">LearningDetailActivity</string>
