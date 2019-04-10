@@ -1,6 +1,5 @@
 package com.app.learnquizjp.activity
 
-
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,11 +8,12 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import com.app.learnquizjp.R
+import com.app.learnquizjp.base.ConstantsPro.Companion.EMAIL
+import com.app.learnquizjp.base.ConstantsPro.Companion.PASSWORD
+import com.app.learnquizjp.base.ConstantsPro.Companion.STATUS
+import com.app.learnquizjp.base.ConstantsPro.Companion.USER_ACCOUNT
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
-
-
-
 
 class LoginActivity : AppCompatActivity() {
 
@@ -49,11 +49,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun getLastLoginStatus(){
-        var sharedPreferences = getSharedPreferences("USER_ACCOUNT",MODE_PRIVATE)
-        cbRemember.isChecked = sharedPreferences.getBoolean("STATUS",false)
+        var sharedPreferences = getSharedPreferences(USER_ACCOUNT,MODE_PRIVATE)
+        cbRemember.isChecked = sharedPreferences.getBoolean(STATUS,false)
         if(cbRemember.isChecked){
-            edtEmail.setText(sharedPreferences.getString("EMAIL",""))
-            edtPassword.setText(sharedPreferences.getString("PASSWORD","1234"))
+            edtEmail.setText(sharedPreferences.getString(EMAIL,""))
+            edtPassword.setText(sharedPreferences.getString(PASSWORD,"1234"))
         }else{
             edtEmail.text = null
             edtPassword.text = null
@@ -110,9 +110,9 @@ class LoginActivity : AppCompatActivity() {
         var sharePreferences = this.getSharedPreferences("USER_ACCOUNT", Context.MODE_PRIVATE)
         val editor = sharePreferences!!.edit()
         editor.clear()
-        editor.putString("EMAIL",e)
-        editor.putString("PASSWORD",p)
-        editor.putBoolean("STATUS",status)
+        editor.putString(EMAIL,e)
+        editor.putString(PASSWORD,p)
+        editor.putBoolean(STATUS,status)
         editor.apply()
     }
 

@@ -16,6 +16,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.learnquizjp.adapter.ChkAnswerAdapter
+import com.app.learnquizjp.base.ConstantsPro.Companion.DATACHKQZ
+import com.app.learnquizjp.base.ConstantsPro.Companion.LISTQUESTIONQRI
 import com.app.learnquizjp.base.RecyclerItemClickListener
 import com.app.learnquizjp.fragment.ReviewFragment
 import com.app.learnquizjp.model.Question
@@ -41,8 +43,8 @@ class ReviewActivity : AppCompatActivity() {
         val intent = intent
         val bd = intent.extras
         if (bd != null) {
-            listQuestion = bd.get("dataChkQz") as ArrayList<Question>
-            listQuestionQri = bd.get("listQuestionQri") as ArrayList<Question>
+            listQuestion = bd.get(DATACHKQZ) as ArrayList<Question>
+            listQuestionQri = bd.get(LISTQUESTIONQRI) as ArrayList<Question>
         }
 
         mPager = findViewById<ViewPager>(com.app.learnquizjp.R.id.page_r)

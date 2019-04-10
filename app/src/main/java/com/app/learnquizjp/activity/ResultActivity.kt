@@ -2,11 +2,11 @@ package com.app.learnquizjp.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import com.app.learnquizjp.R
+import com.app.learnquizjp.base.ConstantsPro.Companion.DATACHKQZ
+import com.app.learnquizjp.base.ConstantsPro.Companion.LISTQUESTIONQRI
 import com.app.learnquizjp.model.Question
-
 import kotlinx.android.synthetic.main.activity_result.*
 import kotlinx.android.synthetic.main.content_result.*
 
@@ -25,8 +25,8 @@ class ResultActivity : AppCompatActivity() {
         val intent = intent
         val bd = intent.extras
         if (bd != null) {
-            listQuestionQri = bd.get("listQuestionQri") as ArrayList<Question>
-            dataChkQz = bd.get("dataChkQz") as ArrayList<Question>
+            listQuestionQri = bd.get(LISTQUESTIONQRI) as ArrayList<Question>
+            dataChkQz = bd.get(DATACHKQZ) as ArrayList<Question>
         }
         for (i in 0..(dataChkQz.size-1)){
             if (dataChkQz[i].qzstatuschk==0){
@@ -46,8 +46,8 @@ class ResultActivity : AppCompatActivity() {
         tv_totalDoNot.text="${totalDoNot}/${dataChkQz.size}"
         btn_review.setOnClickListener {
             var inreview:Intent= Intent(this@ResultActivity,ReviewActivity::class.java)
-            inreview.putExtra("listQuestionQri",listQuestionQri)
-            inreview.putExtra("dataChkQz",dataChkQz)
+            inreview.putExtra(LISTQUESTIONQRI,listQuestionQri)
+            inreview.putExtra(DATACHKQZ,dataChkQz)
             startActivity(inreview)
         }
 
