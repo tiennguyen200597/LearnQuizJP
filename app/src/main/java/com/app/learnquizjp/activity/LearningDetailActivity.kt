@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import com.app.learnquizjp.R
 import kotlinx.android.synthetic.main.activity_learning_detail.*
 
+
 class LearningDetailActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
