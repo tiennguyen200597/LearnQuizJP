@@ -16,12 +16,21 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import com.app.learnquizjp.R
 import kotlinx.android.synthetic.main.dialog_update_password.*
 import android.widget.Toast
+import com.app.learnquizjp.base.ConstantsPro.Companion.REQUEST_CODE_CAMERA_IMAGE
+import com.app.learnquizjp.base.ConstantsPro.Companion.REQUEST_CODE_FOLDER_IMAGE
+import com.app.learnquizjp.model.User
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 
@@ -30,7 +39,6 @@ class UserFragment : Fragment(){
     private lateinit var auth : FirebaseAuth
     private lateinit var authListener : FirebaseAuth.AuthStateListener
     private lateinit var storage : FirebaseStorage
-    private val REQUEST_CODE_IMAGE : Int = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view : View = inflater.inflate(R.layout.fragment_user, container, false)
@@ -38,7 +46,6 @@ class UserFragment : Fragment(){
         auth = FirebaseAuth.getInstance()
         val user : FirebaseUser? = auth.currentUser
         storage = FirebaseStorage.getInstance()
-        val storageRef = storage.getReferenceFromUrl("gs://learnquizjp.appspot.com/")
         authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
             if (user == null) {
@@ -48,39 +55,44 @@ class UserFragment : Fragment(){
                 activity!!.finish()
             }
         }
-        //Set avatar
-//        var islandRef = storageRef.child("avatar.png")
-//
-//        Glide.with(activity!!)
-//            .load(islandRef)
-//            .into(view.imgUserAva)
+        val ref = FirebaseDatabase.getInstance().getReference("users")
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                val user = dataSnapshot.getValue(User::class.java)
+                // ...
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w("result", "loadPost:onCancelled", databaseError.toException())
+                // ...
+            }
+        }
+        ref.addValueEventListener(postListener)
+
+
+            //Set avatar
+            //        var islandRef = storageRef.child("avatar.png")
+            //
+            //        Glide.with(activity!!)
+            //            .load(islandRef)
+            //            .into(view.imgUserAva)
+
 
         view.btnCamera.setOnClickListener {
-            startActivityForResult(Intent(MediaStore.ACTION_IMAGE_CAPTURE),REQUEST_CODE_IMAGE)
+            startActivityForResult(Intent(MediaStore.ACTION_IMAGE_CAPTURE),REQUEST_CODE_CAMERA_IMAGE)
+        }
+
+        view.btnFolder.setOnClickListener{
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent,REQUEST_CODE_FOLDER_IMAGE)
         }
 
         view.btnAdd.setOnClickListener {
 //            var calendar = Calendar.getInstance()
-
-            val mountainsRef = storageRef.child("avatar.png")
-            // Get the data from an ImageView as bytes
-            view.imgUserAva.isDrawingCacheEnabled = true
-            view.imgUserAva.buildDrawingCache()
-            val bitmap = (view.imgUserAva.drawable as BitmapDrawable).bitmap
-            val baos = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
-            val data = baos.toByteArray()
-
-            var uploadTask = mountainsRef.putBytes(data)
-            uploadTask.addOnFailureListener {
-                // Handle unsuccessful uploads
-                Toast.makeText(activity,getString(R.string.notify_upload_avatar_fail),Toast.LENGTH_SHORT).show()
-            }.addOnSuccessListener {
-                // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-                // ...
-                Toast.makeText(activity,getString(R.string.notify_upload_avatar_successful),Toast.LENGTH_SHORT).show()
-
-            }
+            uploadImageToFirebaseStorage()
         }
 
         view.btnReset.setOnClickListener {
@@ -119,13 +131,20 @@ class UserFragment : Fragment(){
         return view
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    var selectedPhotoUri : Uri? = null
 
-        if(requestCode == REQUEST_CODE_IMAGE && resultCode == RESULT_OK && data != null){
-            var bitmap : Bitmap = data.extras.get("data") as Bitmap
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQUEST_CODE_CAMERA_IMAGE && resultCode == RESULT_OK && data != null){
+            val bitmap : Bitmap = data.extras.get("data") as Bitmap
             view!!.imgUserAva.setImageBitmap(bitmap)
         }
-        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQUEST_CODE_FOLDER_IMAGE && resultCode == RESULT_OK && data != null){
+            selectedPhotoUri = data.data
+            val bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver,selectedPhotoUri)
+            view!!.imgUserAva.setImageBitmap(bitmap)
+
+        }
     }
 
     override fun onStart() {
@@ -138,5 +157,48 @@ class UserFragment : Fragment(){
         if(authListener != null){
             auth.removeAuthStateListener { authListener }
         }
+    }
+
+    private fun uploadImageToFirebaseStorage(){
+        val storageRef = storage.getReferenceFromUrl("gs://learnquizjp.appspot.com")
+        val mountainsRef = storageRef.child("avatar.png")
+        // Get the data from an ImageView as bytes
+        view!!.imgUserAva.isDrawingCacheEnabled = true
+        view!!.imgUserAva.buildDrawingCache()
+        val bitmap = (view!!.imgUserAva.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        val data = baos.toByteArray()
+
+        var uploadTask = mountainsRef.putBytes(data)
+        uploadTask.addOnFailureListener {
+            // Handle unsuccessful uploads
+            Toast.makeText(activity,getString(R.string.notify_upload_avatar_fail),Toast.LENGTH_SHORT).show()
+        }.addOnSuccessListener {
+            // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+            // ...
+
+            mountainsRef.downloadUrl.addOnSuccessListener {
+                Log.e("url",it.toString())
+                saveUserToFirebaseDatabase(it.toString())
+            }.addOnFailureListener{
+                Toast.makeText(activity,"Error",Toast.LENGTH_SHORT).show()
+            }
+            Toast.makeText(activity,getString(R.string.notify_upload_avatar_successful),Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun saveUserToFirebaseDatabase(profileImageUrl : String){
+        val uid = FirebaseAuth.getInstance().uid ?: ""
+        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+
+        val user = User(uid, FirebaseAuth.getInstance().currentUser!!.email!!,profileImageUrl)
+        ref.setValue(user)
+            .addOnSuccessListener {
+                Toast.makeText(activity,getString(R.string.notify_save_user_successful),Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener{
+                Toast.makeText(activity,getString(R.string.notify_save_user_fail),Toast.LENGTH_SHORT).show()
+            }
     }
 }

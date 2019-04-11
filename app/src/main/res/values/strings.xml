@@ -106,6 +106,8 @@
     <string name="notify_change_password_fail">Failed to update password!</string>
     <string name="notify_upload_avatar_fail">Image can not be uploaded ! Please check your connection</string>
     <string name="notify_upload_avatar_successful">Upload image successful</string>
+    <string name="notify_save_user_successful">Save user information successful</string>
+    <string name="notify_save_user_fail">Failed to save user information. Error: ${it.message}</string>
 
     <!--ChooseLevelLearningActivity-->
     <string name="title_activity_choose_level_learning">ChooseLevelLearningActivity</string>
@@ -155,6 +157,7 @@
     <string name="title_bot_word">Word</string>
     <string name="title_bot_grammar">Grammar</string>
     <string name="title_bot_kanji">Kanji</string>
+
 
 
 </resources>

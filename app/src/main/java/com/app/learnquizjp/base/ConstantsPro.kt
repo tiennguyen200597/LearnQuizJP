@@ -13,7 +13,8 @@ class ConstantsPro {
         val PASSWORD = "PASSWORD"
         val STATUS = "STATUS"
         val USER_ACCOUNT = "USER_ACCOUNT"
-
+        val REQUEST_CODE_CAMERA_IMAGE = 1
+        val REQUEST_CODE_FOLDER_IMAGE = 2
     }
 
 
