@@ -158,4 +158,7 @@
     <string name="title_bot_grammar">Grammar</string>
     <string name="title_bot_kanji">Kanji</string>
 
+    <string name="facebook_app_id">320933768505220</string>
+    <string name="fb_login_protocol_scheme">fb320933768505220</string>
+
 </resources>

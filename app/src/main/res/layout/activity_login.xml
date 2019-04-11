@@ -120,7 +120,7 @@
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="16dp">
 
-                <ImageView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:src="@drawable/facebook"/>
+                <Login android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:src="@drawable/facebook"/>
 
                 <ImageView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:src="@drawable/google_plus"/>
 
