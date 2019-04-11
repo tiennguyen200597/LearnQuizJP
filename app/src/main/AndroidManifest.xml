@@ -18,12 +18,6 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".activity.WelcomeActivity"
-                android:configChanges="orientation|keyboardHidden|screenSize"
-                android:label="@string/title_activity_welcome"
-                android:theme="@style/FullscreenTheme">
-        </activity>
-        <activity
                 android:name=".activity.LearningDetailActivity"
                 android:label="@string/title_activity_learning_detail"
                 android:parentActivityName=".activity.ChooseLevelLearningActivity">

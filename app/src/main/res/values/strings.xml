@@ -158,28 +158,4 @@
     <string name="title_bot_grammar">Grammar</string>
     <string name="title_bot_kanji">Kanji</string>
 
-    <!--WelcomeActivity-->
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
-
-    <string name="slide_1_title">Learn everywhere</string>
-    <string name="slide_1_desc">The easiest way to control your learning progress everywhere</string>
-
-    <string name="slide_2_title">Challenge your skill</string>
-    <string name="slide_2_desc">Test your japanese ability</string>
-
-    <string name="slide_3_title">Track your Progress</string>
-    <string name="slide_3_desc"></string>
-
-    <string name="slide_4_title">Bookmark your favourites</string>
-    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
-
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear
-        data
-    </string>
-    <string name="play_again">Play Again</string>
-
-    <string name="title_activity_welcome">WelcomeActivity</string>
-
 </resources>
