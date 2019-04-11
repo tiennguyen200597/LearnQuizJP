@@ -11,4 +11,10 @@
     <dimen name="size_result">24sp</dimen>
     <!--margin quiz-->
     <dimen name="margin_quiz">8dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="dp30">30dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="dp120">120dp</dimen>
+    <dimen name="dp40">40dp</dimen>
 </resources>

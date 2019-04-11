@@ -15,6 +15,9 @@ class ConstantsPro {
         val USER_ACCOUNT = "USER_ACCOUNT"
         val REQUEST_CODE_CAMERA_IMAGE = 1
         val REQUEST_CODE_FOLDER_IMAGE = 2
+        val PRIVATE_MODE = 0
+        val PREF_NAME : String = "learnquizjp_welcome"
+        val IS_FIRST_TIME_LAUNCH : String = "IsFirstTimeLaunch"
     }
 
 
