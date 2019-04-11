@@ -27,6 +27,7 @@ import android.widget.Toast
 import com.app.learnquizjp.base.ConstantsPro.Companion.REQUEST_CODE_CAMERA_IMAGE
 import com.app.learnquizjp.base.ConstantsPro.Companion.REQUEST_CODE_FOLDER_IMAGE
 import com.app.learnquizjp.model.User
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -55,11 +56,20 @@ class UserFragment : Fragment(){
                 activity!!.finish()
             }
         }
-        val ref = FirebaseDatabase.getInstance().getReference("users")
-        val postListener = object : ValueEventListener {
+        val ref = FirebaseDatabase.getInstance().getReference("users").child(user!!.uid)
+        val userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
                 val user = dataSnapshot.getValue(User::class.java)
+                if (user != null) {
+                    view.tvEmail.text = user.username
+                    if(user.profileImageUrl == "default"){
+                        view.imgUserAva.setImageResource(R.drawable.anonymous_user)
+                    }else{
+                        context?.let { Glide.with(it).load(user.profileImageUrl).into(view.imgUserAva) }
+                    }
+                }
+
                 // ...
             }
 
@@ -69,7 +79,7 @@ class UserFragment : Fragment(){
                 // ...
             }
         }
-        ref.addValueEventListener(postListener)
+        ref.addValueEventListener(userListener)
 
 
             //Set avatar

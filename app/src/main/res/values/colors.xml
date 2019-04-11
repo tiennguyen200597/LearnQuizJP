@@ -9,6 +9,7 @@
     <!--color of ABCD-->
     <color name="siver">#7E7C7C</color>
     <color name="black">#000000</color>
+    <color name="dark_black">#FF000000</color>
     <color name="blacklight">#96D0CDD5</color>
     <color name="bluelight">#992FB3EF</color>
     <color name="graylight">#47B1ABAB</color>
