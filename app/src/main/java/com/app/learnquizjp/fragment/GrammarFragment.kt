@@ -8,15 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Button
+import android.widget.LinearLayout
 import com.app.learnquizjp.R
 import kotlinx.android.synthetic.main.fragment_grammar.view.*
 
 class GrammarFragment : Fragment(){
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view : View = inflater.inflate(R.layout.fragment_grammar, container, false)
         var slide_down : Animation = AnimationUtils.loadAnimation(context,R.anim.slide_down)
-        //var slide_up : Animation = AnimationUtils.loadAnimation(context,R.anim.slide_up)
+        var slide_up : Animation = AnimationUtils.loadAnimation(context,R.anim.slide_up)
         view.linear.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
         view.btnToggle1.setOnClickListener {
             var params : ViewGroup.LayoutParams = view.tvToggle1.layoutParams
@@ -86,5 +87,4 @@ class GrammarFragment : Fragment(){
 
         return view
     }
-
 }

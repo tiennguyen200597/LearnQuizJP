@@ -1,7 +1,6 @@
 package com.app.learnquizjp.fragment
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -106,8 +105,6 @@ class TestFragment : Fragment(){
             else -> ""
         }
     }
-
-
 }
 
 

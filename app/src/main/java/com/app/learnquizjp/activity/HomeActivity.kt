@@ -14,7 +14,6 @@ import android.view.MenuItem
 import com.app.learnquizjp.R
 import com.app.learnquizjp.fragment.*
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
@@ -26,8 +25,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(com.app.learnquizjp.R.layout.activity_home)
         setSupportActionBar(toolbar)
-        var fragment = HomeFragment()
-        loadFragment(fragment)
+        loadFragment(HomeFragment())
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             com.app.learnquizjp.R.string.navigation_drawer_open,
@@ -51,7 +49,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            com.app.learnquizjp.R.id.action_settings -> true
+            R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
     }

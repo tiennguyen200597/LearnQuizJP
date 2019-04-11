@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RadioButton
 import com.app.learnquizjp.R
 import com.app.learnquizjp.activity.ReviewActivity
 import com.app.learnquizjp.model.Question
@@ -40,24 +39,10 @@ class ReviewFragment : Fragment() {
         rad_answerC_r.text = loatASls[mPageNumber].asincortecT2
         rad_answerD_r.text = loatASls[mPageNumber].asincortecT3
         when (loatASls[mPageNumber].qzstatuschk) {
-            1 ->
-            {
-                rad_answerA_r.isChecked=true
-
-            }
-            2 -> {
-                rad_answerB_r.isChecked=true
-
-            }
-            3 ->
-            {
-                rad_answerC_r.isChecked=true
-
-            }
-            4 -> {
-                rad_answerD_r.isChecked=true
-
-            }
+            1 -> { rad_answerA_r.isChecked=true }
+            2 -> { rad_answerB_r.isChecked=true }
+            3 -> { rad_answerC_r.isChecked=true }
+            4 -> { rad_answerD_r.isChecked=true }
         }
         btn_show_answer.setOnClickListener {
             val dialog = BottomSheetDialog(this.activity!!)
@@ -71,14 +56,6 @@ class ReviewFragment : Fragment() {
             dialog.setContentView(view)
             dialog.show()
         }
-
-
-
-
-
-
-
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,7 +72,7 @@ class ReviewFragment : Fragment() {
     }
 
     fun create(pageNumber: Int): ReviewFragment {
-        val fragment: ReviewFragment = ReviewFragment()
+        val fragment = ReviewFragment()
         val args = Bundle()
         args.putInt(ARG_PAGE_R, pageNumber)
         fragment.arguments = args

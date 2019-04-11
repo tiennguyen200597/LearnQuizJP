@@ -2,6 +2,7 @@
   <dictionary name="Fox">
     <words>
       <w>hiragana</w>
+      <w>kanji</w>
     </words>
   </dictionary>
 </component>

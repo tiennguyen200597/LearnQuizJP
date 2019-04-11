@@ -46,7 +46,6 @@ class ChooseLevelLearningActivity : AppCompatActivity() {
             layoutManager = linearLayoutManager
             adapter = learningAdapter
         }
-
         rvLesson.addOnItemTouchListener(
             RecyclerItemClickListener(this@ChooseLevelLearningActivity,object : RecyclerItemClickListener.OnItemClickListener{
                 override fun onItemClick(view: View, position: Int) {
@@ -55,6 +54,5 @@ class ChooseLevelLearningActivity : AppCompatActivity() {
             })
         )
     }
-
 
 }

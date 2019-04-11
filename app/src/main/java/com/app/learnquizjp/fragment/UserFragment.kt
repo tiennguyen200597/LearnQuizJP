@@ -81,15 +81,6 @@ class UserFragment : Fragment(){
         }
         ref.addValueEventListener(userListener)
 
-
-            //Set avatar
-            //        var islandRef = storageRef.child("avatar.png")
-            //
-            //        Glide.with(activity!!)
-            //            .load(islandRef)
-            //            .into(view.imgUserAva)
-
-
         view.btnCamera.setOnClickListener {
             startActivityForResult(Intent(MediaStore.ACTION_IMAGE_CAPTURE),REQUEST_CODE_CAMERA_IMAGE)
         }

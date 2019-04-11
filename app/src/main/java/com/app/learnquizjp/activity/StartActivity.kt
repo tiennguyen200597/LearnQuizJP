@@ -6,11 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Button
 import android.widget.ImageView
 import com.app.learnquizjp.R
 import com.app.learnquizjp.base.MyBounceInterpolator
-import kotlinx.android.synthetic.main.activity_start.*
 import java.util.*
 
 
