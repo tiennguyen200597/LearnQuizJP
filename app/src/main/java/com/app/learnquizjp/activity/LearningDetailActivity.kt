@@ -19,19 +19,19 @@ class LearningDetailActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         var fragment : Fragment
         when (item.itemId) {
-            com.app.learnquizjp.R.id.nav_bot_word -> {
+            R.id.nav_bot_word -> {
                 toolbar!!.title = getString(com.app.learnquizjp.R.string.title_word)
                 fragment = WordFragment()
                 loadFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
-            com.app.learnquizjp.R.id.nav_bot_grammar -> {
+            R.id.nav_bot_grammar -> {
                 toolbar!!.title = getString(com.app.learnquizjp.R.string.title_grammar)
                 fragment = GrammarFragment()
                 loadFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
-            com.app.learnquizjp.R.id.nav_bot_kanji -> {
+            R.id.nav_bot_kanji -> {
                 toolbar!!.title = getString(com.app.learnquizjp.R.string.title_kanji)
                 fragment = KanjiFragment()
                 loadFragment(fragment)
@@ -62,7 +62,7 @@ class LearningDetailActivity : AppCompatActivity() {
 
     private fun loadFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(com.app.learnquizjp.R.id.frame_container, fragment)
+        transaction.replace(R.id.frame_container, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }

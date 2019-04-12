@@ -63,11 +63,11 @@
     <string name="title_activity_start">StartActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="tv_lever_N1">N1</string>
-    <string name="tv_lever_N2">N2</string>
-    <string name="tv_lever_N3">N3</string>
-    <string name="tv_lever_N4">N4</string>
-    <string name="tv_lever_N5">N5</string>
+    <string name="tv_lever_N1">Japanese quiz level 1</string>
+    <string name="tv_lever_N2">Japanese quiz level 2</string>
+    <string name="tv_lever_N3">Japanese quiz level 3</string>
+    <string name="tv_lever_N4">Japanese quiz level 4</string>
+    <string name="tv_lever_N5">Japanese quiz level 5</string>
     <string name="tv_practice">Luyện tập</string>
     <string name="tv_test">Thi thử</string>
     <string name="tv_failnoti">Chúc bạn may mắn lần sau!</string>

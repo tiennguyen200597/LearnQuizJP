@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
 //            finish()
 //        }
         //Set the view now
-        setContentView(com.app.learnquizjp.R.layout.activity_login)
+        setContentView(R.layout.activity_login)
 
         //Get SharePreference to get the last status
         getLastLoginStatus()

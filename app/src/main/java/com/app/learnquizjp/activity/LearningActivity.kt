@@ -14,11 +14,11 @@ class LearningActivity : AppCompatActivity(),View.OnClickListener {
     override fun onClick(v: View?) {
         var id : Int = v!!.id
         when(id){
-            com.app.learnquizjp.R.id.imgN1 -> onActionChooseLearningLevel(1)
-            com.app.learnquizjp.R.id.imgN2 -> onActionChooseLearningLevel(2)
-            com.app.learnquizjp.R.id.imgN3 -> onActionChooseLearningLevel(3)
-            com.app.learnquizjp.R.id.imgN4 -> onActionChooseLearningLevel(4)
-            com.app.learnquizjp.R.id.imgN5 -> onActionChooseLearningLevel(5)
+            R.id.imgN1 -> onActionChooseLearningLevel(1)
+            R.id.imgN2 -> onActionChooseLearningLevel(2)
+            R.id.imgN3 -> onActionChooseLearningLevel(3)
+            R.id.imgN4 -> onActionChooseLearningLevel(4)
+            R.id.imgN5 -> onActionChooseLearningLevel(5)
         }
     }
 

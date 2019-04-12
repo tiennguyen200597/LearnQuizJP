@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_bot_word"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/word_icon"
         android:title="@string/title_bot_word"/>
 
     <item
         android:id="@+id/nav_bot_grammar"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/grammar_icon"
         android:title="@string/title_bot_grammar"/>
 
     <item
         android:id="@+id/nav_bot_kanji"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/kanji_icon"
         android:title="@string/title_bot_kanji"/>
 </menu>
