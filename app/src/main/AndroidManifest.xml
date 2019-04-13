@@ -41,6 +41,7 @@
         </activity>
         <activity
                 android:name=".activity.QuizActivity"
+                android:label="@string/title_activity_quiz"
                 android:parentActivityName=".activity.HomeActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -48,6 +49,7 @@
         </activity>
         <activity
                 android:name=".activity.ChooseLevelPracticeActivity"
+                android:label="@string/title_activity_choose_level_practice"
                 android:parentActivityName=".activity.QuizActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -55,6 +57,7 @@
         </activity>
         <activity
                 android:name=".activity.ChooseLevelTestActivity"
+                android:label="@string/title_activity_choose_level_test"
                 android:parentActivityName=".activity.QuizActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -71,7 +74,7 @@
         </activity>
         <activity
                 android:name=".activity.LearningActivity"
-                android:label="Chọn mức độ học"
+                android:label="@string/title_activity_learning"
                 android:parentActivityName=".activity.HomeActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -88,10 +91,12 @@
         </activity>
         <activity
                 android:name=".activity.TestActivity"
+                android:label="@string/title_activity_test"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
                 android:name=".activity.StartActivity"
+                android:label="@string/title_activity_start"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
