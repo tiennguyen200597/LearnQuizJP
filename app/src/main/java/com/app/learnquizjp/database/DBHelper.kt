@@ -22,4 +22,8 @@ class DBHelper(context: Context?) : SQLiteOpenHelper(context, "dictionary.sql", 
         db.execSQL("DROP TABLE IF EXISTS $KOTOBA_TABLE")
     }
 
+    fun importData(){
+
+    }
+
 }

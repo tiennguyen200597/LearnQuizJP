@@ -43,7 +43,6 @@
             <RadioGroup
                     android:enabled="false"
                     android:weightSum="4"
-                    android:id="@+id/radGroupQz_r"
                     android:minHeight="240dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

@@ -15,8 +15,7 @@
             android:text="@string/tv_status_test"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/textView2"
-        />
+    />
     <LinearLayout
             android:gravity="center"
             android:layout_weight="0.5"
@@ -58,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="7"
-                android:id="@+id/scrollView2">
+        >
             <android.support.v7.widget.RecyclerView
                     android:background="@color/pink"
                     android:id="@+id/rev_result_test"

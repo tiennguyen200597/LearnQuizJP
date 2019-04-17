@@ -47,7 +47,7 @@
             app:cardElevation="5dp"
             android:layout_margin="8dp"
             android:padding="8dp"
-            android:id="@+id/tv_lever_N4">
+    >
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
 
@@ -78,7 +78,7 @@
             app:cardElevation="5dp"
             android:layout_margin="8dp"
             android:padding="8dp"
-            android:id="@+id/tv_lever_N3">
+    >
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
 
@@ -109,7 +109,7 @@
             app:cardElevation="5dp"
             android:layout_margin="8dp"
             android:padding="8dp"
-            android:id="@+id/tv_lever_N2">
+    >
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
 
@@ -140,7 +140,7 @@
             app:cardElevation="5dp"
             android:layout_margin="8dp"
             android:padding="8dp"
-            android:id="@+id/tv_lever_N1">
+    >
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
 

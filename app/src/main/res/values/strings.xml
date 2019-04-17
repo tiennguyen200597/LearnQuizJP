@@ -51,16 +51,11 @@
     <string name="tv_lever_N3">Japanese quiz level 3</string>
     <string name="tv_lever_N4">Japanese quiz level 4</string>
     <string name="tv_lever_N5">Japanese quiz level 5</string>
-    <string name="tv_practice">Practice</string>
-    <string name="tv_test">Quiz</string>
     <string name="tv_failnoti">Good luck next time!</string>
     <string name="tv_true">Correct</string>
     <string name="tv_fail">Wrong</string>
     <string name="tv_do_not">Not finish</string>
-    <string name="tv_ready">Are you sure to start the quiz?</string>
-    <string name="tv_start_quiz">Start the quiz</string>
     <string name="tv_quizdemo">いくら良いマンションだと勧められても、家賃が月30万円もする のでは我々の（_____）庶民しょみんに借りられるはずがない。</string>
-    <string name="tv_start_test">Start</string>
     <string name="tv_status_test">Quiz</string>
     <string name="tv_cancer">Close</string>
     <string name="tv_click_view_test">Click the question to show more detail</string>
@@ -79,9 +74,7 @@
     <!--UserFragment-->
     <string name="user_fragment_action_save">Save</string>
     <string name="user_fragment_title">User Profile</string>
-    <string name="user_fragment_username">username</string>
     <string name="user_fragment_email">email</string>
-    <string name="user_fragment_password">password</string>
     <string name="user_fragment_action_reset_password">Reset password</string>
     <string name="action_cancel">Cancel</string>
     <string name="notify_input_new_password">Input your new password</string>
@@ -102,7 +95,6 @@
     <string name="title_activity_choose_level_test">Choose level test</string>
 
     <!--ReviewActivity-->
-    <string name="tv_totalChecked">Answer: %2$d</string>
     <string name="tv_view">Show Answer</string>
     <string name="title_activity_review">Review</string>
 
@@ -146,14 +138,7 @@
 
     <!--LearningDetailActivity-->
     <string name="title_activity_learning_detail">Learning Detail</string>
-    <string name="title_word">New word</string>
-    <string name="title_grammar">Grammar</string>
-    <string name="title_kanji">Kanji</string>
-    <string name="title_bot_word">Word</string>
-    <string name="title_bot_grammar">Grammar</string>
-    <string name="title_bot_kanji">Kanji</string>
 
     <string name="facebook_app_id">320933768505220</string>
-    <string name="fb_login_protocol_scheme">fb320933768505220</string>
 
 </resources>

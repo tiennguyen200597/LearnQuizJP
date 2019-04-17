@@ -9,7 +9,6 @@
         tools:context=".activity.LoginActivity">
 
     <ScrollView
-            android:id="@+id/login_form"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -27,7 +26,6 @@
                     android:visibility="gone"/>
 
             <LinearLayout
-                    android:id="@+id/linearLoginForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/round_corner_background"

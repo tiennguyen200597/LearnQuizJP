@@ -33,7 +33,6 @@
                         android:layout_width="20dp"
                         android:layout_marginTop="16dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tvN5"
                         android:layout_marginRight="16dp"/>
                 <ImageButton
                         android:layout_width="match_parent"
@@ -64,7 +63,7 @@
                         android:layout_width="20dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_height="wrap_content" android:id="@+id/tvN4"/>
+                        android:layout_height="wrap_content"/>
                 <ImageButton
                         android:layout_width="match_parent"
                         android:layout_height="150dp" app:srcCompat="@drawable/n4_learning"
@@ -93,7 +92,7 @@
                         android:layout_width="20dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_height="wrap_content" android:id="@+id/tvN3"/>
+                        android:layout_height="wrap_content"/>
                 <ImageButton
                         android:layout_width="match_parent"
                         android:layout_height="150dp" app:srcCompat="@drawable/n3_learning"
@@ -123,7 +122,7 @@
                         android:layout_width="20dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_height="wrap_content" android:id="@+id/tvN2"/>
+                        android:layout_height="wrap_content"/>
                 <ImageButton
                         android:layout_width="match_parent"
                         android:layout_height="150dp" app:srcCompat="@drawable/n2_learning"
@@ -153,7 +152,7 @@
                         android:layout_width="20dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_height="wrap_content" android:id="@+id/tvN1"/>
+                        android:layout_height="wrap_content"/>
                 <ImageButton
                         android:layout_width="match_parent"
                         android:layout_height="150dp" app:srcCompat="@drawable/n1_learning"
