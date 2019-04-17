@@ -239,13 +239,13 @@ class TestActivity : AppCompatActivity(), Communication {
         val builder = AlertDialog.Builder(this@TestActivity)
         builder.setTitle(getString(R.string.test_ac_up))
         builder.setMessage(getString(R.string.test_ac_up_check))
-        builder.setPositiveButton(getString(R.string.test_ac_igon)) { _, _ ->
+        builder.setPositiveButton(getString(R.string.test_ac_accept)) { _, _ ->
             var intent: Intent=Intent(this@TestActivity,ResultActivity::class.java)
             intent.putExtra(LISTQUESTIONQRI,listQuestionQri)
             intent.putExtra(DATACHKQZ,dataChkQz)
             startActivity(intent)
         }
-        builder.setNegativeButton(getString(R.string.test_ac_cancle)) { _, _ ->
+        builder.setNegativeButton(getString(R.string.test_ac_cancel)) { _, _ ->
 
         }
         builder.show()
