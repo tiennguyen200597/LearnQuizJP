@@ -13,7 +13,7 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
         tvPractice.setOnClickListener {
-            startActivity(Intent(this,ChooseLevelPracticeActivity::class.java))
+            startActivity(Intent(this,ChooseLevelTestActivity::class.java))
         }
         tvTest.setOnClickListener {
             startActivity(Intent(this,ChooseLevelTestActivity::class.java))
