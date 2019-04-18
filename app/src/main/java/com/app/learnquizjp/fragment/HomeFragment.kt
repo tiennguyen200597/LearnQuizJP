@@ -1,5 +1,6 @@
 package com.app.learnquizjp.fragment
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -16,6 +17,8 @@ import com.app.learnquizjp.model.Kotoba
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import com.facebook.FacebookSdk.getApplicationContext
 import android.widget.PopupMenu
+import com.app.learnquizjp.base.ConstantsPro.Companion.FIRST_TIME
+import com.app.learnquizjp.base.ConstantsPro.Companion.USER_ACCOUNT
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -34,7 +37,11 @@ class HomeFragment : Fragment(){
         storage = FirebaseStorage.getInstance()
         kotobaDAO = KotobaDAO(view.context)
         data.clear()
-        //kotobaDAO.initKotobaData()
+        val setting : SharedPreferences = view.context.getSharedPreferences(USER_ACCOUNT,0)
+        if(setting.getBoolean(FIRST_TIME,true)){
+            kotobaDAO.initKotobaData()
+            setting.edit().putBoolean(FIRST_TIME,false).commit()
+        }
         data = kotobaDAO.getAllKotoba()
         //Add Default kotoba to MutableList and show to HomeFragment
         addKotobaList(view,data)
