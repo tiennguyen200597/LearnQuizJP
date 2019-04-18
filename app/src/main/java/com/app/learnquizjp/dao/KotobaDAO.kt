@@ -155,4 +155,37 @@ class KotobaDAO(context : Context) : Constants(){
         return kotoba
     }
 
+    fun getSearchKotoba(id : Int): Kotoba? {
+
+        var kotoba : Kotoba? = null
+        val db = dbHelper!!.readableDatabase
+        var cursor = db.query(
+            KOTOBA_TABLE,
+            arrayOf(KOTOBA_HIRAGANA, KOTOBA_KANJI, KOTOBA_DESCRIPTION, KOTOBA_EXAMPLE),
+            "$KOTOBA_ID = ? ",
+            arrayOf(id.toString()),
+            null,
+            null,
+            null,
+            null
+        )
+
+        // moveToFirst : kiem tra xem cursor co chua du lieu khong, ham nay tra ve gia tri la true or false
+        if (cursor != null && cursor.moveToFirst()) {
+
+            val hiragana = cursor.getString(cursor.getColumnIndex(KOTOBA_HIRAGANA))
+
+            val kanji = cursor.getString(cursor.getColumnIndex(KOTOBA_KANJI))
+
+            val description = cursor.getString(cursor.getColumnIndex(KOTOBA_DESCRIPTION))
+
+            val example = cursor.getString(cursor.getColumnIndex(KOTOBA_EXAMPLE))
+
+            // khoi tao kotoba voi cac gia tri lay duoc
+            kotoba = Kotoba(hiragana, kanji, description, example)
+        }
+        cursor!!.close()
+        return kotoba
+    }
+
 }

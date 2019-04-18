@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.item_kotoba.view.*
 
 class DefaultAdapter : RecyclerView.Adapter<DefaultAdapter.ViewHolder>{
 
-    private var data : List<Kotoba>
+    private var data : MutableList<Kotoba>
 
-    constructor(data : List<Kotoba>) : super() {
+    constructor(data : MutableList<Kotoba>) : super() {
         this.data = data
     }
 

@@ -192,9 +192,9 @@ class UserFragment : Fragment(){
     private fun saveUserToFirebaseDatabase(profileImageUrl : String){
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-
-        val user = User(uid, FirebaseAuth.getInstance().currentUser!!.email!!,profileImageUrl)
+        val user = User(uid, FirebaseAuth.getInstance().currentUser!!.email!!)
         ref.setValue(user)
+        ref.child("profileImageUrl").setValue(profileImageUrl)
             .addOnSuccessListener {
                 Toast.makeText(activity,getString(R.string.notify_save_user_successful),Toast.LENGTH_SHORT).show()
             }
