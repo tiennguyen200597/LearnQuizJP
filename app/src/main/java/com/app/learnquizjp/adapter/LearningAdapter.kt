@@ -1,6 +1,5 @@
 package com.app.learnquizjp.adapter
 
-import android.R
 import android.widget.TextView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
