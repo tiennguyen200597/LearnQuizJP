@@ -8,7 +8,6 @@ import com.app.learnquizjp.base.Constants.Companion.CREATE_KOTOBA_TABLE
 import com.app.learnquizjp.base.Constants.Companion.DELETE_KOTOBA_DATA
 import com.app.learnquizjp.base.Constants.Companion.DELETE_KOTOBA_TABLE
 
-
 class DBHelper(context: Context?) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     init {
@@ -30,6 +29,7 @@ class DBHelper(context: Context?) : SQLiteOpenHelper(context, DATABASE_NAME, nul
 
     fun onClearData(db: SQLiteDatabase){
         db.execSQL(DELETE_KOTOBA_DATA)
+        //db.execSQL(RESET_SQUENCE_DATA)
     }
 
     companion object{

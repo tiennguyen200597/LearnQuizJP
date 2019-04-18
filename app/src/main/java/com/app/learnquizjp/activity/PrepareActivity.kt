@@ -3,7 +3,7 @@ package com.app.learnquizjp.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_prepare.*
 import kotlinx.android.synthetic.main.content_prepare.*
 import java.io.IOException
 import java.nio.charset.Charset
+
 class PrepareActivity : AppCompatActivity() {
 
     val charset: Charset = Charsets.UTF_8

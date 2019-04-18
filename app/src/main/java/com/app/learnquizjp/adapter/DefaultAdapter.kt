@@ -34,10 +34,10 @@ class DefaultAdapter : RecyclerView.Adapter<DefaultAdapter.ViewHolder>{
     }
 
     override fun getItemCount(): Int {
-        return if (data == null) 0 else data!!.size
+        return if (data == null) 0 else data.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView!!) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvHiragana : TextView = itemView.tvHiragana
         val tvDescription : TextView = itemView.tvDescription
         val tvKanji : TextView = itemView.tvKanji

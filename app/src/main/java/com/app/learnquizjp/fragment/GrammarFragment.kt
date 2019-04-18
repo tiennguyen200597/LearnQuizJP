@@ -8,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.LinearLayout
 import com.app.learnquizjp.R
 import kotlinx.android.synthetic.main.fragment_grammar.view.*
 

@@ -48,14 +48,14 @@ class TestFragment : Fragment(){
         radGroupQz.setOnCheckedChangeListener { _, checkedId ->
             loatASls[mPageNumber].qzstatuschk=getChoiceFromID(checkedId)
             loatASls[mPageNumber].ascurrent=getTextFromID(checkedId)
-            communication!!.dataChk(loatASls)
+            communication.dataChk(loatASls)
             for (i in 0..(loatASls.size-1)) {
                 if (loatASls[i].qzstatuschk == 0) {
                     totalDoNot += 1
                 }
             }
             totalChecked=35-totalDoNot
-            activity!!.tv_status_test.text="Đã làm: ${totalChecked.toString()}/35"
+            activity!!.tv_status_test.text="Đã làm: $totalChecked/35"
             totalDoNot=0
 
         }

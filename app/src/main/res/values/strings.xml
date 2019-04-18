@@ -145,7 +145,6 @@
     <!--HomeFragment-->
     <string name="notify_empty_search_value">Input keyword to search, it can not be empty</string>
     <string name="notify_search_no_result">We can not find your word</string>
-    <string name="empty_favorite">There is something error !</string>
     <string name="action_love">Love</string>
 
 </resources>

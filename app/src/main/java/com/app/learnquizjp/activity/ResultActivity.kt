@@ -2,7 +2,7 @@ package com.app.learnquizjp.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
 import com.app.learnquizjp.R
 import com.app.learnquizjp.base.ConstantsPro.Companion.DATACHKQZ
 import com.app.learnquizjp.base.ConstantsPro.Companion.LISTQUESTIONQRI

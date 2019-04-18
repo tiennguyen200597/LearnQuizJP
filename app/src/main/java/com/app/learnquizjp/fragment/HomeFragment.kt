@@ -34,7 +34,7 @@ class HomeFragment : Fragment(){
         storage = FirebaseStorage.getInstance()
         kotobaDAO = KotobaDAO(view.context)
         data.clear()
-        kotobaDAO.initKotobaData()
+        //kotobaDAO.initKotobaData()
         data = kotobaDAO.getAllKotoba()
         //Add Default kotoba to MutableList and show to HomeFragment
         addKotobaList(view,data)

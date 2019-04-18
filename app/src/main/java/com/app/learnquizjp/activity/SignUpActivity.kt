@@ -1,4 +1,5 @@
 package com.app.learnquizjp.activity
+
 import android.os.Bundle
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -8,7 +9,6 @@ import android.widget.Toast
 import android.text.TextUtils
 import android.view.View
 import com.app.learnquizjp.R
-
 
 /**
  * A login screen that offers login via email/password.

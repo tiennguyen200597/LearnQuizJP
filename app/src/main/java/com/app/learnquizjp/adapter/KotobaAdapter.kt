@@ -35,10 +35,10 @@ class KotobaAdapter : RecyclerView.Adapter<KotobaAdapter.KotobaHolder> {
     }
 
     override fun getItemCount(): Int {
-        return if (data == null) 0 else data!!.size
+        return if (data == null) 0 else data.size
     }
 
-    inner class KotobaHolder(itemView: View) : RecyclerView.ViewHolder(itemView!!) {
+    inner class KotobaHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvHiragana : TextView = itemView.tvHiragana
         var tvDescription : TextView = itemView.tvDescription
         var tvKanji : TextView = itemView.tvKanji

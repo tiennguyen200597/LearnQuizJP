@@ -24,6 +24,9 @@ open class Constants {
         internal const val DELETE_KOTOBA_TABLE = "DROP TABLE IF EXISTS $KOTOBA_TABLE"
 
         internal const val DELETE_KOTOBA_DATA = "DELETE FROM $KOTOBA_TABLE"
+
+        //internal const val RESET_SQUENCE_DATA = "ALTER TABLE $KOTOBA_TABLE AUTO_INCREMENT = SELECT MAX($KOTOBA_ID) FROM $KOTOBA_TABLE"
+
     }
 
 }

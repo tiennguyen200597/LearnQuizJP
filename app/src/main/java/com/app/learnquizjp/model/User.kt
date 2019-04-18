@@ -2,10 +2,10 @@ package com.app.learnquizjp.model
 
 class User {
 
-    var id: String? = null
-    var username: String? = null
+    var id: String? = ""
+    var username: String? = ""
     var profileImageUrl: String = "default"
-    var favorite : MutableList<Int>? = ArrayList()
+    var favorite : MutableList<Int> = mutableListOf()
 
     constructor(id: String, username: String) {
         this.id = id
@@ -14,6 +14,6 @@ class User {
         //this.favorite = favorite
     }
 
-    constructor() {}
+    constructor()
 
 }

@@ -67,7 +67,7 @@ class TestActivity : AppCompatActivity(), Communication {
         // creat arr test
 
         //creat arr test end
-        mPager = findViewById(com.app.learnquizjp.R.id.pager) as ViewPager
+        mPager = findViewById<ViewPager>(com.app.learnquizjp.R.id.pager)
         mPagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
         mPager!!.adapter = mPagerAdapter
         mPager!!.setPageTransformer(true, DepthPageTransformer())
@@ -180,7 +180,7 @@ class TestActivity : AppCompatActivity(), Communication {
         }
 
         override fun onFinish() {
-            tv_clook.setText("00:00")  //SetText cho textview hiện thị thời gian.
+            tv_clook.text = "00:00"  //SetText cho textview hiện thị thời gian.
             /*result()*/
         }
     }

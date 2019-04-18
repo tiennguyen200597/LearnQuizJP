@@ -155,7 +155,7 @@ class KotobaDAO(context : Context) : Constants(){
         return kotoba
     }
 
-    fun getSearchKotoba(id : Int): Kotoba? {
+    fun getSearchKotoba(id : Int): Kotoba {
 
         var kotoba : Kotoba? = null
         val db = dbHelper!!.readableDatabase
@@ -185,7 +185,7 @@ class KotobaDAO(context : Context) : Constants(){
             kotoba = Kotoba(hiragana, kanji, description, example)
         }
         cursor!!.close()
-        return kotoba
+        return kotoba!!
     }
 
 }

@@ -11,9 +11,9 @@ import android.widget.FrameLayout
 
 class BottomNavigationBehavior : CoordinatorLayout.Behavior<BottomNavigationView> {
 
-    constructor() : super() {}
+    constructor() : super()
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {}
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
     override fun layoutDependsOn(parent: CoordinatorLayout, child: BottomNavigationView, dependency: View): Boolean {
         return dependency is FrameLayout

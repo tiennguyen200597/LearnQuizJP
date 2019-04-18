@@ -12,7 +12,6 @@ import com.app.learnquizjp.base.ConstantsPro.Companion.EMAIL
 import com.app.learnquizjp.base.ConstantsPro.Companion.PASSWORD
 import com.app.learnquizjp.base.ConstantsPro.Companion.STATUS
 import com.app.learnquizjp.base.ConstantsPro.Companion.USER_ACCOUNT
-import com.app.learnquizjp.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*

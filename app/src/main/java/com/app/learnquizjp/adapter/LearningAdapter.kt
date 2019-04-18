@@ -28,10 +28,10 @@ class LearningAdapter : RecyclerView.Adapter<LearningAdapter.LearningHolder> {
     }
 
     override fun getItemCount(): Int {
-        return if (data == null) 0 else data!!.size
+        return if (data == null) 0 else data.size
     }
 
-    inner class LearningHolder(itemView: View) : RecyclerView.ViewHolder(itemView!!) {
+    inner class LearningHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvLesson: TextView = itemView.tvLesson
         var tvTitle: TextView = itemView.tvTitle
     }
