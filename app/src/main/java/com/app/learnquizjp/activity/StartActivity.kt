@@ -15,7 +15,7 @@ import java.util.*
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.app.learnquizjp.R.layout.activity_start)
+        setContentView(R.layout.activity_start)
         animateImageView()
         // Count down interval 3 second
         val timer = Timer()
@@ -27,7 +27,7 @@ class StartActivity : AppCompatActivity() {
         }, 3000)
     }
 
-    internal fun animateImageView() {
+    private fun animateImageView() {
         // Load the animation
         val myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce)
         //val animationDuration = 0.2 * 1000

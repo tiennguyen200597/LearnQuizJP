@@ -45,7 +45,7 @@ class ResultActivity : AppCompatActivity() {
         tv_totalFail.text="${totalFail}/${dataChkQz.size}"
         tv_totalDoNot.text="${totalDoNot}/${dataChkQz.size}"
         btn_review.setOnClickListener {
-            var inreview:Intent= Intent(this@ResultActivity,ReviewActivity::class.java)
+            var inreview = Intent(this@ResultActivity,ReviewActivity::class.java)
             inreview.putExtra(LISTQUESTIONQRI,listQuestionQri)
             inreview.putExtra(DATACHKQZ,dataChkQz)
             startActivity(inreview)

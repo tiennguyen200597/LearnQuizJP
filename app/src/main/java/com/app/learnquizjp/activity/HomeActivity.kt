@@ -23,7 +23,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.app.learnquizjp.R.layout.activity_home)
+        setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
         loadFragment(HomeFragment())
         val toggle = ActionBarDrawerToggle(
@@ -82,8 +82,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 loadFragment(fragment)
             }
             R.id.nav_feedback -> {
-                fragment = FeedbackFragment()
-                loadFragment(fragment)
+//                fragment = FeedbackFragment()
+//                loadFragment(fragment)
+                FeedbackFragment().show(supportFragmentManager,"Feedback")
             }
             R.id.nav_about -> {
                 fragment = AboutFragment()

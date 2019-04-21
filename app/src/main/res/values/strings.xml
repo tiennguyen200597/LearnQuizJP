@@ -147,4 +147,7 @@
     <string name="notify_search_no_result">We can not find your word</string>
     <string name="action_love">Love</string>
 
+    <!--SettingFragment-->
+    <string name="setting_receive_notification">Allow app to receive notification</string>
+
 </resources>
