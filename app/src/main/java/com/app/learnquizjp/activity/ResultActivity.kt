@@ -2,6 +2,7 @@ package com.app.learnquizjp.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import com.app.learnquizjp.R
 import com.app.learnquizjp.base.ConstantsPro.Companion.DATACHKQZ
@@ -44,16 +45,34 @@ class ResultActivity : AppCompatActivity() {
         tv_totalTrue.text="${totalTrue}/${dataChkQz.size}"
         tv_totalFail.text="${totalFail}/${dataChkQz.size}"
         tv_totalDoNot.text="${totalDoNot}/${dataChkQz.size}"
-        btn_review.setOnClickListener {
-            var inreview = Intent(this@ResultActivity,ReviewActivity::class.java)
-            inreview.putExtra(LISTQUESTIONQRI,listQuestionQri)
-            inreview.putExtra(DATACHKQZ,dataChkQz)
-            startActivity(inreview)
+
+            btn_review.setOnClickListener {
+                var inreview = Intent(this@ResultActivity,ReviewActivity::class.java)
+
+                if (dataChkQz.size!=0){
+                    inreview.putExtra(LISTQUESTIONQRI,listQuestionQri)
+                    inreview.putExtra(DATACHKQZ,dataChkQz)
+                    startActivity(inreview)
+                }
+                else{
+                    dialogEr()
+                }
+
         }
-
-
-
-
     }
+    private fun dialogEr() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.test_ac_up))
+        builder.setMessage(getString(R.string.result_check))
+        builder.setPositiveButton(getString(R.string.test_ac_accept)) { _, _ ->
+            var intent: Intent = Intent(this, QuizActivity::class.java)
+            startActivity(intent)
+        }
+        builder.setNegativeButton(getString(R.string.test_ac_cancel)) { _, _ ->
+
+        }
+        builder.show()
+    }
+
 
 }

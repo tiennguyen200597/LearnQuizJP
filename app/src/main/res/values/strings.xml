@@ -149,5 +149,7 @@
 
     <!--SettingFragment-->
     <string name="setting_receive_notification">Allow app to receive notification</string>
+    <!--ResultActivity-->
+    <string name="result_check">You need to do at least 1 question!</string>
 
 </resources>
