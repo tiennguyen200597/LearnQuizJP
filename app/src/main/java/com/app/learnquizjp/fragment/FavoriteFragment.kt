@@ -33,7 +33,7 @@ class FavoriteFragment : Fragment(){
                 val user = dataSnapshot.getValue(User::class.java)
                 if (user != null) {
                     for(i in 0 until user.favorite.size){
-                        data.add(KotobaDAO(view.context).getSearchKotoba(user.favorite[i] + 1))
+                        KotobaDAO(view.context).getSearchKotoba(user.favorite[i] + 1)?.let { data.add(it) }
                         val defaultAdapter = DefaultAdapter(data)
                         val linearLayoutManager = LinearLayoutManager(view.context)
                         view.rvKotoba.apply {
