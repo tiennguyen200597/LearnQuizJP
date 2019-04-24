@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.app.learnquizjp.R
 import com.app.learnquizjp.adapter.KotobaAdapter
 import com.app.learnquizjp.base.RecyclerItemClickListener
 import com.app.learnquizjp.dao.KotobaDAO
@@ -17,11 +16,13 @@ import com.app.learnquizjp.model.Kotoba
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import com.facebook.FacebookSdk.getApplicationContext
 import android.widget.PopupMenu
+import com.app.learnquizjp.R
 import com.app.learnquizjp.base.ConstantsPro.Companion.FIRST_TIME
 import com.app.learnquizjp.base.ConstantsPro.Companion.USER_ACCOUNT
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+
 
 class HomeFragment : Fragment(){
 
@@ -55,14 +56,17 @@ class HomeFragment : Fragment(){
                     searchData.add(kotoba)
                     addKotobaList(view,searchData)
                 }else{
-                    Toast.makeText(activity,getString(R.string.notify_search_no_result),Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity,getString(com.app.learnquizjp.R.string.notify_search_no_result),Toast.LENGTH_SHORT).show()
                 }
             }else{
-                Toast.makeText(activity,getString(R.string.notify_empty_search_value),Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity,getString(com.app.learnquizjp.R.string.notify_empty_search_value),Toast.LENGTH_SHORT).show()
             }
         }
+
         return view
     }
+
+
 
     private fun addKotobaList(v : View,d : MutableList<Kotoba>){
         val kotobaAdapter = KotobaAdapter(d)
@@ -100,10 +104,10 @@ class HomeFragment : Fragment(){
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
         ref.child("favorite").setValue(removeCloneData(favorite))
             .addOnSuccessListener {
-                Toast.makeText(activity,getString(R.string.notify_save_user_successful),Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity,getString(com.app.learnquizjp.R.string.notify_save_user_successful),Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{
-                Toast.makeText(activity,getString(R.string.notify_save_user_fail),Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity,getString(com.app.learnquizjp.R.string.notify_save_user_fail),Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -128,6 +132,5 @@ class HomeFragment : Fragment(){
         } catch (e: Throwable) {
             e.printStackTrace()
         }
-
     }
 }
